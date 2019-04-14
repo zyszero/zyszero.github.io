@@ -242,6 +242,229 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/07/ARTS004/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="渴望飞的哺乳类">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/author.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="哺乳类的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/07/ARTS004/" itemprop="url">ARTS打卡：第四周</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-07T23:17:18+08:00">
+                2019-04-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ARTS/" itemprop="url" rel="index">
+                    <span itemprop="name">ARTS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/04/07/ARTS004/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/07/ARTS004/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="ARTS打卡：第四周"><a href="#ARTS打卡：第四周" class="headerlink" title="ARTS打卡：第四周"></a>ARTS打卡：第四周</h1><blockquote><p>每周完成一个ARTS：</p>
+<ol>
+<li>Algorithm：每周至少做一个 leetcode 的算法题</li>
+<li>Review：阅读并点评至少一篇英文技术文章</li>
+<li>Tip：学习至少一个技术技巧</li>
+<li>Share：分享一篇有观点和思考的技术文章</li>
+</ol>
+</blockquote>
+<h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><p>本周记录如下：</p>
+<h3 id="104-Maximum-Depth-of-Binary-Tree（Easy）"><a href="#104-Maximum-Depth-of-Binary-Tree（Easy）" class="headerlink" title="104. Maximum Depth of Binary Tree（Easy）"></a>104. Maximum Depth of Binary Tree（Easy）</h3><blockquote><p>Given a binary tree, find its maximum depth.</p>
+<p>The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.</p>
+<p>Note: A leaf is a node with no children.</p>
+<p><strong>Example:</strong></p>
+<p>Given binary tree [3,9,20,null,null,15,7],</p>
+undefined
+<p>return its depth = 3.</p>
+<footer><strong>@DevDocs</strong><cite><a href="https://leetcode.com/problems/maximum-depth-of-binary-tree/" target="_blank" rel="noopener">leetcode.com/problems/maximum-depth-of-binary-tree</a></cite></footer></blockquote>
+<p>题目大致意思：<br>给一个二叉树，找到它的最大深度，最大深度是指从根节点到最远叶节点的最长路径上的节点数。</p>
+<p>思路：使用DFS（深度优先遍历）</p>
+<p>解法一：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// root == null 时返回 0，是边界条件</span></span><br><span class="line">        <span class="comment">// root != null 时，必有一个节点</span></span><br><span class="line">        <span class="comment">// 假设 maxDepth(root.left) 能求出左子树的最大深度，maxDepth(root.right) 能求出右子树的最大深度，那么只需比较左右子树的最大深度，取max，再加上根节点的 1，就是二叉树的最大深度了</span></span><br><span class="line">        <span class="comment">// 其实就是利用深度优先遍历求最大深度</span></span><br><span class="line">        <span class="keyword">return</span> root == <span class="keyword">null</span> ? <span class="number">0</span> : <span class="number">1</span> + Math.max(maxDepth(root.left), maxDepth(root.right));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>解法2：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 记录最大深度</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> max = <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">         dsf(root, <span class="number">0</span>);</span><br><span class="line">         <span class="keyword">return</span> max;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dsf</span><span class="params">(TreeNode root, <span class="keyword">int</span> depth)</span></span>&#123;</span><br><span class="line">        <span class="comment">// 当前 root 为 null 时，要么根结点为 null，那么已经到达底部</span></span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="comment">// 每次达到底部时，比较当前深度和当前记录的最大深度，取两者最大值</span></span><br><span class="line">            max = Math.max(max, depth);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 深度 + 1</span></span><br><span class="line">        depth++;</span><br><span class="line"></span><br><span class="line">        dsf(root.left, depth);</span><br><span class="line">        dsf(root.right, depth);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="21-Merge-Two-Sorted-Lists（Easy）"><a href="#21-Merge-Two-Sorted-Lists（Easy）" class="headerlink" title="21. Merge Two Sorted Lists（Easy）"></a>21. Merge Two Sorted Lists（Easy）</h3><blockquote><p>Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.</p>
+<p><strong>Example:</strong></p>
+<p>Input: 1-&gt;2-&gt;4, 1-&gt;3-&gt;4<br>Output: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</p>
+<footer><strong>@DevDocs</strong><cite><a href="https://leetcode.com/problems/merge-two-sorted-lists/" target="_blank" rel="noopener">leetcode.com/problems/merge-two-sorted-lists</a></cite></footer></blockquote>
+<p>题目：<br>合并两个已排序的链表，并将其作为一个新列表返回。新列表应该通过将前两个列表的节点拼接在一起来创建。</p>
+<p>思路：<br>需要正确理解题意，这道题给出的例子，其实很容易误导做题者，一开始我就被误导了，直至后面才发现，这道题要的新列表是要有序。</p>
+<p>我们可以用递归来解这道题，解决递归的流程一般有四步：</p>
+<ol>
+<li>定义一个递归方法</li>
+<li>推导出递归方法和基本情况（base case）</li>
+<li>如果递归方法存在重复计算的问题，使用记忆化技术进行优化</li>
+<li>尽可能的使用尾递归</li>
+</ol>
+<p>代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ListNode</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    ListNode next;</span><br><span class="line">    ListNode(<span class="keyword">int</span> x) &#123; val = x; &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">mergeTwoLists</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 终止条件</span></span><br><span class="line">    <span class="keyword">if</span> (l1 == <span class="keyword">null</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> l2;</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span> (l2 == <span class="keyword">null</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> l1;</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span> (l1.val &gt; l2.val)&#123;</span><br><span class="line">        <span class="comment">// 当 l1 的值大于 l2 时，将 l2 当做头结点，并将头结点的下一个后继节点指向 mergeTwoLists 方法返回的节点</span></span><br><span class="line">        l2.next = mergeTwoLists(l1, l2.next);</span><br><span class="line">        <span class="comment">// 返回头结点</span></span><br><span class="line">        <span class="keyword">return</span> l2;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="comment">// 同理</span></span><br><span class="line">        l1.next = mergeTwoLists(l1.next, l2);</span><br><span class="line">        <span class="keyword">return</span> l1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：<br>Runtime: 0 ms, faster than 100.00% of Java online submissions for Merge Two Sorted Lists.<br>Memory Usage: 37 MB, less than 97.90% of Java online submissions for Merge Two Sorted Lists.</p>
+<h3 id="779-K-th-Symbol-in-Grammar（Medium）"><a href="#779-K-th-Symbol-in-Grammar（Medium）" class="headerlink" title="779. K-th Symbol in Grammar（Medium）"></a>779. K-th Symbol in Grammar（Medium）</h3><blockquote><p>On the first row, we write a 0. Now in every subsequent row, we look at the previous row and replace each occurrence of 0 with 01, and each occurrence of 1 with 10.</p>
+<p>Given row N and index K, return the K-th indexed symbol in row N. (The values of K are 1-indexed.) (1 indexed).</p>
+<p><strong>Examples:</strong><br>Input: N = 1, K = 1<br>Output: 0</p>
+<p>Input: N = 2, K = 1<br>Output: 0</p>
+<p>Input: N = 2, K = 2<br>Output: 1</p>
+<p>Input: N = 4, K = 5<br>Output: 1</p>
+<p>Explanation:<br>row 1: 0<br>row 2: 01<br>row 3: 0110<br>row 4: 01101001</p>
+<p><strong>Note:</strong></p>
+<p>N will be an integer in the range [1, 30].<br>K will be an integer in the range [1, 2^(N-1)].</p>
+<footer><strong>@DevDocs</strong><cite><a href="https://leetcode.com/problems/k-th-symbol-in-grammar/" target="_blank" rel="noopener">leetcode.com/problems/k-th-symbol-in-grammar</a></cite></footer></blockquote>
+<p>题目：</p>
+<p>在第一行，我们写一个0。现在，在后面的每一行中，查看前面一行，并将每个出现的0替换为01，将每个出现的1替换为10。给定第N行和索引K，返回第N行中的第K个索引符号(K的值为1个索引)(1个索引)。</p>
+<p>解题思路：</p>
+<p>从 Example 中，我们可以得出一个规律：</p>
+<p>假设 row(N) 表示第 N 行，currLen 表示当前行的长度，preLen 表示上一行的长度，row(N)[K] 表示第 N 行，下标为 k 的值。</p>
+<p>当 K 值小于等于 currLen/2，即 row(N-1) 的长度时，row(N)[K] 等于 row(N-1)[k]，  当 K 值大于 currLen/2 时，row(N)[K] 等于 row(N-1)[K - preLen] 与 1 的异或值。</p>
+<p>代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">kthGrammar</span><span class="params">(<span class="keyword">int</span> N, <span class="keyword">int</span> K)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 以已有的条件可得</span></span><br><span class="line">    <span class="keyword">if</span> (N == <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 当前 N 行的长度</span></span><br><span class="line">    <span class="keyword">int</span> currMaxLength = (<span class="keyword">int</span>)Math.pow(<span class="number">2</span>, N-<span class="number">1</span>);</span><br><span class="line">    <span class="comment">// 当前 N 行的一半长度，即上一行的长度</span></span><br><span class="line">    <span class="keyword">int</span> midLength = currMaxLength / <span class="number">2</span>;</span><br><span class="line">    <span class="comment">// 当 K 值小于等于 currLen/2，即 row(N-1) 的长度时，row(N)[K] 等于 row(N-1)[k]</span></span><br><span class="line">    <span class="keyword">if</span> (K &lt;= midLength)&#123;</span><br><span class="line">        <span class="keyword">return</span> kthGrammar(N - <span class="number">1</span>, K);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="comment">//  当 K 值大于 currLen/2 时，row(N)[K] 等于 row(N-1)[K - preLen] 与 1 的异或值</span></span><br><span class="line">        <span class="keyword">return</span> kthGrammar(N-<span class="number">1</span>, K- midLength) ^ <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Review"><a href="#Review" class="headerlink" title="Review"></a>Review</h2><p>本周阅读的是以下三篇文章，都是与异步 I/O 模型有关的：</p>
+<ol>
+<li><a href="https://www.slideshare.net/e456/tyma-paulmultithreaded1" target="_blank" rel="noopener">Thousands of Threads and Blocking l/O:The Old Way to Write Java Servers Is New Again（and Way Better）</a></li>
+<li><a href="http://116.199.9.132:83/2Q2WEFD048125304E64CA8C982B0A997B2574B94E071_unknown_A75C52C9971B3CB616973B1E53478BF698F0BE07_6/gee.cs.oswego.edu/dl/cpjslides/nio.pdf" target="_blank" rel="noopener">Scalable IO in Java</a></li>
+<li><a href="https://developer.ibm.com/articles/l-async/" target="_blank" rel="noopener">Boost application performance using asynchronous I/O</a></li>
+</ol>
+<h2 id="Tip"><a href="#Tip" class="headerlink" title="Tip"></a>Tip</h2><p>感觉这周没学到什么小技巧Orz，就分享一个小发现吧，IDEA 自带的一个功能， View -&gt; Show ByteCode，效果如下：<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g226mh3ynkj313t0m076j.jpg" alt="View -&gt; Show ByteCode"></p>
+<h2 id="Share"><a href="#Share" class="headerlink" title="Share"></a>Share</h2><p>本周分享知秋大佬的有关 NIO 的系列文章：</p>
+<ul>
+<li><a href="https://juejin.im/post/5c2cc075f265da611037298e" target="_blank" rel="noopener">BIO到NIO源码的一些事儿之BIO</a></li>
+<li><a href="https://juejin.im/post/5c2e23156fb9a049ff4e4009" target="_blank" rel="noopener">BIO到NIO源码的一些事儿之NIO 上</a></li>
+<li><a href="https://juejin.im/post/5c34d1dd6fb9a049c84fa2ce" target="_blank" rel="noopener">BIO到NIO源码的一些事儿之NIO 中</a></li>
+<li><a href="https://juejin.im/post/5c3a01d851882525c55fad36" target="_blank" rel="noopener">BIO到NIO源码的一些事儿之NIO 下 之 Selector</a></li>
+<li><a href="https://juejin.im/post/5c4738c151882525c638144e" target="_blank" rel="noopener">BIO到NIO源码的一些事儿之NIO 下 Buffer解读 上</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/06/ARTS003/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -355,8 +578,7 @@
 </blockquote>
 <h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><p>本周记录如下：</p>
 <h3 id="206-Reverse-Linked-List（Easy）"><a href="#206-Reverse-Linked-List（Easy）" class="headerlink" title="206. Reverse Linked List（Easy）"></a>206. Reverse Linked List（Easy）</h3><blockquote><p>Reverse a singly linked list.</p>
-<p><strong>Example:</strong></p>
-undefined
+<p><strong>Example:</strong><br>Input: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL<br>Output: 5-&gt;4-&gt;3-&gt;2-&gt;1-&gt;NULL</p>
 <p><strong>Follow up:</strong></p>
 <p>A linked list can be reversed either iteratively or recursively. Could you implement both?</p>
 <footer><strong>@DevDocs</strong><cite><a href="https://leetcode.com/problems/reverse-linked-list/" target="_blank" rel="noopener">leetcode.com/problems/reverse-linked-list</a></cite></footer></blockquote>
@@ -390,14 +612,14 @@ undefined
 </ul>
 <p>运行结果：<br>Runtime: 0 ms, faster than 100.00% of Java online submissions for Reverse Linked List.<br>Memory Usage: 37.7 MB, less than 41.78% of Java online submissions for Reverse Linked List.</p>
 <h3 id="509-Fibonacci-Number（Easy）"><a href="#509-Fibonacci-Number（Easy）" class="headerlink" title="509. Fibonacci Number（Easy）"></a>509. Fibonacci Number（Easy）</h3><blockquote><p>The Fibonacci numbers, commonly denoted F(n) form a sequence, called the Fibonacci sequence, such that each number is the sum of the two preceding ones, starting from 0 and 1. That is,</p>
-undefined
+<p>F(0) = 0,   F(1) = 1<br>F(N) = F(N - 1) + F(N - 2), for N &gt; 1.</p>
 <p>Given N, calculate F(N).</p>
 <p><strong>Example 1:</strong></p>
-undefined
+<p>Input: 2<br>Output: 1<br>Explanation: F(2) = F(1) + F(0) = 1 + 0 = 1.</p>
 <p><strong>Example 2:</strong></p>
-undefined
+<p>Input: 3<br>Output: 2<br>Explanation: F(3) = F(2) + F(1) = 1 + 1 = 2.</p>
 <p><strong>Example 3:</strong></p>
-undefined
+<p>Input: 4<br>Output: 3<br>Explanation: F(4) = F(3) + F(2) = 2 + 1 = 3.</p>
 <p><strong>Note:</strong></p>
 <p>0 ≤ N ≤ 30.</p>
 <footer><strong>@DevDocs</strong><cite><a href="https://leetcode.com/problems/fibonacci-number/" target="_blank" rel="noopener">leetcode.com/problems/fibonacci-number</a></cite></footer></blockquote>
@@ -1177,7 +1399,7 @@ undefined
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
