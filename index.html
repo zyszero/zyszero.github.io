@@ -242,6 +242,206 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/20/ARTS005/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="渴望飞的哺乳类">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/author.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="哺乳类的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/20/ARTS005/" itemprop="url">ARTS打卡：第五周</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-20T15:53:22+08:00">
+                2019-04-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ARTS/" itemprop="url" rel="index">
+                    <span itemprop="name">ARTS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/04/20/ARTS005/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/20/ARTS005/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="ARTS打卡：第五周"><a href="#ARTS打卡：第五周" class="headerlink" title="ARTS打卡：第五周"></a>ARTS打卡：第五周</h1><blockquote><p>每周完成一个ARTS：</p>
+<ol>
+<li>Algorithm：每周至少做一个 leetcode 的算法题</li>
+<li>Review：阅读并点评至少一篇英文技术文章</li>
+<li>Tip：学习至少一个技术技巧</li>
+<li>Share：分享一篇有观点和思考的技术文章</li>
+</ol>
+</blockquote>
+<h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><p>这周将 Recursion I 剩余部分完成了，记录如下：</p>
+<h3 id="96-Unique-Binary-Search-Trees-Medium"><a href="#96-Unique-Binary-Search-Trees-Medium" class="headerlink" title="96. Unique Binary Search Trees(Medium)"></a>96. Unique Binary Search Trees(Medium)</h3><blockquote><p>Given n, how many structurally unique BST’s (binary search trees) that store values 1 … n?</p>
+<p><strong>Example:</strong></p>
+<p>Input: 3<br>Output: 5<br>Explanation:<br>Given n = 3, there are a total of 5 unique BST’s:</p>
+<p>   1         3     3      2      1<br>    \       /     /      / \      \<br>     3     2     1      1   3      2<br>    /     /       \                 \<br>   2     1         2                 3</p>
+<footer><strong>@DevDocs</strong><cite><a href="https://leetcode.com/problems/unique-binary-search-trees/" target="_blank" rel="noopener">leetcode.com/problems/unique-binary-search-trees</a></cite></footer></blockquote>
+<p>题目意思：给定n值，求出有多少结构上唯一的存储值1 … n的BST（二叉搜索树）？</p>
+<p>首先我们要了解二叉搜索树（BST binary search trees）是什么?</p>
+<blockquote><p>二叉查找树（英语：Binary Search Tree），也称为二叉搜索树、有序二叉树（ordered binary tree）或排序二叉树（sorted binary tree），是指一棵空树或者具有下列性质的二叉树：</p>
+<ol>
+<li>若任意节点的左子树不空，则左子树上所有节点的值均小于它的根节点的值；</li>
+<li>若任意节点的右子树不空，则右子树上所有节点的值均大于它的根节点的值；</li>
+<li>任意节点的左、右子树也分别为二叉查找树；</li>
+<li>没有键值相等的节点。</li>
+</ol>
+<footer><strong>@DevDocs</strong><cite><a href="https://zh.wikipedia.org/wiki/%E4%BA%8C%E5%85%83%E6%90%9C%E5%B0%8B%E6%A8%B9" target="_blank" rel="noopener">zh.wikipedia.org/wiki/%E4%BA%8C%E5%85%83%E6%90%9C%E5%B0%8B%E6%A8%B9</a></cite></footer></blockquote>
+<p>思路来源：<br><a href="https://leetcode.com/problems/unique-binary-search-trees/discuss/31666/DP-Solution-in-6-lines-with-explanation.-F(i-n" target="_blank" rel="noopener">DP Solution in 6 lines with explanation. F(i, n) = G(i-1) * G(n-i)</a>-G(i-1)-*-G(n-i))</p>
+<p>这个帖子说的很详细，建议小伙伴们都看看。</p>
+<p>解题代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numTrees</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 为了方便理解，申请长度为 n+1 的数组，便于最后直接返回 g[n]</span></span><br><span class="line">        <span class="keyword">int</span>[] g = <span class="keyword">new</span> <span class="keyword">int</span>[n + <span class="number">1</span>];</span><br><span class="line">        <span class="comment">// base case</span></span><br><span class="line">        g[<span class="number">0</span>] = g[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="comment">// 从g(2)出发</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= i; j++) &#123;</span><br><span class="line">                <span class="comment">// g(n) = f(1, n) + ... + f(n, n)</span></span><br><span class="line">                <span class="comment">// f(i, n) = g(i -1) * g(n - i)</span></span><br><span class="line">                <span class="comment">// g(n) = g(0) * g(n - 1) + ... + g(n - 1) * g(0)</span></span><br><span class="line">                g[i] += g[j -<span class="number">1</span>] * g[i - j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> g[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="95-Unique-Binary-Search-Trees-II-Medium"><a href="#95-Unique-Binary-Search-Trees-II-Medium" class="headerlink" title="95. Unique Binary Search Trees II(Medium)"></a>95. Unique Binary Search Trees II(Medium)</h3><blockquote><p>Given an integer n, generate all structurally unique BST’s (binary search trees) that store values 1 … n.</p>
+<p><strong>Example:</strong></p>
+<p>Input: 3<br>Output:<br>[<br>  [1,null,3,2],<br>  [3,2,null,1],<br>  [3,1,null,null,2],<br>  [2,1,3],<br>  [1,null,2,null,3]<br>]<br>Explanation:<br>The above output corresponds to the 5 unique BST’s shown below:</p>
+<p>   1         3     3      2      1<br>    \       /     /      / \      \<br>     3     2     1      1   3      2<br>    /     /       \                 \<br>   2     1         2                 3</p>
+<footer><strong>@DevDocs</strong><cite><a href="https://leetcode.com/problems/unique-binary-search-trees/" target="_blank" rel="noopener">leetcode.com/problems/unique-binary-search-trees</a></cite></footer></blockquote>
+<p>题目意思：给定整数n，生成存储值1 … n的所有结构上唯一的BST（二叉搜索树）。</p>
+<p>思路：<br>其实跟上面那道题的思路很相像，这里大致说下：</p>
+<ol>
+<li>我们从 Example 可得出如果 n 是输入值的话，那么根节点可能就是 1-n 中任何一个。</li>
+<li>我们可以先假设 G(n) = G(start, end) 能获取生成存储值1 … n的所有结构上唯一的BST，start是 1-n 范围内的起点，end 是终点，即 n。</li>
+<li>因为是BST，所以当i为根节点时，左子树的所有结果集可以假设为 G(start, i - 1)，，右子树的所有结果集可以假设为 G(i+1, n)。</li>
+<li>确认 base case，能确认最底部的根节点，然后关联有可能的左子树和右子树，最后返回一个包含了所有的情况的集合，当 start &gt; end 的时候，返回一个空集合，表示没有左/右子树。</li>
+<li>确认边界条件，当 n == 0，直接返回空集合。<br>解法：</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;TreeNode&gt; <span class="title">generateTrees</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 边界条件</span></span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> genTrees(<span class="number">1</span>, n);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> List&lt;TreeNode&gt; <span class="title">genTrees</span><span class="params">(<span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</span><br><span class="line">    List&lt;TreeNode&gt; treeNodes = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="comment">//  base case</span></span><br><span class="line">    <span class="keyword">if</span> (start &gt; end) &#123;</span><br><span class="line">        treeNodes.add(<span class="keyword">null</span>);</span><br><span class="line">        <span class="keyword">return</span> treeNodes;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = start; i &lt;= end; i++) &#123;</span><br><span class="line">        List&lt;TreeNode&gt; leftTreeNodes, rightTreeNodes;</span><br><span class="line">        <span class="comment">// 获取左子树的所有可能-递归公式</span></span><br><span class="line">        leftTreeNodes = genTrees(start, i - <span class="number">1</span>);</span><br><span class="line">        <span class="comment">// 获取右子树的所有可能-递归公式</span></span><br><span class="line">        rightTreeNodes = genTrees(i + <span class="number">1</span>, end);</span><br><span class="line">        <span class="comment">// base case</span></span><br><span class="line">        <span class="keyword">for</span> (TreeNode leftTreeNode :</span><br><span class="line">                leftTreeNodes) &#123;</span><br><span class="line">            <span class="keyword">for</span> (TreeNode rightTreeNode :</span><br><span class="line">                    rightTreeNodes) &#123;</span><br><span class="line">                TreeNode root = <span class="keyword">new</span> TreeNode(i);</span><br><span class="line">                root.left = leftTreeNode;</span><br><span class="line">                root.right = rightTreeNode;</span><br><span class="line">                treeNodes.add(root);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> treeNodes;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Review"><a href="#Review" class="headerlink" title="Review"></a>Review</h2><p>本周阅读的是：<a href="https://www.codechef.com/wiki/tutorial-dynamic-programming#" target="_blank" rel="noopener">Tutorial For Dynamic Programming</a></p>
+<p>是一篇很好的动态规划的学习资料。</p>
+<h2 id="Tip"><a href="#Tip" class="headerlink" title="Tip"></a>Tip</h2><p>这周分享从梁大的知识星球中学到的 tip：<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g2992ekt12j30ku1gcdqj.jpg" alt="优雅退出服务小结"></p>
+<h2 id="Share"><a href="#Share" class="headerlink" title="Share"></a>Share</h2><p>本周分享的是小灰大大的文章：<a href="https://zhuanlan.zhihu.com/p/31628866" target="_blank" rel="noopener">漫画：什么是动态规划？</a></p>
+<p>这篇文章以漫画的形式，生动形象的介绍了动态规划，让算法学起来不再那么的枯燥无味。</p>
+<p>小灰的公众号还有其他以漫画形式介绍算法的文章，感兴趣的小伙伴们可以关注走一波。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/14/ARTS004/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1400,7 +1600,7 @@ undefined
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
