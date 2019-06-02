@@ -88,7 +88,7 @@
 <meta property="og:description" content="ARTS打卡：第十周每周完成一个ARTS：  Algorithm：每周至少做一个 leetcode 的算法题 Review：阅读并点评至少一篇英文技术文章 Tip：学习至少一个技术技巧 Share：分享一篇有观点和思考的技术文章   Algorithm66. Plus One(Easy)Given a non-empty array of digits representing a non-neg">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/007hWkdxgy1g3mtrabky2j30ku17a786.jpg">
-<meta property="og:updated_time" content="2019-06-02T16:56:07.585Z">
+<meta property="og:updated_time" content="2019-06-02T16:57:47.148Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ARTS打卡：第十周">
 <meta name="twitter:description" content="ARTS打卡：第十周每周完成一个ARTS：  Algorithm：每周至少做一个 leetcode 的算法题 Review：阅读并点评至少一篇英文技术文章 Tip：学习至少一个技术技巧 Share：分享一篇有观点和思考的技术文章   Algorithm66. Plus One(Easy)Given a non-empty array of digits representing a non-neg">
@@ -388,24 +388,18 @@
 <h2 id="Review"><a href="#Review" class="headerlink" title="Review"></a>Review</h2><p>本周阅读是：<a href="https://www.e4developer.com/2018/03/30/introduction-to-concurrency-in-spring-boot/" target="_blank" rel="noopener">《Introduction to Concurrency in Spring Boot》</a></p>
 <p>作者在文中提供了一些在 Spring Boot 中的处理多线程的实用建议，以及如何避免它可能产生的问题。</p>
 <ol>
-<li><p>Spring Boot 并发基础知识<br>在考虑Spring Boot应用程序中的并发性时，值得考虑的关键领域是：</p>
-<ul>
+<li>Spring Boot 并发基础知识<br>在考虑Spring Boot应用程序中的并发性时，值得考虑的关键领域是：<ul>
 <li>最大线程数：分配给应用处理请求的最大线程数。</li>
 <li>共享外部资源：调用外部共享资源，例如数据库。</li>
 <li>异步方法调用：这些方法调用在等待响应时将线程释放回线程池。</li>
 <li>共享内部资源：调用内部共享资源，例如缓存和潜在的应用共享状态。</li>
 </ul>
 </li>
-<li><p>Spring Boot Application 中的最大线程数<br>首先我们应该注意，正在处理的线程是有限的。<br>如果使用的是tomcat，你可以使用属性<code>server.tomcat.max-threads</code>去控制希望允许多少线程，缺省值是 0，意味着使用 Tomcat 的缺省值 200。</p>
-</li>
-<li><p>使用异步方法调用去解决共享外部资源花费大量等待时间的问题</p>
-</li>
-<li><p>在 Spring Boot 中进行异步调用<br>在主程序类中的注解 <code>@SpringApplication</code> 之上加注解<code>@EnableAsync</code>，加上之后，可以在你的 Service 方法上加 <code>@Asyn</code>，并将返回结果改为<code>CompletableFuture&lt;&gt;</code>，这样<code>@Asyn</code>的方法将后台线程池中运行，合理使用，可以降低性能损耗，提高服务效应效率。</p>
-</li>
-<li><p>控制内部资源，避免与共享相关问题的最佳建议是不要共享它们。</p>
-</li>
-<li><p>如果要共享某些状态，以下是一些建议：</p>
-<ul>
+<li>Spring Boot Application 中的最大线程数<br>首先我们应该注意，正在处理的线程是有限的。<br>如果使用的是tomcat，你可以使用属性<code>server.tomcat.max-threads</code>去控制希望允许多少线程，缺省值是 0，意味着使用 Tomcat 的缺省值 200。</li>
+<li>使用异步方法调用去解决共享外部资源花费大量等待时间的问题</li>
+<li>在 Spring Boot 中进行异步调用<br>在主程序类中的注解 <code>@SpringApplication</code> 之上加注解<code>@EnableAsync</code>，加上之后，可以在你的 Service 方法上加 <code>@Asyn</code>，并将返回结果改为<code>CompletableFuture&lt;&gt;</code>，这样<code>@Asyn</code>的方法将后台线程池中运行，合理使用，可以降低性能损耗，提高服务效应效率。</li>
+<li>控制内部资源，避免与共享相关问题的最佳建议是不要共享它们。</li>
+<li>如果要共享某些状态，以下是一些建议：<ul>
 <li>处理不可变的对象，如果对象是不可变的，将会避免许多并发问题。如果你需要改变一些东西，那就创建一个新的对象。</li>
 <li>了解你的集合是否是线程安全的，如果需要并发访问，请使用<code>ConcurrentHashMap</code>或者其他线程安全的解决方法。</li>
 <li>不要假设第三方库是线程安全的。大多数代码都不是，并且必须控制对共享状态的访问。</li>
