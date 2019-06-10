@@ -242,6 +242,180 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/10/Jenkins001/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="渴望飞的哺乳类">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/author.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="哺乳类的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/10/Jenkins001/" itemprop="url">Jenkins 子节点构建配置</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-10T23:49:40+08:00">
+                2019-06-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Jenkins/" itemprop="url" rel="index">
+                    <span itemprop="name">Jenkins</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Jenkins-子节点构建配置"><a href="#Jenkins-子节点构建配置" class="headerlink" title="Jenkins 子节点构建配置"></a>Jenkins 子节点构建配置</h1><h2 id="配置子节点"><a href="#配置子节点" class="headerlink" title="配置子节点"></a>配置子节点</h2><ol>
+<li>进入jenkins服务器的首页，点击左边的系统管理，如下图所示：<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2cvty5dj30b30dmgme.jpg" alt="image1"></li>
+<li>然后点击右边的管理节点，如下图所示：<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2d7564wj31ms0xwtdl.jpg" alt="image2"></li>
+<li>继续点击左边的新建节点，然后按如下图操作，最后点击OK：<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2dhedfbj31z009340i.jpg" alt="image3"></li>
+<li>点击OK后，进入到节点的配置界面，进行配置，如下图：<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2drvhy2j31nd0x1n37.jpg" alt="image4"></li>
+</ol>
+<h2 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h2><p>登录远程子节点机器，使用以下命令，创建一个新用户：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># adduser xxx</span><br></pre></td></tr></table></figure>
+<p>这里我们使用root用户，就不创建一个新用户了。</p>
+<h2 id="生成xxx用户的ssh密钥"><a href="#生成xxx用户的ssh密钥" class="headerlink" title="生成xxx用户的ssh密钥"></a>生成xxx用户的ssh密钥</h2><p>如果是使用新创建的用户，则需要先切换至新用户：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su - xxx</span><br></pre></td></tr></table></figure>
+<p>使用以下命令生成ssh密钥：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa</span><br></pre></td></tr></table></figure></p>
+<p>一路回车默认空密码即可，最终会在/home/xxx/.ssh目录中生成公钥<code>id_rsa.pub</code>和私钥<code>id_rsa</code>这两个文件。</p>
+<p>然后将公钥添加到这台主机的 authorized_keys 文件中，并修改权限为600</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 添加命令</span><br><span class="line">cat id_rsa.pub &gt;&gt; authorized_keys</span><br><span class="line"></span><br><span class="line">// 修改权限的命令</span><br><span class="line">chmod 600 authorized_keys</span><br></pre></td></tr></table></figure>
+<h2 id="创建-Jenkins-Credentials-认证"><a href="#创建-Jenkins-Credentials-认证" class="headerlink" title="创建 Jenkins Credentials 认证"></a>创建 Jenkins Credentials 认证</h2><p>回到首页，按照下图操作：<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2e0upsuj31yp0iaq6r.jpg" alt="image5"><br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2ecfd53j312w04bgm5.jpg" alt="image6"><br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2ernv8wj31x50p47am.jpg" alt="image7"><br>第三步也可以像下图一样操作，不过使用的是主节点的私钥，然后将主节点生成的公钥加入到子节点的 authorized_keys 文件中；生成秘钥和添加公钥的命令，请参考<a href="#user-content-生成xxx用户的ssh密钥">生成xxx用户的ssh密钥</a>。<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2f9aoqlj31yi0hlacz.jpg" alt="image8"></p>
+<h2 id="继续节点信息配置"><a href="#继续节点信息配置" class="headerlink" title="继续节点信息配置"></a>继续节点信息配置</h2><p>进入节点配置界面，继续节点配置：<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2fgrennj31n60hs760.jpg" alt="9"><br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2fo1kqwj31q00u60ug.jpg" alt="10"><br>回到jenkins服务首页，在左边下方出现，如图所示，即为成功了：<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2fuvub7j30ck0uewg0.jpg" alt="image11"></p>
+<h2 id="将Job关联至子节点"><a href="#将Job关联至子节点" class="headerlink" title="将Job关联至子节点"></a>将Job关联至子节点</h2><ol>
+<li>选择你想关联的 Job，进入配置页面，如下图进行操作：<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2g5cxf1j31jp06haap.jpg" alt="12"><br>标签就是子节点配置页面中填写的标签</li>
+<li>配置 maven<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2gbrmz1j31iw09dmxw.jpg" alt="13"></li>
+<li>配置SSH Server<ol>
+<li>系统管理-&gt;系统设置-&gt;Publish over SSH</li>
+<li>新增 SSH Server 配置<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2gi0z85j31eq0t1q61.jpg" alt="14"></li>
+</ol>
+</li>
+<li>在构建设置配置构建后操作<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2gsxsgkj31kl0t6wiu.jpg" alt="16"></li>
+</ol>
+<p>到此，我们的 Jenkins 子节点配置就大功告成了。</p>
+<p>参考链接：</p>
+<ul>
+<li><a href="https://blog.csdn.net/lusyoe/article/details/54880836" target="_blank" rel="noopener">Jenkins子节点构建配置</a></li>
+<li><a href="https://blog.csdn.net/u012946310/article/details/80969447" target="_blank" rel="noopener">jenkins通过SSH Publishers自动构建发包到远程服务器</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/07/JMeter01/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -509,9 +683,9 @@
 <p>Given nums = [2, 7, 11, 15], target = 9,</p>
 <p>Because nums[0] + nums[1] = 2 + 7 = 9,<br>return [0, 1].</p>
 <footer><strong>@DevDocs</strong><cite><a href="https://leetcode.com/problems/two-sum/" target="_blank" rel="noopener">leetcode.com/problems/two-sum</a></cite></footer></blockquote>
-<p><strong>大致题意</strong><br>给一个整形数组，返回两个数组下标，两个数组下标对应的值相加，要等于目标值。<br>你可以假设每一个输入的数组，只有一种答案，并且你不能使用同一个元素两次。</p>
+<p><strong>大致题意：</strong><br>给一个整形数组，返回两个数组下标，两个数组下标对应的值相加，要等于目标值。<br>你可以假设每一个输入的数组，只有一种答案，并且你不能使用同一个元素两次。</p>
 <p>这种题目，一眼看上去，是可以用暴力破解的，不过暴力破解虽然能解决问题，但我们这种三好青年，是有追求，有梦想的，用最少的时间和空间去解决问题，才是我们的终极目标。</p>
-<p><strong>解题思路一：暴力破解，双重遍历</strong><br>这种解法就简单直接了，双重循环遍历即可</p>
+<p><strong>解题思路一：暴力破解，双重遍历</strong><br>这种解法就简单直接了，双重循环遍历即可。</p>
 <p>代码如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 暴力破解，双重遍历</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> nums   输入数组</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> target 目标值</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] twoSum1(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">    <span class="keyword">if</span> (nums.length &lt; <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"No two sum solution"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] + nums[j] == target) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;i, j&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"No two sum solution"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>结果：<br>Runtime: 18 ms, faster than 38.89% of Java online submissions for Two Sum.<br>Memory Usage: 38.2 MB, less than 94.24% of Java online submissions for Two Sum.</p>
@@ -1995,263 +2169,6 @@ undefined
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/06/ARTS003/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="渴望飞的哺乳类">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/author.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="哺乳类的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/06/ARTS003/" itemprop="url">ARTS打卡：第三周</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-06T15:53:32+08:00">
-                2019-04-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ARTS/" itemprop="url" rel="index">
-                    <span itemprop="name">ARTS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="ARTS打卡：第三周"><a href="#ARTS打卡：第三周" class="headerlink" title="ARTS打卡：第三周"></a>ARTS打卡：第三周</h1><blockquote><p>每周完成一个ARTS：</p>
-<ol>
-<li>Algorithm：每周至少做一个 leetcode 的算法题</li>
-<li>Review：阅读并点评至少一篇英文技术文章</li>
-<li>Tip：学习至少一个技术技巧</li>
-<li>Share：分享一篇有观点和思考的技术文章</li>
-</ol>
-</blockquote>
-<h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><p>本周记录如下：</p>
-<h3 id="206-Reverse-Linked-List（Easy）"><a href="#206-Reverse-Linked-List（Easy）" class="headerlink" title="206. Reverse Linked List（Easy）"></a>206. Reverse Linked List（Easy）</h3><blockquote><p>Reverse a singly linked list.</p>
-<p><strong>Example:</strong><br>Input: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL<br>Output: 5-&gt;4-&gt;3-&gt;2-&gt;1-&gt;NULL</p>
-<p><strong>Follow up:</strong></p>
-<p>A linked list can be reversed either iteratively or recursively. Could you implement both?</p>
-<footer><strong>@DevDocs</strong><cite><a href="https://leetcode.com/problems/reverse-linked-list/" target="_blank" rel="noopener">leetcode.com/problems/reverse-linked-list</a></cite></footer></blockquote>
-<p>题目：反转单链表，示例如上所示。</p>
-<p>思路1： 首先让单链表的头结点的前驱节点指向NULL，然后遍历链表节点，改变当前节点的后继节点为前驱节点，直至循环结束，返回尾结点。代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">reverseList</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 用于记录上一个节点（一开始为null，是为了让单链表的头结点的前驱节点指向NULL）</span></span><br><span class="line">    ListNode prev = <span class="keyword">null</span>;</span><br><span class="line">    <span class="comment">// 当前节点</span></span><br><span class="line">    ListNode curr = head;</span><br><span class="line">    <span class="comment">// 循环遍历至尾结点</span></span><br><span class="line">    <span class="keyword">while</span>(curr != <span class="keyword">null</span>)&#123;</span><br><span class="line">        <span class="comment">// 临时节点，保存当前节点的后继节点</span></span><br><span class="line">        ListNode nextTemp = curr.next;</span><br><span class="line">        <span class="comment">// 改变当前节点的后继节点为前驱节点</span></span><br><span class="line">        curr.next = prev;</span><br><span class="line">        <span class="comment">// 移动节点</span></span><br><span class="line">        prev = curr;</span><br><span class="line">        curr = nextTemp;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 返回旧单链表的尾结点（即反转后的新单链表的头结点）</span></span><br><span class="line">    <span class="keyword">return</span> prev;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>复杂度分析：</p>
-<ul>
-<li>时间复杂度：O(n)</li>
-<li>空间复杂度：O(1)</li>
-</ul>
-<p>运行结果：<br>Runtime: 0 ms, faster than 100.00% of Java online submissions for Reverse Linked List.<br>Memory Usage: 37.7 MB, less than 29.48% of Java online submissions for Reverse Linked List.</p>
-<p>思路2：<br>使用递归，来自官方的解法：</p>
-<blockquote><p>The recursive version is slightly trickier and the key is to work backwards. Assume that the rest of the list had already been reversed, now how do I reverse the front part? Let’s assume the list is: n1 → … → nk-1 → nk → nk+1 → … → nm → Ø</p>
-<p>Assume from node nk+1 to nm had been reversed and you are at node nk.</p>
-<p>n1 → … → nk-1 → nk → nk+1 ← … ← nm</p>
-<p>We want nk+1’s next node to point to nk.</p>
-<p>So,</p>
-<p>nk.next.next = nk;</p>
-<p>Be very careful that n1’s next must point to Ø. If you forget about this, your linked list has a cycle in it. This bug could be caught if you test your code with a linked list of size 2.</p>
-</blockquote>
-<p>大致意思：</p>
-<p>我们可以假设单链表是这样的：n1 → … → nk-1 → nk → nk+1 ← … ← nm，现在想要 nk+1 的后继节点指向nk，即 （nk+1.next = nk）。</p>
-<p>所以我们的 Base Case 是： nk.next.next = nk。</p>
-<p>代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ListNode <span class="title">reverseList</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 当头结点为 null，直接返回 null（边界条件）</span></span><br><span class="line">    <span class="comment">// head.next == null，递归终止的条件 </span></span><br><span class="line">    <span class="keyword">if</span> (head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 获取当前节点的后继节点，即 nk+1</span></span><br><span class="line">    ListNode p = reverseList(head.next);</span><br><span class="line">    <span class="comment">// base case</span></span><br><span class="line">    head.next.next = head;</span><br><span class="line">    <span class="comment">// 因为 n1 的前驱节点要指向 null</span></span><br><span class="line">    head.next = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>复杂度分析：</p>
-<ul>
-<li>时间复杂度：O(n)</li>
-<li>空间复杂度：O(n)</li>
-</ul>
-<p>运行结果：<br>Runtime: 0 ms, faster than 100.00% of Java online submissions for Reverse Linked List.<br>Memory Usage: 37.7 MB, less than 41.78% of Java online submissions for Reverse Linked List.</p>
-<h3 id="509-Fibonacci-Number（Easy）"><a href="#509-Fibonacci-Number（Easy）" class="headerlink" title="509. Fibonacci Number（Easy）"></a>509. Fibonacci Number（Easy）</h3><blockquote><p>The Fibonacci numbers, commonly denoted F(n) form a sequence, called the Fibonacci sequence, such that each number is the sum of the two preceding ones, starting from 0 and 1. That is,</p>
-<p>F(0) = 0,   F(1) = 1<br>F(N) = F(N - 1) + F(N - 2), for N &gt; 1.</p>
-<p>Given N, calculate F(N).</p>
-<p><strong>Example 1:</strong></p>
-<p>Input: 2<br>Output: 1<br>Explanation: F(2) = F(1) + F(0) = 1 + 0 = 1.</p>
-<p><strong>Example 2:</strong></p>
-<p>Input: 3<br>Output: 2<br>Explanation: F(3) = F(2) + F(1) = 1 + 1 = 2.</p>
-<p><strong>Example 3:</strong></p>
-<p>Input: 4<br>Output: 3<br>Explanation: F(4) = F(3) + F(2) = 2 + 1 = 3.</p>
-<p><strong>Note:</strong></p>
-<p>0 ≤ N ≤ 30.</p>
-<footer><strong>@DevDocs</strong><cite><a href="https://leetcode.com/problems/fibonacci-number/" target="_blank" rel="noopener">leetcode.com/problems/fibonacci-number</a></cite></footer></blockquote>
-<p>题目：<br>斐波纳契数，哈哈哈，大家是不是很眼熟呐，一道很经典的题目，这里不解释题目意思了。</p>
-<p>解题思路：<br>这里先要引入一个概念，Memoization（记忆化）。</p>
-<blockquote>
-<p>Memoization is an optimization technique used primarily to speed up computer programs by storing the results of expensive function calls and returning the cached result when the same inputs occur again. (Source: wikipedia)</p>
-</blockquote>
-<p>简单来说，记忆化技术是用来解决递归方法中出现重复计算的问题，使用缓存保存之前计算过的结果，使得相同输入，无需重复计算，直接从缓存中获取值。</p>
-<p>在这道题中，我们可以看出，有很多次的重复计算，比如：F(4) = F(3) + F(2) = F(2) + F(2) + F(1) = F(1) + F(0) + F(1) + F(0) + F(1)。</p>
-<p>所以我们可以引入记忆化技术。从上述的例子中，可以推导出递归公式为：F(n) = F(n-1) + F(n-2)。</p>
-<p>代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 使用一个map集合，作为缓存</span></span><br><span class="line">    <span class="keyword">private</span> Map&lt;Integer, Integer&gt; cacheMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fib</span><span class="params">(<span class="keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 判断输入的值 N ，在缓存中是否存在计算结果，有的话直接返回</span></span><br><span class="line">        <span class="keyword">if</span>(cacheMap.containsKey(N))&#123;</span><br><span class="line">            <span class="keyword">return</span> cacheMap.get(N);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> result;</span><br><span class="line">        <span class="comment">// F(1) = 1, F(0) = 0，所以当 N &lt; 2 时，可以直接返回 N 。</span></span><br><span class="line">        <span class="keyword">if</span> (N &lt; <span class="number">2</span>) &#123;</span><br><span class="line">            result =  N;</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            result = fib(N - <span class="number">1</span>) + fib(N - <span class="number">2</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 把计算结果放到缓存中</span></span><br><span class="line">        cacheMap.put(N, result);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>复杂度分析：<br>时间复杂度：O(n)<br>空间复杂度：O(n)</p>
-<p>运行结果：<br>Runtime: 0 ms, faster than 100.00% of Java online submissions for Fibonacci Number.<br>Memory Usage: 31.7 MB, less than 100.00% of Java online submissions for Fibonacci Number.</p>
-<p>我在 submissions 中发现一个有趣的答案，使用 Java 8 特性解题的，分享给大家：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fib</span><span class="params">(<span class="keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">         <span class="comment">// F(1) = 1, F(0) = 0，所以当 N &lt; 2 时，可以直接返回 N 。</span></span><br><span class="line">        <span class="keyword">if</span> ( N == <span class="number">0</span> || N == <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> N;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// .limit(N + 1)： 循环 N + 1 次，每次生成一个数组为[f[1], f[0]+f[1]]，f 为上一个数组，new int[]&#123;0, 1&#125;为初始值，.mapToInt(f -&gt; f[0])：获取每个数组的f[0]，形成IntStream；.max()：获取流中数值最大的元素，.getAsInt()： 转成 int 数值。</span></span><br><span class="line">        <span class="keyword">return</span> Stream.iterate(<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">0</span>, <span class="number">1</span>&#125;, f -&gt; <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;f[<span class="number">1</span>], f[<span class="number">0</span>] + f[<span class="number">1</span>]&#125;)</span><br><span class="line">                .limit(N + <span class="number">1</span>)</span><br><span class="line">                .mapToInt(f -&gt; f[<span class="number">0</span>])</span><br><span class="line">                .max()</span><br><span class="line">                .getAsInt();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运算结果：<br>Runtime: 38 ms, faster than 5.57% of Java online submissions for Fibonacci Number.<br>Memory Usage: 32.3 MB, less than 100.00% of Java online submissions for Fibonacci </p>
-<h3 id="70-Climbing-Stairs-Easy"><a href="#70-Climbing-Stairs-Easy" class="headerlink" title="70. Climbing Stairs(Easy)"></a>70. Climbing Stairs(Easy)</h3><blockquote><p>You are climbing a stair case. It takes n steps to reach to the top.</p>
-<p>Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?</p>
-<p>Note: Given n will be a positive integer.</p>
-<p><strong>Example 1:</strong></p>
-undefined
-<p><strong>Example 2:</strong></p>
-undefined
-</blockquote>
-<p>题目大致意思：<br>你正在爬楼梯，需要n步才能达到楼顶。 每次你可以爬1或2步。那可以通过多少不同的方式登顶？ 注意：给定n将是一个正整数。</p>
-<p>核心思路：<br>把握一个核心思想，就是达到楼顶的最后步数，要么是1，要么是2。<br>我们假设当 n = 4 时， 可能的方式为 F(3) + 1 或者 F(2) + 2，即 F(4) = F(3) + F(2)，所以我们可以推导出公式为：F(n) = F(n-1) + F(n -2)。</p>
-<p>解法一：递归 + 记忆化</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">climbStairs</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 缓存数组，用于存储F(n)的值，下标对应 n 值。</span></span><br><span class="line">        <span class="keyword">int</span> memo[] = <span class="keyword">new</span> <span class="keyword">int</span>[n + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">return</span> climb_Stairs(<span class="number">0</span>, n, memo);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">climb_Stairs</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> n, <span class="keyword">int</span> memo[])</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (i &gt; n) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (i == n) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (memo[i] &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> memo[i];</span><br><span class="line">        &#125;</span><br><span class="line">        memo[i] = climb_Stairs(i + <span class="number">1</span>, n, memo) + climb_Stairs(i + <span class="number">2</span>, n, memo);</span><br><span class="line">        <span class="keyword">return</span> memo[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>复杂度分析：<br>时间复杂度：O(n)<br>空间复杂度：O(n)</p>
-<p>解法二：动态规划</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">climbStairs</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 创建一个 n+1 的数组</span></span><br><span class="line">    <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[n + <span class="number">1</span>];</span><br><span class="line">    <span class="comment">// 有0下标的值，是为方便F(2)的计算</span></span><br><span class="line">    result[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    result[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// 循环 n 次</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="comment">// 根据 f(i -1) 和 f(i -2) 的值动态计算 f(i)的值</span></span><br><span class="line">        result[i] = result[i -<span class="number">1</span>] + result[i - <span class="number">2</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>复杂度分析：<br>时间复杂度：O(n)<br>空间复杂度：O(n)</p>
-<p>解法三：Fibonacci Number<br>不知你们发现没，这题跟我们上一题斐波纳契数是一样，都是F(n) = F(n-1) + F(n-2)，代码跟解法二基本一样，只是数组换成了整形，在空间消耗上进行了优化。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">climbStairs</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (n == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> first = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> second = <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">3</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> third = first + second;</span><br><span class="line">            first = second;</span><br><span class="line">            second = third;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> second;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>复杂度分析：<br>时间复杂度：O(n)<br>空间复杂度：O(1)</p>
-<p>LeetCode上还有几种解法，在时间复杂度上有了进一步的优化，感兴趣的小伙伴们，可以自行查看：<a href="https://leetcode.com/problems/climbing-stairs/solution/" target="_blank" rel="noopener">https://leetcode.com/problems/climbing-stairs/solution/</a></p>
-<h2 id="Review"><a href="#Review" class="headerlink" title="Review"></a>Review</h2><p>本周阅读的是 LeetCode Recursion I 上的三篇文章：<a href="https://leetcode.com/explore/learn/card/recursion-i/256/complexity-analysis/1669/" target="_blank" rel="noopener">Time Complexity - Recursion</a> 、 <a href="https://leetcode.com/explore/learn/card/recursion-i/256/complexity-analysis/1671/" target="_blank" rel="noopener">Space Complexity - Recursion</a> 和 <a href="https://leetcode.com/explore/learn/card/recursion-i/256/complexity-analysis/2374/" target="_blank" rel="noopener">Tail Recursion</a>。</p>
-<p>《Time Complexity - Recursion》，作者在这篇文章中介绍了如何对递归方法的时间复杂度进行分析。文中写了一种 Execution Tree（执行树）的方法， 并提到使用了 Memoization（记忆化）技术的递归方法，进行时间复杂度分析时，需要减去这部分节省的时间花销。</p>
-<p>《Space Complexity - Recursion》，作者在文中介绍了递归函数的空间复杂度分析方法，其中提到空间复杂度的分析，主要分为两部分：递归相关和非递归相关的空间消耗。</p>
-<p>《Tail Recursion》，这篇文章介绍一种特殊的递归方法，尾递归，并结合实例和图进行了讲解。</p>
-<blockquote>
-<p>Tail recursion is a recursion where the recursive call is the final instruction in the recursion function. And there should be only one recursive call in the function.<br>(尾递归是一种递归，它的递归调用是递归函数中的最后一条指令，且尾递归函数中应该只有一个递归调用。)</p>
-</blockquote>
-<h2 id="Tip"><a href="#Tip" class="headerlink" title="Tip"></a>Tip</h2><p>最近有在摆弄 docker，在这里简单罗列下使用到的一些命令：</p>
-<p>镜像相关的命令:</p>
-<ul>
-<li><p>docker search image：搜索可用的镜像</p>
-</li>
-<li><p>docker pull image：拉取镜像</p>
-</li>
-</ul>
-<p>容器相关的命令：</p>
-<ul>
-<li>docker run [OPTIONS] IMAGE [COMMAND] [ARG…]：创建一个新的容器并运行一个命令。</li>
-<li>docker start/stop/restart CONTAINER：启动或停止或重启指定的容器。</li>
-<li>docker rm [OPTIONS] CONTAINER [CONTAINER…]：删除一个或多少容器。</li>
-<li>docker ps [OPTIONS]：列出容器。</li>
-<li>docker logs [OPTIONS] CONTAINER：获取容器的日志。</li>
-<li>docker exec [OPTIONS] CONTAINER COMMAND [ARG…]：在运行的容器中执行命令。</li>
-</ul>
-<p>更多的命令可以到<a href="http://www.runoob.com/docker/docker-exec-command.html" target="_blank" rel="noopener">Docker 命令大全</a>或者到<a href="http://www.docker.com" target="_blank" rel="noopener">官网</a>上查看。</p>
-<h2 id="Share"><a href="#Share" class="headerlink" title="Share"></a>Share</h2><p>本周分享几篇梁大的文章：<br><a href="https://mp.weixin.qq.com/s/O6UmB7YDKIYtNvqCOjNwDQ" target="_blank" rel="noopener">保持自己的技能不落伍 | 认知升级</a><br><a href="https://mp.weixin.qq.com/s/hrbC6EvWQ41rSNiPk92zWg" target="_blank" rel="noopener">构造知识反馈闭环</a><br><a href="https://mp.weixin.qq.com/s/k0HdN9ow-s9wj9s-k4Riyg" target="_blank" rel="noopener">技术探讨的正确姿势</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2304,7 +2221,7 @@ undefined
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2315,7 +2232,7 @@ undefined
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2326,7 +2243,7 @@ undefined
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

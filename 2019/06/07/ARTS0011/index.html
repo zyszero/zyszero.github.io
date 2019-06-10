@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="哺乳类的博客">
 <meta property="og:description" content="ARTS打卡：第十一周每周完成一个ARTS：  Algorithm：每周至少做一个 leetcode 的算法题 Review：阅读并点评至少一篇英文技术文章 Tip：学习至少一个技术技巧 Share：分享一篇有观点和思考的技术文章   Algorithm1. Two Sum(Easy)Given an array of integers, return indices of the two num">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-09T16:04:38.507Z">
+<meta property="og:updated_time" content="2019-06-09T16:07:56.345Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ARTS打卡：第十一周">
 <meta name="twitter:description" content="ARTS打卡：第十一周每周完成一个ARTS：  Algorithm：每周至少做一个 leetcode 的算法题 Review：阅读并点评至少一篇英文技术文章 Tip：学习至少一个技术技巧 Share：分享一篇有观点和思考的技术文章   Algorithm1. Two Sum(Easy)Given an array of integers, return indices of the two num">
@@ -351,9 +351,9 @@
 <p>Given nums = [2, 7, 11, 15], target = 9,</p>
 <p>Because nums[0] + nums[1] = 2 + 7 = 9,<br>return [0, 1].</p>
 <footer><strong>@DevDocs</strong><cite><a href="https://leetcode.com/problems/two-sum/" target="_blank" rel="noopener">leetcode.com/problems/two-sum</a></cite></footer></blockquote>
-<p><strong>大致题意</strong><br>给一个整形数组，返回两个数组下标，两个数组下标对应的值相加，要等于目标值。<br>你可以假设每一个输入的数组，只有一种答案，并且你不能使用同一个元素两次。</p>
+<p><strong>大致题意：</strong><br>给一个整形数组，返回两个数组下标，两个数组下标对应的值相加，要等于目标值。<br>你可以假设每一个输入的数组，只有一种答案，并且你不能使用同一个元素两次。</p>
 <p>这种题目，一眼看上去，是可以用暴力破解的，不过暴力破解虽然能解决问题，但我们这种三好青年，是有追求，有梦想的，用最少的时间和空间去解决问题，才是我们的终极目标。</p>
-<p><strong>解题思路一：暴力破解，双重遍历</strong><br>这种解法就简单直接了，双重循环遍历即可</p>
+<p><strong>解题思路一：暴力破解，双重遍历</strong><br>这种解法就简单直接了，双重循环遍历即可。</p>
 <p>代码如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 暴力破解，双重遍历</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> nums   输入数组</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> target 目标值</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] twoSum1(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">    <span class="keyword">if</span> (nums.length &lt; <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"No two sum solution"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] + nums[j] == target) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;i, j&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"No two sum solution"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>结果：<br>Runtime: 18 ms, faster than 38.89% of Java online submissions for Two Sum.<br>Memory Usage: 38.2 MB, less than 94.24% of Java online submissions for Two Sum.</p>
@@ -515,7 +515,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -526,7 +526,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -537,7 +537,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
