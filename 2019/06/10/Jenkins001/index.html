@@ -102,7 +102,7 @@
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2gbrmz1j31iw09dmxw.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2gi0z85j31eq0t1q61.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2gsxsgkj31kl0t6wiu.jpg">
-<meta property="og:updated_time" content="2019-06-10T16:01:41.085Z">
+<meta property="og:updated_time" content="2019-06-10T16:04:29.251Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jenkins 子节点构建配置">
 <meta name="twitter:description" content="Jenkins 子节点构建配置配置子节点 进入jenkins服务器的首页，点击左边的系统管理，如下图所示： 然后点击右边的管理节点，如下图所示： 继续点击左边的新建节点，然后按如下图操作，最后点击OK： 点击OK后，进入到节点的配置界面，进行配置，如下图：  创建用户登录远程子节点机器，使用以下命令，创建一个新用户： 1# adduser xxx 这里我们使用root用户，就不创建一个新用户了。">
@@ -364,11 +364,13 @@
 <p>这里我们使用root用户，就不创建一个新用户了。</p>
 <h2 id="生成xxx用户的ssh密钥"><a href="#生成xxx用户的ssh密钥" class="headerlink" title="生成xxx用户的ssh密钥"></a>生成xxx用户的ssh密钥</h2><p>如果是使用新创建的用户，则需要先切换至新用户：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su - xxx</span><br></pre></td></tr></table></figure>
-<p>使用以下命令生成ssh密钥：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa</span><br></pre></td></tr></table></figure></p>
+<p>使用以下命令生成ssh密钥：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
 <p>一路回车默认空密码即可，最终会在/home/xxx/.ssh目录中生成公钥<code>id_rsa.pub</code>和私钥<code>id_rsa</code>这两个文件。</p>
 <p>然后将公钥添加到这台主机的 authorized_keys 文件中，并修改权限为600</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 添加命令</span><br><span class="line">cat id_rsa.pub &gt;&gt; authorized_keys</span><br><span class="line"></span><br><span class="line">// 修改权限的命令</span><br><span class="line">chmod 600 authorized_keys</span><br></pre></td></tr></table></figure>
-<h2 id="创建-Jenkins-Credentials-认证"><a href="#创建-Jenkins-Credentials-认证" class="headerlink" title="创建 Jenkins Credentials 认证"></a>创建 Jenkins Credentials 认证</h2><p>回到首页，按照下图操作：<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2e0upsuj31yp0iaq6r.jpg" alt="image5"><br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2ecfd53j312w04bgm5.jpg" alt="image6"><br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2ernv8wj31x50p47am.jpg" alt="image7"><br>第三步也可以像下图一样操作，不过使用的是主节点的私钥，然后将主节点生成的公钥加入到子节点的 authorized_keys 文件中；生成秘钥和添加公钥的命令，请参考<a href="#user-content-生成xxx用户的ssh密钥">生成xxx用户的ssh密钥</a>。<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2f9aoqlj31yi0hlacz.jpg" alt="image8"></p>
+<h2 id="创建-Jenkins-Credentials-认证"><a href="#创建-Jenkins-Credentials-认证" class="headerlink" title="创建 Jenkins Credentials 认证"></a>创建 Jenkins Credentials 认证</h2><p>回到首页，按照下图操作：<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2e0upsuj31yp0iaq6r.jpg" alt="image5"><br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2ecfd53j312w04bgm5.jpg" alt="image6"><br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2ernv8wj31x50p47am.jpg" alt="image7"></p>
+<p>第三步也可以像下图一样操作，不过使用的是主节点的私钥，然后将主节点生成的公钥加入到子节点的 authorized_keys 文件中；生成秘钥和添加公钥的命令，请参考<a href="#user-content-生成xxx用户的ssh密钥">生成xxx用户的ssh密钥</a>。<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2f9aoqlj31yi0hlacz.jpg" alt="image8"></p>
 <h2 id="继续节点信息配置"><a href="#继续节点信息配置" class="headerlink" title="继续节点信息配置"></a>继续节点信息配置</h2><p>进入节点配置界面，继续节点配置：<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2fgrennj31n60hs760.jpg" alt="9"><br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2fo1kqwj31q00u60ug.jpg" alt="10"><br>回到jenkins服务首页，在左边下方出现，如图所示，即为成功了：<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2fuvub7j30ck0uewg0.jpg" alt="image11"></p>
 <h2 id="将Job关联至子节点"><a href="#将Job关联至子节点" class="headerlink" title="将Job关联至子节点"></a>将Job关联至子节点</h2><ol>
 <li>选择你想关联的 Job，进入配置页面，如下图进行操作：<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2g5cxf1j31jp06haap.jpg" alt="12"><br>标签就是子节点配置页面中填写的标签</li>
