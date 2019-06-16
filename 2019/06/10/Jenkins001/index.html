@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="Jenkins 子节点构建配置配置子节点 进入jenkins服务器的首页，点击左边的系统管理，如下图所示： 然后点击右边的管理节点，如下图所示： 继续点击左边的新建节点，然后按如下图操作，最后点击OK： 点击OK后，进入到节点的配置界面，进行配置，如下图：  创建用户登录远程子节点机器，使用以下命令，创建一个新用户： 1# adduser xxx 这里我们使用root用户，就不创建一个新用户了。">
+<meta name="description" content="Jenkins 子节点构建配置Jenkins是一个开源软件项目，是基于Java开发的一种持续集成工具，提供超过1000个插件来支持构建、部署、自动化， 满足任何项目的需要。 本文适用于对 Jenkins 有所了解人群。 配置子节点 进入jenkins服务器的首页，点击左边的系统管理，如下图所示： 然后点击右边的管理节点，如下图所示： 继续点击左边的新建节点，然后按如下图操作，最后点击OK： 点击O">
 <meta name="keywords" content="Jenkins">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Jenkins 子节点构建配置">
 <meta property="og:url" content="http://yoursite.com/2019/06/10/Jenkins001/index.html">
 <meta property="og:site_name" content="哺乳类的博客">
-<meta property="og:description" content="Jenkins 子节点构建配置配置子节点 进入jenkins服务器的首页，点击左边的系统管理，如下图所示： 然后点击右边的管理节点，如下图所示： 继续点击左边的新建节点，然后按如下图操作，最后点击OK： 点击OK后，进入到节点的配置界面，进行配置，如下图：  创建用户登录远程子节点机器，使用以下命令，创建一个新用户： 1# adduser xxx 这里我们使用root用户，就不创建一个新用户了。">
+<meta property="og:description" content="Jenkins 子节点构建配置Jenkins是一个开源软件项目，是基于Java开发的一种持续集成工具，提供超过1000个插件来支持构建、部署、自动化， 满足任何项目的需要。 本文适用于对 Jenkins 有所了解人群。 配置子节点 进入jenkins服务器的首页，点击左边的系统管理，如下图所示： 然后点击右边的管理节点，如下图所示： 继续点击左边的新建节点，然后按如下图操作，最后点击OK： 点击O">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2cvty5dj30b30dmgme.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2d7564wj31ms0xwtdl.jpg">
@@ -102,10 +102,10 @@
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2gbrmz1j31iw09dmxw.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2gi0z85j31eq0t1q61.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2gsxsgkj31kl0t6wiu.jpg">
-<meta property="og:updated_time" content="2019-06-10T16:04:29.251Z">
+<meta property="og:updated_time" content="2019-06-15T11:28:29.546Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jenkins 子节点构建配置">
-<meta name="twitter:description" content="Jenkins 子节点构建配置配置子节点 进入jenkins服务器的首页，点击左边的系统管理，如下图所示： 然后点击右边的管理节点，如下图所示： 继续点击左边的新建节点，然后按如下图操作，最后点击OK： 点击OK后，进入到节点的配置界面，进行配置，如下图：  创建用户登录远程子节点机器，使用以下命令，创建一个新用户： 1# adduser xxx 这里我们使用root用户，就不创建一个新用户了。">
+<meta name="twitter:description" content="Jenkins 子节点构建配置Jenkins是一个开源软件项目，是基于Java开发的一种持续集成工具，提供超过1000个插件来支持构建、部署、自动化， 满足任何项目的需要。 本文适用于对 Jenkins 有所了解人群。 配置子节点 进入jenkins服务器的首页，点击左边的系统管理，如下图所示： 然后点击右边的管理节点，如下图所示： 继续点击左边的新建节点，然后按如下图操作，最后点击OK： 点击O">
 <meta name="twitter:image" content="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2cvty5dj30b30dmgme.jpg">
 
 
@@ -353,7 +353,9 @@
       
 
       
-        <h1 id="Jenkins-子节点构建配置"><a href="#Jenkins-子节点构建配置" class="headerlink" title="Jenkins 子节点构建配置"></a>Jenkins 子节点构建配置</h1><h2 id="配置子节点"><a href="#配置子节点" class="headerlink" title="配置子节点"></a>配置子节点</h2><ol>
+        <h1 id="Jenkins-子节点构建配置"><a href="#Jenkins-子节点构建配置" class="headerlink" title="Jenkins 子节点构建配置"></a>Jenkins 子节点构建配置</h1><p>Jenkins是一个开源软件项目，是基于Java开发的一种持续集成工具，提供超过1000个插件来支持构建、部署、自动化， 满足任何项目的需要。</p>
+<p>本文适用于对 Jenkins 有所了解人群。</p>
+<h2 id="配置子节点"><a href="#配置子节点" class="headerlink" title="配置子节点"></a>配置子节点</h2><ol>
 <li>进入jenkins服务器的首页，点击左边的系统管理，如下图所示：<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2cvty5dj30b30dmgme.jpg" alt="image1"></li>
 <li>然后点击右边的管理节点，如下图所示：<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2d7564wj31ms0xwtdl.jpg" alt="image2"></li>
 <li>继续点击左边的新建节点，然后按如下图操作，最后点击OK：<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2dhedfbj31z009340i.jpg" alt="image3"></li>
@@ -427,6 +429,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/15/ARTS0012/" rel="prev" title="ARTS打卡：第十二周">
+                ARTS打卡：第十二周 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -505,7 +511,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
