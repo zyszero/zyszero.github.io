@@ -242,6 +242,407 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/18/ARTS009/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="渴望飞的哺乳类">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/author.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="哺乳类的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/18/ARTS009/" itemprop="url">ARTS打卡：第九周</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-18T23:16:09+08:00">
+                2019-05-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ARTS/" itemprop="url" rel="index">
+                    <span itemprop="name">ARTS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="ARTS打卡：第九周"><a href="#ARTS打卡：第九周" class="headerlink" title="ARTS打卡：第九周"></a>ARTS打卡：第九周</h1><blockquote><p>每周完成一个ARTS：</p>
+<ol>
+<li>Algorithm：每周至少做一个 leetcode 的算法题</li>
+<li>Review：阅读并点评至少一篇英文技术文章</li>
+<li>Tip：学习至少一个技术技巧</li>
+<li>Share：分享一篇有观点和思考的技术文章</li>
+</ol>
+</blockquote>
+<h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><h3 id="350-Intersection-of-Two-Arrays-II-Easy"><a href="#350-Intersection-of-Two-Arrays-II-Easy" class="headerlink" title="350. Intersection of Two Arrays II(Easy)"></a>350. Intersection of Two Arrays II(Easy)</h3><blockquote><p>Given two arrays, write a function to compute their intersection.</p>
+<p><strong>Example 1:</strong></p>
+<p>Input: nums1 = [1,2,2,1], nums2 = [2,2]<br>Output: [2,2]</p>
+<p><strong>Example 2:</strong></p>
+<p>Input: nums1 = [4,9,5], nums2 = [9,4,9,8,4]<br>Output: [4,9]</p>
+<p><strong>Note:</strong></p>
+<ul>
+<li>Each element in the result should appear as many times as it shows in both arrays.</li>
+<li>The result can be in any order.</li>
+</ul>
+<p><strong>Follow up:</strong></p>
+<ul>
+<li>What if the given array is already sorted? How would you optimize your algorithm?</li>
+<li>What if nums1’s size is small compared to nums2’s size? Which algorithm is better?</li>
+<li>What if elements of nums2 are stored on disk, and the memory is limited such that you cannot load all elements into the memory at once?</li>
+</ul>
+<footer><strong>@DevDocs</strong><cite><a href="https://leetcode.com/problems/intersection-of-two-arrays-ii/" target="_blank" rel="noopener">leetcode.com/problems/intersection-of-two-arrays-ii</a></cite></footer></blockquote>
+<p>大致题意：</p>
+<p>给两个数组，写一个方法计算它们的交集。<br><strong>注意：</strong></p>
+<ol>
+<li>结果中的每个元素应该出现在两个数组中显示的次数。</li>
+<li>结果可以是任何顺序。</li>
+</ol>
+<p>解题思路1：<br>假设输入的数组为 a、b，输出的数组为 r</p>
+<ol>
+<li>对a、b进行排序</li>
+<li>假设 i 为 a 的起始下标 0，j 为 b 的起始下标 0，k 为结果集的起始下标，从 0 开始</li>
+<li>遍历数组，比较 a[i] 和 b[j]，如果 a[i] &lt; b[j]，移动下标 i，即 i++；如果 a[i] &gt; b[j]，移动下标 j，即 j++；如果 a[i] = b[j]，使得 r[k] = b[j]，且同时往前移动三个数组的下标。</li>
+<li>以此类推，直至 i 等于数组a的长度且 j 等于数组b的长度，终止循环，数组 r 就是结果</li>
+<li>输出数组 r 可以为 数组 a</li>
+</ol>
+<p>实现代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] intersect(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span>[] nums2) &#123;</span><br><span class="line">    <span class="comment">// 边界条件</span></span><br><span class="line">    <span class="keyword">if</span> (nums1.length == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> nums1;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (nums2.length == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> nums2;</span><br><span class="line">    &#125;</span><br><span class="line">    LinkedList&lt;Integer&gt; results = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">    <span class="comment">// 1. 先排序</span></span><br><span class="line">    Arrays.sort(nums1);</span><br><span class="line">    Arrays.sort(nums2);</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>, k = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; nums1.length &amp;&amp; j &lt; nums2.length) &#123;</span><br><span class="line">        <span class="keyword">if</span> (nums1[i] &lt; nums2[j]) &#123;</span><br><span class="line">            i++;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums1[i] &gt; nums2[j]) &#123;</span><br><span class="line">            j++;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            nums1[k++] = nums1[i];</span><br><span class="line">            i++;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Arrays.copyOf(nums1, k);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果：<br>Runtime: 1 ms, faster than 100.00% of Java online submissions for Intersection of Two Arrays II.<br>Memory Usage: 35.5 MB, less than 73.31% of Java online submissions for Intersection of Two Arrays II.</p>
+<p>复杂度分析：<br>时间复杂度：O(n)。Array.sort() 时间复杂度是 O(nlogn)，遍历是 O(n)，时间复杂度主要取决于遍历。<br>空间复杂度：O(k)。</p>
+<p>解题思路2：<br>因为题目对结果的顺序没有要求，所以我们可以借助 map 来实现。</p>
+<ol>
+<li>假设输入的数组为：数组a和数组b，i，j分别为数组a、b的下标；</li>
+<li>借助一个容器 map，key 为数组的值，value 为值出现的次数和用一个 list 存储结果</li>
+<li>遍历数组a，判断 map 的 key 集合中是否有 a[i]，有，则 value + 1，无，则把这个值加入到map中</li>
+<li>遍历数组b，判断 map 的 key 集合中是否有 b[j]，且对应的value 是否大于 0，若是，将 b[j] 加入到结果 list 中，并将 value 减一。</li>
+<li>遍历结束，将list转为数组，输出结果。</li>
+</ol>
+<p>实现代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] intersect(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span>[] nums2) &#123;</span><br><span class="line">    <span class="comment">// 边界条件</span></span><br><span class="line">    <span class="keyword">if</span> (nums1.length == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> nums1;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (nums2.length == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> nums2;</span><br><span class="line">    &#125;</span><br><span class="line">    Map map = <span class="keyword">new</span> HashMap&lt;Integer, Integer&gt;(<span class="number">16</span>);</span><br><span class="line">    List&lt;Integer&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i : nums1) &#123;</span><br><span class="line">        <span class="comment">// 判断 map 的 key 集合中是否有 a[i]，有，则 value + 1，无，则把这个值加入到map中</span></span><br><span class="line">        <span class="keyword">if</span> (map.containsKey(i)) &#123;</span><br><span class="line">            map.put(i, (<span class="keyword">int</span>) map.get(i) + <span class="number">1</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            map.put(i, <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 可以换成 java 8 的写法</span></span><br><span class="line">        <span class="comment">//map.put(nums1[i], (int) map.getOrDefault(nums1[i], 0) + 1);</span></span><br><span class="line">        <span class="comment">// 或</span></span><br><span class="line">        <span class="comment">//map.merge(nums1[i], 1, (a, b) -&gt; (int) a + (int) b);</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i : nums2) &#123;</span><br><span class="line">    <span class="comment">//判断 map 的 key 集合中是否有 b[j]，且对应的value 是否大于 0，若是，将 b[j] 加入到结果 list 中，并将 value 减一</span></span><br><span class="line">        <span class="keyword">if</span> (map.containsKey(i) &amp;&amp; (<span class="keyword">int</span>) map.get(i) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            result.add(i);</span><br><span class="line">            map.put(i, (<span class="keyword">int</span>) map.get(i) - <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span>[] r = <span class="keyword">new</span> <span class="keyword">int</span>[result.size()];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; r.length; i++) &#123;</span><br><span class="line">        r[i] = result.get(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> r;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果：<br>Runtime: 3 ms, faster than 54.64% of Java online submissions for Intersection of Two Arrays II.<br>Memory Usage: 35.7 MB, less than 66.55% of Java online submissions for Intersection of Two Arrays II.</p>
+<h2 id="Review"><a href="#Review" class="headerlink" title="Review"></a>Review</h2><p>这周分享：<a href="https://www.e4developer.com/2018/08/06/spring-boot-best-practices/#more-2109" target="_blank" rel="noopener">《Spring Boot – Best Practices》</a><br>作者在文中结合了自己的工作经验和其他springboot专家著作，给出了如下15条实践建议：</p>
+<ol>
+<li>使用自动配置</li>
+<li>使用Spring Initializr来开始一个新的Spring Boot项目</li>
+<li>考虑为常见的组织问题创建自己的自动配置</li>
+<li>正确设计你的代码目录结构</li>
+<li>保持你的 @Controller 的整洁和专一</li>
+<li>围绕业务功能来构建你的 @Service</li>
+<li>使数据库独立于核心业务逻辑之外</li>
+<li>保持核心业务逻辑独立于 spring boot</li>
+<li>推荐使用构造函数</li>
+<li>熟悉并发模型</li>
+<li>加强配置管理的外部化</li>
+<li>提供全局异常处理</li>
+<li>使用日志框架</li>
+<li>测试你的代码</li>
+<li>使用切片测试，让测试更容易，更专注</li>
+</ol>
+<p>感兴趣的小伙伴们，可以点击原文，查看更多的详情~</p>
+<h2 id="Tip"><a href="#Tip" class="headerlink" title="Tip"></a>Tip</h2><p>这周分享一个在工作上用到的抓包工具：Wireshark，可以直接在网上下载，是个免费软件。<br>下载地址：<a href="https://www.wireshark.org/download.html" target="_blank" rel="noopener">https://www.wireshark.org/download.html</a><br>使用方法可以直接 google 或者度娘又或者看我在 Share 章节分享的笔记。</p>
+<h2 id="Share"><a href="#Share" class="headerlink" title="Share"></a>Share</h2><p>本周分享：<a href="http://note.youdao.com/noteshare?id=9027a956b30d59a71eaa83a22b9f1134&amp;sub=2E3FC528AA74419F81663071028B3890" target="_blank" rel="noopener">Wireshark使用详解以及HTTP抓包。</a></p>
+<p>该笔记部分内容是我结合网上许多资料而来的，记录时间比较久远了，已经不清楚是从哪几篇文章上摘抄下来的了，如有侵权，联系删除。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/12/ARTS008/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="渴望飞的哺乳类">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/author.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="哺乳类的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/12/ARTS008/" itemprop="url">ARTS打卡：第八周</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-12T17:02:05+08:00">
+                2019-05-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ARTS/" itemprop="url" rel="index">
+                    <span itemprop="name">ARTS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="ARTS打卡：第八周"><a href="#ARTS打卡：第八周" class="headerlink" title="ARTS打卡：第八周"></a>ARTS打卡：第八周</h1><blockquote><p>每周完成一个ARTS：</p>
+<ol>
+<li>Algorithm：每周至少做一个 leetcode 的算法题</li>
+<li>Review：阅读并点评至少一篇英文技术文章</li>
+<li>Tip：学习至少一个技术技巧</li>
+<li>Share：分享一篇有观点和思考的技术文章</li>
+</ol>
+</blockquote>
+<h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><h3 id="136-Single-Number（Easy）"><a href="#136-Single-Number（Easy）" class="headerlink" title="136. Single Number（Easy）"></a>136. Single Number（Easy）</h3><blockquote><p>Given a <strong>non-empty</strong> array of integers, every element appears twice except for one. Find that single one.</p>
+<p><strong>Note:</strong></p>
+<p>Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?</p>
+<p><strong>Example 1:</strong></p>
+<p>Input: [2,2,1]<br>Output: 1</p>
+<p><strong>Example 2:</strong></p>
+<p>Input: [4,1,2,1,2]<br>Output: 4</p>
+<footer><strong>@DevDocs</strong><cite><a href="https://leetcode.com/problems/single-number/" target="_blank" rel="noopener">leetcode.com/problems/single-number</a></cite></footer></blockquote>
+<p><strong>题意：</strong><br>给一个不空的整型数组，除一个元素之外，其余每个元素都会出现两次，找到那个独立的元素。<br><strong>注意：</strong>你的算法应该具有线性运行时复杂度。你能不用额外的内存来实现它吗？</p>
+<p><strong>解题思路1：</strong><br>根据题意，我们可以知道，输入是一个不为空的整型数组，且这个数组长度一定是奇数的，且那个不重复的元素一定是奇数位的元素，那么我们可以先对数组进行排序，然后遍历数组，假设这个数组为 nums，当 nums[i] != nums[i + 1] &amp;&amp; nums[i] != nums[i - 1] 时，nums[i] 即为那个不重复的元素，当然首尾元素要单独进行判断。</p>
+<p>代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">singleNumber</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (nums.length == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> nums[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    Arrays.sort(nums);</span><br><span class="line">    <span class="keyword">if</span> (nums[<span class="number">0</span>] != nums[<span class="number">1</span>]) &#123;</span><br><span class="line">        <span class="keyword">return</span> nums[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; nums.length - <span class="number">1</span>; i += <span class="number">2</span>) &#123;</span><br><span class="line">        System.out.println(i);</span><br><span class="line">        <span class="keyword">if</span> (i != nums.length - <span class="number">1</span> &amp;&amp; nums[i] != nums[i + <span class="number">1</span>] &amp;&amp; nums[i] != nums[i - <span class="number">1</span>]) &#123;</span><br><span class="line">            <span class="keyword">return</span> nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> nums[nums.length - <span class="number">1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>结果：</strong><br>Runtime: 3 ms, faster than 42.26% of Java online submissions for Single Number.<br>Memory Usage: 37.9 MB, less than 77.61% of Java online submissions for Single Number.</p>
+<p><strong>解题思路2：</strong><br>还有一种解算，我在讨论区看到的，着实让我眼前一亮，从而打开了新世界的大门。<br>利用 XOR 逻辑异或去做，因为 0 ^ N = N，N ^ N = 0，所以只需以0为初始值，去遍历数组，进行异或运算，最后就能得到那个唯一的不同值。</p>
+<p>代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 哇，这个解法完全没想到，打开新世界的大门</span></span><br><span class="line"><span class="comment">     * 使用 XOR 逻辑异或 去做</span></span><br><span class="line"><span class="comment">     * 0 ^ N = N</span></span><br><span class="line"><span class="comment">     * N ^ N = 0</span></span><br><span class="line"><span class="comment">     * 所以只需遍历进行异或，就能得到那个唯一的不同值</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> nums</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">singleNumber</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> a = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i : nums) &#123;</span><br><span class="line">            a ^= i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>结果：</strong><br>Runtime: 0 ms, faster than 100.00% of Java online submissions for Single Number.<br>Memory Usage: 38.2 MB, less than 73.27% of Java online submissions for Single Number.</p>
+<p><strong>时间复杂度：</strong><code>O(n)</code><br><strong>空间复杂度：</strong><code>O(1)</code></p>
+<h2 id="Review"><a href="#Review" class="headerlink" title="Review"></a>Review</h2><p>本周分享一篇在 Medium 上看到的文章：<a href="https://hackernoon.com/what-i-learned-from-doing-1000-code-reviews-fe28d4d11c71" target="_blank" rel="noopener">《What I learned from doing 1000 code reviews》</a>。<br>作者在这篇文章中，分享了自己在 LinkedIn 工作期间，进行大量代码审查后得出 <code>code review</code> 的四点建议：</p>
+<ol>
+<li><p>当出现问题时，要抛出异常。</p>
+</li>
+<li><p>尽可能使用最具体的类型。</p>
+</li>
+<li><p>使用 Optional 代替 nulls。</p>
+</li>
+<li><p>尽可能使用 “Unlift” 方法。</p>
+</li>
+</ol>
+<h2 id="Tip"><a href="#Tip" class="headerlink" title="Tip"></a>Tip</h2><p>本周分享一个 IDEA 的插件：Sequence Diagram。<br>安装步骤：Setting(Ctrl + Shift + s)-&gt;Plugins-&gt;Marketplace，在插件商店直接搜索 SequenceDiagram，然后安装插件，重启 IDEA。<br>效果如下：</p>
+<p>鼠标右键点击，选择 Sequence Diagram<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g35umgqp8wj309l0j5aan.jpg" alt="Sequence Diagram"></p>
+<p>就可以看到自动生成的时序图了<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g35uo4flqbj30gi0mhwev.jpg" alt="时序图"></p>
+<p>更多详情，可以查看 SequenceDiagram 的官网：<a href="http://vanco.github.io/SequencePlugin/" target="_blank" rel="noopener">SequencePlugin</a>。</p>
+<p>如果无法通过插件商店下载，可以在这里<a href="https://plugins.jetbrains.com/plugin/8286-sequencediagram" target="_blank" rel="noopener">https://plugins.jetbrains.com/plugin/8286-sequencediagram</a>手动下载，然后自行安装。</p>
+<h2 id="Share"><a href="#Share" class="headerlink" title="Share"></a>Share</h2><p>这周分享一篇梁大的文章：<a href="https://mp.weixin.qq.com/s/tP6Afu9q39RuJaAhN6_Ajw" target="_blank" rel="noopener">《人人都是 API 设计者：我对 RESTful API、GraphQL、RPC API 的思考》</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/03/ARTS007/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1936,7 +2337,7 @@ undefined
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
