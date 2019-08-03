@@ -242,6 +242,222 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/03/OpenLDAP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="渴望飞的哺乳类">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/author.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="哺乳类的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/03/OpenLDAP/" itemprop="url">OpenLDAP</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-03T10:38:51+08:00">
+                2019-08-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/OpenLDAP/" itemprop="url" rel="index">
+                    <span itemprop="name">OpenLDAP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="OpenLDAP-安装和部署-Linux"><a href="#OpenLDAP-安装和部署-Linux" class="headerlink" title="OpenLDAP 安装和部署 - Linux"></a>OpenLDAP 安装和部署 - Linux</h1><h2 id="OpenLDAP是什么？"><a href="#OpenLDAP是什么？" class="headerlink" title="OpenLDAP是什么？"></a>OpenLDAP是什么？</h2><blockquote>
+<p>OpenLDAP 是一款轻量级目录访问协议（Lightweight Directory Access Protocol, LDAP）, 属于开源集中账号管理架构的实现，且支持众多系统版本，被广大互联网公司所采用。</p>
+<p>LDAP 具有两个国家标准，分别是 X.500 和 LDAP。OpenLDAP 是基于 X.500 标准的，而且去除了 X.500 复杂的功能并且可以根据自我需求定制额外扩展功能，但是 X.500 也有不同之处，例如 OpenLDAP 支持 TCP/IP 协议等，目前 TCP/IP 是 Internet 上访问互联网的协议。</p>
+<p>OpenLDAP 则直接运行在更简单和更通用的 TCP/IP 或其他可靠的传输协议层上，避免了在 OSI 会话层和表示层的开销，使连接的建立和包的处理更简单、更快，对于互联网和企业网应用更理想。LDAP 提供并实现目录服务的信息服务，目录服务是一种特殊的数据库，对于数据的读取、浏览、搜索有很好的效果。目录服务一般用来包含基于属性的描述性信息并支持精细复杂的过滤功能，但 OpenLDAP 目录服务不支持通用数据库的大量更新操作所需要的复杂的事务管理或回滚策略等。</p>
+<p>OpenLDAP 默认以 Berkeley DB 作为后端数据库，Berkeley DB 数据库主要以散列的数据类型进行数据存储，如以键值对的方式进行存储。Berkeley DB 是一类特殊的数据库，主要作用于搜索、浏览、更新查询操作，一般用于一次写入数据、多次查询和搜索有很好的效果。Berkeley DB 数据库时面向查询进行优化，面向读取进行优化的数据库。Berkeley DB 不支持事务性数据库（MySQL、MariDB、Oracle 等）所支持的高并发的吞吐量以及复杂的事务操作。</p>
+<p>OpenLDAP 目录中的信息是按树形结构进行组织的，具体信息存储在条目（entry）中，条目可以看成关系数据库中的表记录，条目是具有区别名（Distinguished Name，DN）的属性（attribute），DN 是用来引用条目，DN 相当于关系型数据库（MySQL 等）中的主键（primary key），是唯一的。属性由类型（type）和一个或多个值（value）组成，相当于关系型数据库中字段的概念。</p>
+<p>来源：<a href="https://wiki.shileizcc.com/confluence/display/openldap/OpenLDAP" target="_blank" rel="noopener">https://wiki.shileizcc.com/confluence/display/openldap/OpenLDAP</a></p>
+</blockquote>
+<h2 id="安装-OpenLDAP"><a href="#安装-OpenLDAP" class="headerlink" title="安装 OpenLDAP"></a>安装 OpenLDAP</h2><ol>
+<li><p>使用 yum 安装（推荐）</p>
+<p>命令：<code>yum -y install openldap compat-openldap openldap-clients openldap-servers openldap-servers-sql openldap-devel migrationtools</code></p>
+</li>
+<li><p>使用下载好的rpm进行安装（无网/内网环境下推荐）(TODO)</p>
+</li>
+</ol>
+<h2 id="配置-OpenLDAP"><a href="#配置-OpenLDAP" class="headerlink" title="配置 OpenLDAP"></a>配置 OpenLDAP</h2><h3 id="查看-OpenLDAP-的版本"><a href="#查看-OpenLDAP-的版本" class="headerlink" title="查看 OpenLDAP 的版本"></a>查看 OpenLDAP 的版本</h3><p>安装成功后，使用以下命令查看 OpenLDAP 的版本信息</p>
+<p><code>slapd -VV</code></p>
+<p><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g5m9zc3125j311q02w0st.jpg" alt></p>
+<h3 id="配置-OpenLDAP-的登录信息"><a href="#配置-OpenLDAP-的登录信息" class="headerlink" title="配置 OpenLDAP 的登录信息"></a>配置 OpenLDAP 的登录信息</h3><ol>
+<li><p>需要先产生密码</p>
+<p>命令：<code>slappasswd -s 12345678</code></p>
+<p>记录结果，这是加密后的结果：{SSHA}rjewoTmrrSYQGis4YddObtvK88G/amXy</p>
+<p><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g5m9ziohlhj30g8022t8n.jpg" alt></p>
+</li>
+<li><p>创建用户跟根节点</p>
+<p>修改<code>/etc/openldap/slapd.d/cn=config</code>目录下的<code>olcDatabase={2}hdb.ldif</code>文件</p>
+<p><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g5m9zy4my3j30vg06fmxr.jpg" alt></p>
+</li>
+</ol>
+<p>   例如，创建如下根节点、用户名称和密码</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">olcSuffix: c=cn</span><br><span class="line">olcRootDN: cn=test,c=cn</span><br><span class="line">olcRootPW: &#123;SSHA&#125;rjewoTmrrSYQGis4YddObtvK88G/amXy</span><br></pre></td></tr></table></figure>
+<p>   其中：</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">olcSuffix: 为根节点</span><br><span class="line">olcRootDN: 为访问LDAP的管理员 </span><br><span class="line">olcRootPW: 新增项，是步骤一产生的加密后的密码</span><br></pre></td></tr></table></figure>
+<p>   将下图：</p>
+<p>   <img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g5ma693q4ij30q70dejsb.jpg" alt></p>
+<p>   改为：</p>
+<p>   <img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g5ma6tdks4j30tw0g33zl.jpg" alt></p>
+<ol start="3">
+<li><p>修改<code>olcDatabase={1}monitor.ldif</code>文件</p>
+<p>执行命令：<code>vi olcDatabase\=\{1\}monitor.ldif</code></p>
+<p><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g5ma185i6sj30rm032dfy.jpg" alt></p>
+<p>将下图：</p>
+<p><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g5ma1f170tj30xa0o675d.jpg" alt></p>
+<p>改为：</p>
+<p><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g5ma28lkd6j30tq0byjs8.jpg" alt></p>
+<p>保存退出</p>
+</li>
+<li><p>进行校验</p>
+<p>使用<code>slaptest -u</code>，对配置内容进行校验</p>
+<p><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g5ma2i6pm7j30xq04raae.jpg" alt></p>
+<p>checksum校验码出错无所谓，最后一句可行即可。</p>
+</li>
+<li><p>修改<code>ldap.conf</code>配置文件</p>
+<p>文件路径：<code>/etc/openldap/ldap.conf</code></p>
+<p><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g5ma34r9qtj30p6070q3j.jpg" alt></p>
+<p>将下图：</p>
+<p><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g5ma3by6znj30qz0dgdgb.jpg" alt></p>
+<p>改为：</p>
+<p><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g5ma3iyf71j30s40e174t.jpg" alt></p>
+<p><strong>注意：</strong>URL后的内容填写服务器域名或者IP+端口（端口不写就是采用默认：389的），我填写的是自己虚拟机的地址。</p>
+</li>
+<li><p>重启OpenLDAP</p>
+<p>使用以下命令进行重启</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart slapd</span><br><span class="line"></span><br><span class="line">systemctl status  slapd</span><br></pre></td></tr></table></figure>
+<p><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g5ma3tkhbuj30x00kewh3.jpg" alt></p>
+</li>
+</ol>
+<h2 id="用-ApacheDirectoryStudio-连接-OpenLDAP"><a href="#用-ApacheDirectoryStudio-连接-OpenLDAP" class="headerlink" title="用 ApacheDirectoryStudio 连接 OpenLDAP"></a>用 ApacheDirectoryStudio 连接 OpenLDAP</h2><p>可以采用 ApacheDirectoryStudio 工具测试连接是否成功。</p>
+<p>Hostname：是步骤5写的URI</p>
+<p>Port：缺省值是389，如果自行改了，则用改的那个</p>
+<p>账户用步骤二设置的值，密码用步骤一加密之前的值</p>
+<p>设置完后，点finish，出现最后一张图的情况，就是成功了</p>
+<p><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g5ma46xljlj30hl0luq3o.jpg" alt></p>
+<p><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g5ma4e5ha9j30hl0luwf1.jpg" alt></p>
+<p><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g5ma4lgpjmj310n0hqn5k.jpg" alt></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/21/ARTS0017/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1893,222 +2109,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/02/ARTS0010/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="渴望飞的哺乳类">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/author.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="哺乳类的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/02/ARTS0010/" itemprop="url">ARTS打卡：第十周</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-02T13:29:25+08:00">
-                2019-06-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ARTS/" itemprop="url" rel="index">
-                    <span itemprop="name">ARTS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="ARTS打卡：第十周"><a href="#ARTS打卡：第十周" class="headerlink" title="ARTS打卡：第十周"></a>ARTS打卡：第十周</h1><blockquote><p>每周完成一个ARTS：</p>
-<ol>
-<li>Algorithm：每周至少做一个 leetcode 的算法题</li>
-<li>Review：阅读并点评至少一篇英文技术文章</li>
-<li>Tip：学习至少一个技术技巧</li>
-<li>Share：分享一篇有观点和思考的技术文章</li>
-</ol>
-</blockquote>
-<h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><h3 id="66-Plus-One-Easy"><a href="#66-Plus-One-Easy" class="headerlink" title="66. Plus One(Easy)"></a>66. Plus One(Easy)</h3><blockquote><p>Given a <strong>non-empty</strong> array of digits representing a non-negative integer, plus one to the integer.</p>
-<p>The digits are stored such that the most significant digit is at the head of the list, and each element in the array contain a single digit.</p>
-<p>You may assume the integer does not contain any leading zero, except the number 0 itself.</p>
-<p><strong>Example 1:</strong></p>
-<p>Input: [1,2,3]<br>Output: [1,2,4]<br>Explanation: The array represents the integer 123.</p>
-<p><strong>Example 2:</strong></p>
-<p>Input: [4,3,2,1]<br>Output: [4,3,2,2]<br>Explanation: The array represents the integer 4321.</p>
-<footer><strong>@DevDocs</strong><cite><a href="https://leetcode.com/problems/plus-one/" target="_blank" rel="noopener">leetcode.com/problems/plus-one</a></cite></footer></blockquote>
-<p>题意：</p>
-<p>给定一个由整数组成的非空数组所表示的非负整数，在该数的基础上加一。</p>
-<p>最高位数字存放在数组的首位， 数组中每个元素只存储一个数字。</p>
-<p>你可以假设除了整数 0 之外，这个整数不会以零开头。</p>
-<p>解题思路：</p>
-<p>这道题就非常简单了，利用数学的加法运算思想，倒序遍历数组，如果当前值不等于9，直接加1，然后返回数组，若等于 9，9 + 1 = 10，需要进位，把当前值设为 0，继续遍历数组，依次类推，若最后数组能遍历完，则表明输入数组的值全为9，+1 后，位数发生变化，结果一定是首位为 1，余位为 0 的数组， 所以要重新创建一个数组 result，大小为输入数组的长度 +1，result[0] 设为 1，然后返回数组 result。</p>
-<p>代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] plusOne(<span class="keyword">int</span>[] digits) &#123;</span><br><span class="line">    <span class="comment">//倒序遍历</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = digits.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="comment">// 不为9，则直接+1，返回结果数组</span></span><br><span class="line">            <span class="keyword">if</span> (digits[i] != <span class="number">9</span>) &#123;</span><br><span class="line">                digits[i] += <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">return</span> digits;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// 为9，9+1=10，需进位，当前值设为 0</span></span><br><span class="line">                digits[i] = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 输入数组的值全为 9，+1 后位数也要 +1，结果一定是首位为 1，余位为 0 的数组</span></span><br><span class="line">        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[digits.length + <span class="number">1</span>];</span><br><span class="line">        <span class="comment">// 利用整形数组初始化后，值为0的特性，只需对数组首位赋值</span></span><br><span class="line">        result[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>结果：<br>Runtime: 0 ms, faster than 100.00% of Java online submissions for Plus One.<br>Memory Usage: 34.2 MB, less than 100.00% of Java online submissions for Plus One.</p>
-<p>复杂度分析：<br>时间复杂度：O(n)<br>空间复杂度：O(n)</p>
-<h3 id="283-Move-Zeroes-Easy"><a href="#283-Move-Zeroes-Easy" class="headerlink" title="283. Move Zeroes(Easy)"></a>283. Move Zeroes(Easy)</h3><blockquote><p>Given an array <code>nums</code>, write a function to move all <code>0&#39;s</code> to the end of it while maintaining the relative order of the non-zero elements.</p>
-<p><strong>Example:</strong></p>
-<p>Input: [0,1,0,3,12]<br>Output: [1,3,12,0,0]</p>
-<p><strong>Note:</strong></p>
-<p>You must do this in-place without making a copy of the array.<br>Minimize the total number of operations.</p>
-<footer><strong>@DevDocs</strong><cite><a href="https://leetcode.com/problems/move-zeroes/" target="_blank" rel="noopener">leetcode.com/problems/move-zeroes</a></cite></footer></blockquote>
-<p>题意：</p>
-<p>给定一个数组 nums，写一个函数将所有 <code>0</code> 移动至数组末尾，同时保持数组内非零元素的相对顺序。<br><strong>注意：</strong></p>
-<ol>
-<li>必须在原数组上操作，不能拷贝额外的数组</li>
-<li>尽量减少操作次数</li>
-</ol>
-<p>解题思路：</p>
-<p>由于题目要求要在原数组上操作，不能用额外的数组空间，那我们可以先从如何复用原数组空间出发，结合要求，去解题。</p>
-<p>因为要将所有 0 移动至数组末尾且不可改变非零元素的相对位置，那么逐步交换 0 与非零元素的位置即可实现；考虑到要复用原数组空间且减少操作步骤，我们可以不交换位置，逐步将非零元素覆盖 0，直至所有 0 都被覆盖，最后末尾补零即可。</p>
-<p>细节请参看代码实现</p>
-<p>代码实现：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">moveZeroes</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 边界条件</span></span><br><span class="line">    <span class="keyword">if</span> (nums == <span class="keyword">null</span> || nums.length == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 设置一个锚点，从 0 开始</span></span><br><span class="line">    <span class="keyword">int</span> anchor = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// 遍历输入数组</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> num : nums) &#123;</span><br><span class="line">        <span class="comment">// 判断当前元素是否为非零元素</span></span><br><span class="line">        <span class="keyword">if</span> (num != <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="comment">//不为零，则用当前的值覆盖锚点对应的数组的值，并将锚点往前移动一位</span></span><br><span class="line">            nums[anchor++] = num;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 为零，锚点不移动，数组继续遍历，依次类推，就能实现非零元素覆盖 0 元素</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 经过上述遍历覆盖之后，锚点之前，皆为非零元素，锚点之后，应该全为零</span></span><br><span class="line">    <span class="keyword">while</span> (anchor &lt; nums.length) &#123;</span><br><span class="line">        nums[anchor++] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>结果：<br>Runtime: 0 ms, faster than 100.00% of Java online submissions for Move Zeroes.<br>Memory Usage: 36.8 MB, less than 99.94% of Java online submissions for Move Zeroes.</p>
-<p>复杂度分析：<br>时间复杂度：O(n)<br>空间复杂度：O(1)</p>
-<h2 id="Review"><a href="#Review" class="headerlink" title="Review"></a>Review</h2><p>本周阅读是：<a href="https://www.e4developer.com/2018/03/30/introduction-to-concurrency-in-spring-boot/" target="_blank" rel="noopener">《Introduction to Concurrency in Spring Boot》</a></p>
-<p>作者在文中提供了一些在 Spring Boot 中的处理多线程的实用建议，以及如何避免它可能产生的问题。</p>
-<ol>
-<li>Spring Boot 并发基础知识<br>在考虑Spring Boot应用程序中的并发性时，值得考虑的关键领域是：<ul>
-<li>最大线程数：分配给应用处理请求的最大线程数。</li>
-<li>共享外部资源：调用外部共享资源，例如数据库。</li>
-<li>异步方法调用：这些方法调用在等待响应时将线程释放回线程池。</li>
-<li>共享内部资源：调用内部共享资源，例如缓存和潜在的应用共享状态。</li>
-</ul>
-</li>
-<li>Spring Boot Application 中的最大线程数<br>首先我们应该注意，正在处理的线程是有限的。<br>如果使用的是tomcat，你可以使用属性<code>server.tomcat.max-threads</code>去控制希望允许多少线程，缺省值是 0，意味着使用 Tomcat 的缺省值 200。</li>
-<li>使用异步方法调用去解决共享外部资源花费大量等待时间的问题</li>
-<li>在 Spring Boot 中进行异步调用<br>在主程序类中的注解 <code>@SpringApplication</code> 之上加注解<code>@EnableAsync</code>，加上之后，可以在你的 Service 方法上加 <code>@Asyn</code>，并将返回结果改为<code>CompletableFuture&lt;&gt;</code>，这样<code>@Asyn</code>的方法将后台线程池中运行，合理使用，可以降低性能损耗，提高服务效应效率。</li>
-<li>控制内部资源，避免与共享相关问题的最佳建议是不要共享它们。</li>
-<li>如果要共享某些状态，以下是一些建议：<ul>
-<li>处理不可变的对象，如果对象是不可变的，将会避免许多并发问题。如果你需要改变一些东西，那就创建一个新的对象。</li>
-<li>了解你的集合是否是线程安全的，如果需要并发访问，请使用<code>ConcurrentHashMap</code>或者其他线程安全的解决方法。</li>
-<li>不要假设第三方库是线程安全的。大多数代码都不是，并且必须控制对共享状态的访问。</li>
-</ul>
-</li>
-</ol>
-<p>想要了解更多细节的小伙伴们，请点击<a href="https://www.e4developer.com/2018/03/30/introduction-to-concurrency-in-spring-boot/" target="_blank" rel="noopener">原文</a>，查看详情。</p>
-<h2 id="Tip"><a href="#Tip" class="headerlink" title="Tip"></a>Tip</h2><p>本周分享一个在梁大的知识星球中看到的，有关 lombok 的知识点，不知道 lombok 的小伙伴们，可以查看<a href="https://zyszero.github.io/2019/03/27/ARTS002/" target="_blank" rel="noopener">ARTS 第二周分享</a>中 Tip 那小节。<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3mtrabky2j30ku17a786.jpg" alt="lombok"></p>
-<h2 id="Share"><a href="#Share" class="headerlink" title="Share"></a>Share</h2><p>本周分享：<a href="https://mp.weixin.qq.com/s/LhrpypM9FKHRFlmJknBIGg" target="_blank" rel="noopener">《基于支付场景下的微服务改造与性能优化》</a>，深度好文。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2156,7 +2161,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2167,7 +2172,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2178,7 +2183,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

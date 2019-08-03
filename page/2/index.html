@@ -242,6 +242,217 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/02/ARTS0010/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="渴望飞的哺乳类">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/author.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="哺乳类的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/02/ARTS0010/" itemprop="url">ARTS打卡：第十周</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-02T13:29:25+08:00">
+                2019-06-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ARTS/" itemprop="url" rel="index">
+                    <span itemprop="name">ARTS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="ARTS打卡：第十周"><a href="#ARTS打卡：第十周" class="headerlink" title="ARTS打卡：第十周"></a>ARTS打卡：第十周</h1><blockquote><p>每周完成一个ARTS：</p>
+<ol>
+<li>Algorithm：每周至少做一个 leetcode 的算法题</li>
+<li>Review：阅读并点评至少一篇英文技术文章</li>
+<li>Tip：学习至少一个技术技巧</li>
+<li>Share：分享一篇有观点和思考的技术文章</li>
+</ol>
+</blockquote>
+<h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><h3 id="66-Plus-One-Easy"><a href="#66-Plus-One-Easy" class="headerlink" title="66. Plus One(Easy)"></a>66. Plus One(Easy)</h3><blockquote><p>Given a <strong>non-empty</strong> array of digits representing a non-negative integer, plus one to the integer.</p>
+<p>The digits are stored such that the most significant digit is at the head of the list, and each element in the array contain a single digit.</p>
+<p>You may assume the integer does not contain any leading zero, except the number 0 itself.</p>
+<p><strong>Example 1:</strong></p>
+<p>Input: [1,2,3]<br>Output: [1,2,4]<br>Explanation: The array represents the integer 123.</p>
+<p><strong>Example 2:</strong></p>
+<p>Input: [4,3,2,1]<br>Output: [4,3,2,2]<br>Explanation: The array represents the integer 4321.</p>
+<footer><strong>@DevDocs</strong><cite><a href="https://leetcode.com/problems/plus-one/" target="_blank" rel="noopener">leetcode.com/problems/plus-one</a></cite></footer></blockquote>
+<p>题意：</p>
+<p>给定一个由整数组成的非空数组所表示的非负整数，在该数的基础上加一。</p>
+<p>最高位数字存放在数组的首位， 数组中每个元素只存储一个数字。</p>
+<p>你可以假设除了整数 0 之外，这个整数不会以零开头。</p>
+<p>解题思路：</p>
+<p>这道题就非常简单了，利用数学的加法运算思想，倒序遍历数组，如果当前值不等于9，直接加1，然后返回数组，若等于 9，9 + 1 = 10，需要进位，把当前值设为 0，继续遍历数组，依次类推，若最后数组能遍历完，则表明输入数组的值全为9，+1 后，位数发生变化，结果一定是首位为 1，余位为 0 的数组， 所以要重新创建一个数组 result，大小为输入数组的长度 +1，result[0] 设为 1，然后返回数组 result。</p>
+<p>代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] plusOne(<span class="keyword">int</span>[] digits) &#123;</span><br><span class="line">    <span class="comment">//倒序遍历</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = digits.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="comment">// 不为9，则直接+1，返回结果数组</span></span><br><span class="line">            <span class="keyword">if</span> (digits[i] != <span class="number">9</span>) &#123;</span><br><span class="line">                digits[i] += <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">return</span> digits;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// 为9，9+1=10，需进位，当前值设为 0</span></span><br><span class="line">                digits[i] = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 输入数组的值全为 9，+1 后位数也要 +1，结果一定是首位为 1，余位为 0 的数组</span></span><br><span class="line">        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[digits.length + <span class="number">1</span>];</span><br><span class="line">        <span class="comment">// 利用整形数组初始化后，值为0的特性，只需对数组首位赋值</span></span><br><span class="line">        result[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果：<br>Runtime: 0 ms, faster than 100.00% of Java online submissions for Plus One.<br>Memory Usage: 34.2 MB, less than 100.00% of Java online submissions for Plus One.</p>
+<p>复杂度分析：<br>时间复杂度：O(n)<br>空间复杂度：O(n)</p>
+<h3 id="283-Move-Zeroes-Easy"><a href="#283-Move-Zeroes-Easy" class="headerlink" title="283. Move Zeroes(Easy)"></a>283. Move Zeroes(Easy)</h3><blockquote><p>Given an array <code>nums</code>, write a function to move all <code>0&#39;s</code> to the end of it while maintaining the relative order of the non-zero elements.</p>
+<p><strong>Example:</strong></p>
+<p>Input: [0,1,0,3,12]<br>Output: [1,3,12,0,0]</p>
+<p><strong>Note:</strong></p>
+<p>You must do this in-place without making a copy of the array.<br>Minimize the total number of operations.</p>
+<footer><strong>@DevDocs</strong><cite><a href="https://leetcode.com/problems/move-zeroes/" target="_blank" rel="noopener">leetcode.com/problems/move-zeroes</a></cite></footer></blockquote>
+<p>题意：</p>
+<p>给定一个数组 nums，写一个函数将所有 <code>0</code> 移动至数组末尾，同时保持数组内非零元素的相对顺序。<br><strong>注意：</strong></p>
+<ol>
+<li>必须在原数组上操作，不能拷贝额外的数组</li>
+<li>尽量减少操作次数</li>
+</ol>
+<p>解题思路：</p>
+<p>由于题目要求要在原数组上操作，不能用额外的数组空间，那我们可以先从如何复用原数组空间出发，结合要求，去解题。</p>
+<p>因为要将所有 0 移动至数组末尾且不可改变非零元素的相对位置，那么逐步交换 0 与非零元素的位置即可实现；考虑到要复用原数组空间且减少操作步骤，我们可以不交换位置，逐步将非零元素覆盖 0，直至所有 0 都被覆盖，最后末尾补零即可。</p>
+<p>细节请参看代码实现</p>
+<p>代码实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">moveZeroes</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 边界条件</span></span><br><span class="line">    <span class="keyword">if</span> (nums == <span class="keyword">null</span> || nums.length == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 设置一个锚点，从 0 开始</span></span><br><span class="line">    <span class="keyword">int</span> anchor = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// 遍历输入数组</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> num : nums) &#123;</span><br><span class="line">        <span class="comment">// 判断当前元素是否为非零元素</span></span><br><span class="line">        <span class="keyword">if</span> (num != <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="comment">//不为零，则用当前的值覆盖锚点对应的数组的值，并将锚点往前移动一位</span></span><br><span class="line">            nums[anchor++] = num;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 为零，锚点不移动，数组继续遍历，依次类推，就能实现非零元素覆盖 0 元素</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 经过上述遍历覆盖之后，锚点之前，皆为非零元素，锚点之后，应该全为零</span></span><br><span class="line">    <span class="keyword">while</span> (anchor &lt; nums.length) &#123;</span><br><span class="line">        nums[anchor++] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果：<br>Runtime: 0 ms, faster than 100.00% of Java online submissions for Move Zeroes.<br>Memory Usage: 36.8 MB, less than 99.94% of Java online submissions for Move Zeroes.</p>
+<p>复杂度分析：<br>时间复杂度：O(n)<br>空间复杂度：O(1)</p>
+<h2 id="Review"><a href="#Review" class="headerlink" title="Review"></a>Review</h2><p>本周阅读是：<a href="https://www.e4developer.com/2018/03/30/introduction-to-concurrency-in-spring-boot/" target="_blank" rel="noopener">《Introduction to Concurrency in Spring Boot》</a></p>
+<p>作者在文中提供了一些在 Spring Boot 中的处理多线程的实用建议，以及如何避免它可能产生的问题。</p>
+<ol>
+<li>Spring Boot 并发基础知识<br>在考虑Spring Boot应用程序中的并发性时，值得考虑的关键领域是：<ul>
+<li>最大线程数：分配给应用处理请求的最大线程数。</li>
+<li>共享外部资源：调用外部共享资源，例如数据库。</li>
+<li>异步方法调用：这些方法调用在等待响应时将线程释放回线程池。</li>
+<li>共享内部资源：调用内部共享资源，例如缓存和潜在的应用共享状态。</li>
+</ul>
+</li>
+<li>Spring Boot Application 中的最大线程数<br>首先我们应该注意，正在处理的线程是有限的。<br>如果使用的是tomcat，你可以使用属性<code>server.tomcat.max-threads</code>去控制希望允许多少线程，缺省值是 0，意味着使用 Tomcat 的缺省值 200。</li>
+<li>使用异步方法调用去解决共享外部资源花费大量等待时间的问题</li>
+<li>在 Spring Boot 中进行异步调用<br>在主程序类中的注解 <code>@SpringApplication</code> 之上加注解<code>@EnableAsync</code>，加上之后，可以在你的 Service 方法上加 <code>@Asyn</code>，并将返回结果改为<code>CompletableFuture&lt;&gt;</code>，这样<code>@Asyn</code>的方法将后台线程池中运行，合理使用，可以降低性能损耗，提高服务效应效率。</li>
+<li>控制内部资源，避免与共享相关问题的最佳建议是不要共享它们。</li>
+<li>如果要共享某些状态，以下是一些建议：<ul>
+<li>处理不可变的对象，如果对象是不可变的，将会避免许多并发问题。如果你需要改变一些东西，那就创建一个新的对象。</li>
+<li>了解你的集合是否是线程安全的，如果需要并发访问，请使用<code>ConcurrentHashMap</code>或者其他线程安全的解决方法。</li>
+<li>不要假设第三方库是线程安全的。大多数代码都不是，并且必须控制对共享状态的访问。</li>
+</ul>
+</li>
+</ol>
+<p>想要了解更多细节的小伙伴们，请点击<a href="https://www.e4developer.com/2018/03/30/introduction-to-concurrency-in-spring-boot/" target="_blank" rel="noopener">原文</a>，查看详情。</p>
+<h2 id="Tip"><a href="#Tip" class="headerlink" title="Tip"></a>Tip</h2><p>本周分享一个在梁大的知识星球中看到的，有关 lombok 的知识点，不知道 lombok 的小伙伴们，可以查看<a href="https://zyszero.github.io/2019/03/27/ARTS002/" target="_blank" rel="noopener">ARTS 第二周分享</a>中 Tip 那小节。<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3mtrabky2j30ku17a786.jpg" alt="lombok"></p>
+<h2 id="Share"><a href="#Share" class="headerlink" title="Share"></a>Share</h2><p>本周分享：<a href="https://mp.weixin.qq.com/s/LhrpypM9FKHRFlmJknBIGg" target="_blank" rel="noopener">《基于支付场景下的微服务改造与性能优化》</a>，深度好文。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/18/ARTS009/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2102,194 +2313,11 @@ undefined
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/24/ARTS001/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="渴望飞的哺乳类">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/author.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="哺乳类的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/24/ARTS001/" itemprop="url">ARTS打卡：第一周</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-24T16:07:44+08:00">
-                2019-03-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ARTS/" itemprop="url" rel="index">
-                    <span itemprop="name">ARTS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="ARTS-第一周分享"><a href="#ARTS-第一周分享" class="headerlink" title="ARTS 第一周分享"></a>ARTS 第一周分享</h1><p>ARTS 是耗子叔发起的一次活动，感兴趣的小伙伴们可以到知乎上查看<a href="https://www.zhihu.com/question/301150832/answer/529809529" target="_blank" rel="noopener">极客时间《左耳听风》发起的ARTS挑战怎么参加？</a></p>
-<blockquote><p>每周完成一个ARTS：</p>
-<ol>
-<li>Algorithm：每周至少做一个 leetcode 的算法题</li>
-<li>Review：阅读并点评至少一篇英文技术文章</li>
-<li>Tip：学习至少一个技术技巧</li>
-<li>Share：分享一篇有观点和思考的技术文章</li>
-</ol>
-</blockquote>
-<h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><p>LeetCode 的萌新用户，这周做的几道题是 Recursion 1 里面的题目，记录如下：</p>
-<h3 id="344-Reverse-String（Easy）"><a href="#344-Reverse-String（Easy）" class="headerlink" title="#344. Reverse String（Easy）"></a><strong>#344. Reverse String（Easy）</strong></h3><blockquote><p>Write a function that reverses a string. The input string is given as an array of characters char[].<br>Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.<br>You may assume all the characters consist of printable ascii characters.<br>Example 1 ：<br>Input: [“h”,”e”,”l”,”l”,”o”]<br>Output: [“o”,”l”,”l”,”e”,”h”]<br>Example 2 ：<br>Input: [“H”,”a”,”n”,”n”,”a”,”h”]<br>Output: [“h”,”a”,”n”,”n”,”a”,”H”]</p>
-<footer><strong>@DevDocs</strong><cite><a href="https://leetcode.com/problems/reverse-string" target="_blank" rel="noopener">leetcode.com/problems/reverse-string</a></cite></footer></blockquote>
-<p>这道题的大致意思是写一个方法，用于反转输入的字符数组，不允许额外分配多一个数组，要求只能使用O(1)的额外内存来实现。<br>解法简单，就直接上代码了:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reverseString</span><span class="params">(<span class="keyword">char</span>[] s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">char</span> temp;</span><br><span class="line">        <span class="keyword">int</span> midIndex = s.length / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; midIndex; i++) &#123;</span><br><span class="line">            temp = s[i];</span><br><span class="line">            s[i] = s[s.length - <span class="number">1</span> -i];</span><br><span class="line">            s[s.length - <span class="number">1</span> - i] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>贴一个在 Discuss 里看到的答案，利用 ascii 来实现的，是我想不到的思路<em>(:з」∠)</em>：<a href="https://leetcode.com/problems/reverse-string/discuss/257311/Java-two-pointer-solution-without-temp-var" target="_blank" rel="noopener">[Java] two pointer solution without temp var
-</a>：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reverseString</span><span class="params">(<span class="keyword">char</span>[] s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>,j=s.length-<span class="number">1</span>;i&lt;j;i++,j--)&#123;</span><br><span class="line">            s[i]=(<span class="keyword">char</span>)(s[j]-s[i]);</span><br><span class="line">            s[j]=(<span class="keyword">char</span>)(s[j]-s[i]);</span><br><span class="line">            s[i]=(<span class="keyword">char</span>)(s[j]+s[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="24-Swap-Nodes-in-Pairs（Medium）"><a href="#24-Swap-Nodes-in-Pairs（Medium）" class="headerlink" title="#24. Swap Nodes in Pairs（Medium）"></a><strong>#24. Swap Nodes in Pairs（Medium）</strong></h3><blockquote><p>Given a linked list, swap every two adjacent nodes and return its head.<br>You may not modify the values in the list’s nodes, only nodes itself may be changed.<br>Example:<br>Given 1-&gt;2-&gt;3-&gt;4, you should return the list as 2-&gt;1-&gt;4-&gt;3.</p>
-<footer><strong>@DevDocs</strong><cite><a href="https://leetcode.com/problems/swap-nodes-in-pairs/" target="_blank" rel="noopener">leetcode.com/problems/swap-nodes-in-pairs</a></cite></footer></blockquote>
-<p>题目的大致意思：给定一个链表，交换每两个相邻节点并返回其头部。 只能更改节点本身。</p>
-<p>解题思路：这道题可以当做是递归问题，解决递归问题两大关键点：</p>
-<ul>
-<li>recurrence relation：the relationship between the result of a problem and the result of its subproblems.（即大问题分解为小问题的规律，基于这个规律写出递推公式）</li>
-<li>base case：the case where one can compute the answer directly without any further recursion calls. （即递归的终止条件）</li>
-</ul>
-<p>所以我们第一步，就是先找出递归关系，将大问题分解为小问题。</p>
-<p>以 Example 提供的数据为例，将两个节点划分为一组来看，会发现（1-&gt;2），交换位置后为（2-&gt;1），即将 2 作为头部节点，并指向 1，且 1 节点要指向下一组的头部节点，然后返回头部2；下一组（3-&gt;4），通过同样的操作，变为（4-&gt;3），3 指向了下一组的头部节点，然后返回头部节点 4。</p>
-<p>你看，递归关系就出来了，都是把原头结点的下一个节点当做当前头结点，把原头结点指向下一组的头结点，然后把当前头节点的下一个节点指向原头结点，最后返回当前头结点。（表述能力有点渣，请见谅<em>(:з」∠)</em> ）。</p>
-<p>把递归关系写成方法，如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">swapPairs</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 临时变量保存原先的头结点</span></span><br><span class="line">    ListNode tmp = head;</span><br><span class="line">    <span class="comment">// 把原先头结点的下一个节点当做当前头结点</span></span><br><span class="line">    head = head.next;</span><br><span class="line">    <span class="comment">// 把原头结点指向下一组的头结点</span></span><br><span class="line">    tmp.next = swapPairs(head.next);</span><br><span class="line">    <span class="comment">// 把当前节点的下一个节点指向原先头结点</span></span><br><span class="line">    head.next = tmp;</span><br><span class="line">    <span class="comment">// 返回当前头结点</span></span><br><span class="line">    <span class="keyword">return</span> head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>当然，还没完，我们还需要找到递归的终止条件，即当：</p>
-<ul>
-<li>假设传入的是一个空节点时，直接返回空节点。</li>
-<li>假设传入的节点没有下一个节点时，直接返回当前节点。</li>
-</ul>
-<p>这时答案就出来了：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> ListNode <span class="title">swapPairs</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> head;</span><br><span class="line">            &#125;</span><br><span class="line">            ListNode tmp = head;</span><br><span class="line">            head = head.next;</span><br><span class="line">            tmp.next = swapPairs(head.next);</span><br><span class="line">            head.next = tmp;</span><br><span class="line">            <span class="keyword">return</span> head;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Review"><a href="#Review" class="headerlink" title="Review"></a>Review</h2><p>本周阅读了一篇在《左耳听风》第71讲中推荐阅读的文章：<a href="http://blog.thefirehoseproject.com/posts/learn-to-code-and-be-self-reliant/" target="_blank" rel="noopener">《The Key To Accelerating Your Coding Skills》</a>。</p>
-<p>作者在这篇文章中讲述了如何有效地快速提高自己的编程能力，认为在学习编程的过程中，存在着编码拐点，一旦通过这个拐点，作为一个开发人员的操作方式，将会有很大的不同。通过拐点之前，将可能是一段令人沮丧的经历，但一旦它过去了，它就会让你变得无比强大。</p>
-<h2 id="Tip"><a href="#Tip" class="headerlink" title="Tip"></a>Tip</h2><p>分享一个关于 Intellij IDEA Debug的小技巧：<br>有时候我们进入方法体之后，还想退回到方法体外时，如果手速过快，点多了几下F8/F9，这时，只需点击 <strong>Drop Frame</strong>，即可退回方法体外，如下图所示：<br><img src="https://user-images.githubusercontent.com/22961204/54867798-865f5e00-4dbf-11e9-8bc7-7b0a1698b10c.png" alt="arts"></p>
-<p>这里附上在Github上找到的<a href="https://github.com/judasn/IntelliJ-IDEA-Tutorial" target="_blank" rel="noopener">IntelliJ IDEA 简体中文专题教程</a></p>
-<h2 id="Share"><a href="#Share" class="headerlink" title="Share"></a>Share</h2><p>分享一个在阿里技术公众号上看到的一篇文章<a href="https://mp.weixin.qq.com/s/1lOvKBjL2qlRlLHP4rHONg" target="_blank" rel="noopener">《工程师男友如何反窃听？趣聊密码学入门科普》</a>，文章生动有趣，非常值得一看，妈妈再也不担心如何向别人介绍我所处的行业了<em>(:з」∠)</em> 。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2337,7 +2365,7 @@ undefined
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2348,7 +2376,7 @@ undefined
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2359,7 +2387,7 @@ undefined
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

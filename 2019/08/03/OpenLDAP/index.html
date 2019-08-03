@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="OpenLDAP,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="OpenLDAP 安装和部署 - LinuxOpenLDAP是什么？ OpenLDAP 是一款轻量级目录访问协议（Lightweight Directory Access Protocol, LDAP）, 属于开源集中账号管理架构的实现，且支持众多系统版本，被广大互联网公司所采用。 LDAP 具有两个国家标准，分别是 X.500 和 LDAP。OpenLDAP 是基于 X.500 标准的，而且去除">
+<meta name="keywords" content="OpenLDAP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenLDAP">
+<meta property="og:url" content="http://yoursite.com/2019/08/03/OpenLDAP/index.html">
+<meta property="og:site_name" content="哺乳类的博客">
+<meta property="og:description" content="OpenLDAP 安装和部署 - LinuxOpenLDAP是什么？ OpenLDAP 是一款轻量级目录访问协议（Lightweight Directory Access Protocol, LDAP）, 属于开源集中账号管理架构的实现，且支持众多系统版本，被广大互联网公司所采用。 LDAP 具有两个国家标准，分别是 X.500 和 LDAP。OpenLDAP 是基于 X.500 标准的，而且去除">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/007hWkdxgy1g5m9zc3125j311q02w0st.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/007hWkdxgy1g5m9ziohlhj30g8022t8n.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/007hWkdxgy1g5m9zy4my3j30vg06fmxr.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/007hWkdxgy1g5ma693q4ij30q70dejsb.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/007hWkdxgy1g5ma6tdks4j30tw0g33zl.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/007hWkdxgy1g5ma185i6sj30rm032dfy.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/007hWkdxgy1g5ma1f170tj30xa0o675d.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/007hWkdxgy1g5ma28lkd6j30tq0byjs8.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/007hWkdxgy1g5ma2i6pm7j30xq04raae.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/007hWkdxgy1g5ma34r9qtj30p6070q3j.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/007hWkdxgy1g5ma3by6znj30qz0dgdgb.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/007hWkdxgy1g5ma3iyf71j30s40e174t.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/007hWkdxgy1g5ma3tkhbuj30x00kewh3.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/007hWkdxgy1g5ma46xljlj30hl0luq3o.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/007hWkdxgy1g5ma4e5ha9j30hl0luwf1.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/007hWkdxgy1g5ma4lgpjmj310n0hqn5k.jpg">
+<meta property="og:updated_time" content="2019-08-03T02:39:58.751Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenLDAP">
+<meta name="twitter:description" content="OpenLDAP 安装和部署 - LinuxOpenLDAP是什么？ OpenLDAP 是一款轻量级目录访问协议（Lightweight Directory Access Protocol, LDAP）, 属于开源集中账号管理架构的实现，且支持众多系统版本，被广大互联网公司所采用。 LDAP 具有两个国家标准，分别是 X.500 和 LDAP。OpenLDAP 是基于 X.500 标准的，而且去除">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/007hWkdxgy1g5m9zc3125j311q02w0st.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/08/03/OpenLDAP/">
+
+
+
+
+
+  <title>OpenLDAP | 哺乳类的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">哺乳类的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/03/OpenLDAP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="渴望飞的哺乳类">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/author.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="哺乳类的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">OpenLDAP</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-03T10:38:51+08:00">
+                2019-08-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/OpenLDAP/" itemprop="url" rel="index">
+                    <span itemprop="name">OpenLDAP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="OpenLDAP-安装和部署-Linux"><a href="#OpenLDAP-安装和部署-Linux" class="headerlink" title="OpenLDAP 安装和部署 - Linux"></a>OpenLDAP 安装和部署 - Linux</h1><h2 id="OpenLDAP是什么？"><a href="#OpenLDAP是什么？" class="headerlink" title="OpenLDAP是什么？"></a>OpenLDAP是什么？</h2><blockquote>
+<p>OpenLDAP 是一款轻量级目录访问协议（Lightweight Directory Access Protocol, LDAP）, 属于开源集中账号管理架构的实现，且支持众多系统版本，被广大互联网公司所采用。</p>
+<p>LDAP 具有两个国家标准，分别是 X.500 和 LDAP。OpenLDAP 是基于 X.500 标准的，而且去除了 X.500 复杂的功能并且可以根据自我需求定制额外扩展功能，但是 X.500 也有不同之处，例如 OpenLDAP 支持 TCP/IP 协议等，目前 TCP/IP 是 Internet 上访问互联网的协议。</p>
+<p>OpenLDAP 则直接运行在更简单和更通用的 TCP/IP 或其他可靠的传输协议层上，避免了在 OSI 会话层和表示层的开销，使连接的建立和包的处理更简单、更快，对于互联网和企业网应用更理想。LDAP 提供并实现目录服务的信息服务，目录服务是一种特殊的数据库，对于数据的读取、浏览、搜索有很好的效果。目录服务一般用来包含基于属性的描述性信息并支持精细复杂的过滤功能，但 OpenLDAP 目录服务不支持通用数据库的大量更新操作所需要的复杂的事务管理或回滚策略等。</p>
+<p>OpenLDAP 默认以 Berkeley DB 作为后端数据库，Berkeley DB 数据库主要以散列的数据类型进行数据存储，如以键值对的方式进行存储。Berkeley DB 是一类特殊的数据库，主要作用于搜索、浏览、更新查询操作，一般用于一次写入数据、多次查询和搜索有很好的效果。Berkeley DB 数据库时面向查询进行优化，面向读取进行优化的数据库。Berkeley DB 不支持事务性数据库（MySQL、MariDB、Oracle 等）所支持的高并发的吞吐量以及复杂的事务操作。</p>
+<p>OpenLDAP 目录中的信息是按树形结构进行组织的，具体信息存储在条目（entry）中，条目可以看成关系数据库中的表记录，条目是具有区别名（Distinguished Name，DN）的属性（attribute），DN 是用来引用条目，DN 相当于关系型数据库（MySQL 等）中的主键（primary key），是唯一的。属性由类型（type）和一个或多个值（value）组成，相当于关系型数据库中字段的概念。</p>
+<p>来源：<a href="https://wiki.shileizcc.com/confluence/display/openldap/OpenLDAP" target="_blank" rel="noopener">https://wiki.shileizcc.com/confluence/display/openldap/OpenLDAP</a></p>
+</blockquote>
+<h2 id="安装-OpenLDAP"><a href="#安装-OpenLDAP" class="headerlink" title="安装 OpenLDAP"></a>安装 OpenLDAP</h2><ol>
+<li><p>使用 yum 安装（推荐）</p>
+<p>命令：<code>yum -y install openldap compat-openldap openldap-clients openldap-servers openldap-servers-sql openldap-devel migrationtools</code></p>
+</li>
+<li><p>使用下载好的rpm进行安装（无网/内网环境下推荐）(TODO)</p>
+</li>
+</ol>
+<h2 id="配置-OpenLDAP"><a href="#配置-OpenLDAP" class="headerlink" title="配置 OpenLDAP"></a>配置 OpenLDAP</h2><h3 id="查看-OpenLDAP-的版本"><a href="#查看-OpenLDAP-的版本" class="headerlink" title="查看 OpenLDAP 的版本"></a>查看 OpenLDAP 的版本</h3><p>安装成功后，使用以下命令查看 OpenLDAP 的版本信息</p>
+<p><code>slapd -VV</code></p>
+<p><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g5m9zc3125j311q02w0st.jpg" alt></p>
+<h3 id="配置-OpenLDAP-的登录信息"><a href="#配置-OpenLDAP-的登录信息" class="headerlink" title="配置 OpenLDAP 的登录信息"></a>配置 OpenLDAP 的登录信息</h3><ol>
+<li><p>需要先产生密码</p>
+<p>命令：<code>slappasswd -s 12345678</code></p>
+<p>记录结果，这是加密后的结果：{SSHA}rjewoTmrrSYQGis4YddObtvK88G/amXy</p>
+<p><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g5m9ziohlhj30g8022t8n.jpg" alt></p>
+</li>
+<li><p>创建用户跟根节点</p>
+<p>修改<code>/etc/openldap/slapd.d/cn=config</code>目录下的<code>olcDatabase={2}hdb.ldif</code>文件</p>
+<p><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g5m9zy4my3j30vg06fmxr.jpg" alt></p>
+</li>
+</ol>
+<p>   例如，创建如下根节点、用户名称和密码</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">olcSuffix: c=cn</span><br><span class="line">olcRootDN: cn=test,c=cn</span><br><span class="line">olcRootPW: &#123;SSHA&#125;rjewoTmrrSYQGis4YddObtvK88G/amXy</span><br></pre></td></tr></table></figure>
+<p>   其中：</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">olcSuffix: 为根节点</span><br><span class="line">olcRootDN: 为访问LDAP的管理员 </span><br><span class="line">olcRootPW: 新增项，是步骤一产生的加密后的密码</span><br></pre></td></tr></table></figure>
+<p>   将下图：</p>
+<p>   <img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g5ma693q4ij30q70dejsb.jpg" alt></p>
+<p>   改为：</p>
+<p>   <img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g5ma6tdks4j30tw0g33zl.jpg" alt></p>
+<ol start="3">
+<li><p>修改<code>olcDatabase={1}monitor.ldif</code>文件</p>
+<p>执行命令：<code>vi olcDatabase\=\{1\}monitor.ldif</code></p>
+<p><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g5ma185i6sj30rm032dfy.jpg" alt></p>
+<p>将下图：</p>
+<p><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g5ma1f170tj30xa0o675d.jpg" alt></p>
+<p>改为：</p>
+<p><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g5ma28lkd6j30tq0byjs8.jpg" alt></p>
+<p>保存退出</p>
+</li>
+<li><p>进行校验</p>
+<p>使用<code>slaptest -u</code>，对配置内容进行校验</p>
+<p><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g5ma2i6pm7j30xq04raae.jpg" alt></p>
+<p>checksum校验码出错无所谓，最后一句可行即可。</p>
+</li>
+<li><p>修改<code>ldap.conf</code>配置文件</p>
+<p>文件路径：<code>/etc/openldap/ldap.conf</code></p>
+<p><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g5ma34r9qtj30p6070q3j.jpg" alt></p>
+<p>将下图：</p>
+<p><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g5ma3by6znj30qz0dgdgb.jpg" alt></p>
+<p>改为：</p>
+<p><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g5ma3iyf71j30s40e174t.jpg" alt></p>
+<p><strong>注意：</strong>URL后的内容填写服务器域名或者IP+端口（端口不写就是采用默认：389的），我填写的是自己虚拟机的地址。</p>
+</li>
+<li><p>重启OpenLDAP</p>
+<p>使用以下命令进行重启</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart slapd</span><br><span class="line"></span><br><span class="line">systemctl status  slapd</span><br></pre></td></tr></table></figure>
+<p><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g5ma3tkhbuj30x00kewh3.jpg" alt></p>
+</li>
+</ol>
+<h2 id="用-ApacheDirectoryStudio-连接-OpenLDAP"><a href="#用-ApacheDirectoryStudio-连接-OpenLDAP" class="headerlink" title="用 ApacheDirectoryStudio 连接 OpenLDAP"></a>用 ApacheDirectoryStudio 连接 OpenLDAP</h2><p>可以采用 ApacheDirectoryStudio 工具测试连接是否成功。</p>
+<p>Hostname：是步骤5写的URI</p>
+<p>Port：缺省值是389，如果自行改了，则用改的那个</p>
+<p>账户用步骤二设置的值，密码用步骤一加密之前的值</p>
+<p>设置完后，点finish，出现最后一张图的情况，就是成功了</p>
+<p><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g5ma46xljlj30hl0luq3o.jpg" alt></p>
+<p><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g5ma4e5ha9j30hl0luwf1.jpg" alt></p>
+<p><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g5ma4lgpjmj310n0hqn5k.jpg" alt></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/OpenLDAP/" rel="tag"># OpenLDAP</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/21/ARTS0017/" rel="next" title="ARTS打卡：第十七周">
+                <i class="fa fa-chevron-left"></i> ARTS打卡：第十七周
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/author.jpg" alt="渴望飞的哺乳类">
+            
+              <p class="site-author-name" itemprop="name">渴望飞的哺乳类</p>
+              <p class="site-description motion-element" itemprop="description">愿你仗剑走天涯，归来仍是少年</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#OpenLDAP-安装和部署-Linux"><span class="nav-number">1.</span> <span class="nav-text">OpenLDAP 安装和部署 - Linux</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#OpenLDAP是什么？"><span class="nav-number">1.1.</span> <span class="nav-text">OpenLDAP是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-OpenLDAP"><span class="nav-number">1.2.</span> <span class="nav-text">安装 OpenLDAP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置-OpenLDAP"><span class="nav-number">1.3.</span> <span class="nav-text">配置 OpenLDAP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看-OpenLDAP-的版本"><span class="nav-number">1.3.1.</span> <span class="nav-text">查看 OpenLDAP 的版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置-OpenLDAP-的登录信息"><span class="nav-number">1.3.2.</span> <span class="nav-text">配置 OpenLDAP 的登录信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用-ApacheDirectoryStudio-连接-OpenLDAP"><span class="nav-number">1.4.</span> <span class="nav-text">用 ApacheDirectoryStudio 连接 OpenLDAP</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">渴望飞的哺乳类</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 访问总量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
