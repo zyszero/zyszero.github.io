@@ -242,6 +242,204 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/07/ARTS0011/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="渴望飞的哺乳类">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/author.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="哺乳类的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/07/ARTS0011/" itemprop="url">ARTS打卡：第十一周</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-07T11:38:34+08:00">
+                2019-06-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ARTS/" itemprop="url" rel="index">
+                    <span itemprop="name">ARTS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="ARTS打卡：第十一周"><a href="#ARTS打卡：第十一周" class="headerlink" title="ARTS打卡：第十一周"></a>ARTS打卡：第十一周</h1><blockquote><p>每周完成一个ARTS：</p>
+<ol>
+<li>Algorithm：每周至少做一个 leetcode 的算法题</li>
+<li>Review：阅读并点评至少一篇英文技术文章</li>
+<li>Tip：学习至少一个技术技巧</li>
+<li>Share：分享一篇有观点和思考的技术文章</li>
+</ol>
+</blockquote>
+<h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><h3 id="1-Two-Sum-Easy"><a href="#1-Two-Sum-Easy" class="headerlink" title="1. Two Sum(Easy)"></a>1. Two Sum(Easy)</h3><blockquote><p>Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p>
+<p>You may assume that each input would have exactly one solution, and you may not use the same element twice.</p>
+<p><strong>Example:</strong></p>
+<p>Given nums = [2, 7, 11, 15], target = 9,</p>
+<p>Because nums[0] + nums[1] = 2 + 7 = 9,<br>return [0, 1].</p>
+<footer><strong>@DevDocs</strong><cite><a href="https://leetcode.com/problems/two-sum/" target="_blank" rel="noopener">leetcode.com/problems/two-sum</a></cite></footer></blockquote>
+<p><strong>大致题意：</strong><br>给一个整形数组，返回两个数组下标，两个数组下标对应的值相加，要等于目标值。<br>你可以假设每一个输入的数组，只有一种答案，并且你不能使用同一个元素两次。</p>
+<p>这种题目，一眼看上去，是可以用暴力破解的，不过暴力破解虽然能解决问题，但我们这种三好青年，是有追求，有梦想的，用最少的时间和空间去解决问题，才是我们的终极目标。</p>
+<p><strong>解题思路一：暴力破解，双重遍历</strong><br>这种解法就简单直接了，双重循环遍历即可。</p>
+<p>代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 暴力破解，双重遍历</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> nums   输入数组</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> target 目标值</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] twoSum1(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">    <span class="keyword">if</span> (nums.length &lt; <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"No two sum solution"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] + nums[j] == target) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;i, j&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"No two sum solution"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果：<br>Runtime: 18 ms, faster than 38.89% of Java online submissions for Two Sum.<br>Memory Usage: 38.2 MB, less than 94.24% of Java online submissions for Two Sum.</p>
+<p>从结果上看，我们还是有很大优化空间的。</p>
+<p>复杂度分析：<br>时间复杂度：O(n²)<br>空间复杂度：O(1)</p>
+<p><strong>解题思路二：借助哈希表，空间换时间，优化遍历</strong><br>可以利用哈希表的特性，减少遍历次数，详细实现不难，直接看代码即可。</p>
+<p>代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 借助哈希表进行优化</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> nums   输入数组</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> target 目标值</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">    <span class="comment">// 边界条件</span></span><br><span class="line">    <span class="keyword">if</span> (nums.length &lt; <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"No two sum solution"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 创建一个 HashMap，key 为数组的值，value 为值对应的数组下标</span></span><br><span class="line">    <span class="comment">// 用于记录遍历过的数组的值与下标，便于快速查找到所需的值</span></span><br><span class="line">    Map&lt;Integer, Integer&gt; hash = <span class="keyword">new</span> HashMap&lt;&gt;(<span class="number">16</span>);</span><br><span class="line">    <span class="comment">// 循环遍历数组</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">        <span class="comment">// 我们的目的是找到符合 nums[i] + nums[j] = target 的 i 和 j，t 就是 nums[j]</span></span><br><span class="line">        <span class="keyword">int</span> t = target - nums[i];</span><br><span class="line">        <span class="comment">// 查看 t 是否在已访问过的数组值内 即哈希表的 keys 包不包含 t，</span></span><br><span class="line">        <span class="comment">// 加上由于题目要求同一个元素不能使用两次，所以还需满足当前下标 i 不能与 hash.get(t) 的值一致</span></span><br><span class="line">        <span class="comment">// 即 hash.containsKey(t) &amp;&amp; hash.get(t) != i</span></span><br><span class="line">        <span class="keyword">if</span> (hash.containsKey(t) &amp;&amp; hash.get(t) != i) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;hash.get(t), i&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 记录已访问过的，数组的值与下标</span></span><br><span class="line">        hash.put(nums[i], i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"No two sum solution"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果：<br>Runtime: 2 ms, faster than 99.20% of Java online submissions for Two Sum.<br>Memory Usage: 37.4 MB, less than 99.67% of Java online submissions for Two Sum.</p>
+<p>复杂度分析：<br>时间复杂度：O(n)<br>空间复杂度：O(n)</p>
+<h2 id="Review"><a href="#Review" class="headerlink" title="Review"></a>Review</h2><p>本周阅读是：<a href="https://www.programcreek.com/2014/05/top-10-mistakes-java-developers-make/" target="_blank" rel="noopener">《Top 10 Mistakes Java Developers Make》</a>。</p>
+<p>作者在文中总结了 Java 开发人员经常犯的十大错误：</p>
+<ol>
+<li>Convert Array to ArrayList（Array 转 ArrayList）</li>
+<li>Check If an Array Contains a Value（检查数组是否包含某个值）</li>
+<li>Remove an Element from a List Inside a Loop（从 List 的循环中删除 List 的元素）</li>
+<li>Hashtable vs HashMap</li>
+<li>Use Raw Type of Collection（使用原始类型的集合）</li>
+<li>Access Level（访问级别）</li>
+<li>ArrayList vs. LinkedList</li>
+<li>Mutable vs. Immutable（可变与不可变）</li>
+<li>Constructor of Super and Sub（父类和子类的构造函数）</li>
+<li>“” or Constructor?（””或构造函数）</li>
+</ol>
+<p>作者在文中对每点错误都进行了详细的分析，并给出了对应的解决方案或说明。<br>文中的英语其实不难理解，感兴趣的小伙伴们，可以通过<a href="https://www.programcreek.com/2014/05/top-10-mistakes-java-developers-make/" target="_blank" rel="noopener">原文</a>了解更多的详情。<br>如果实在不想看英语，那可以看看这篇译文：<a href="https://www.cnblogs.com/chenpi/p/5508949.html" target="_blank" rel="noopener">Java开发人员最常犯的10个错误</a>。</p>
+<h2 id="Tip"><a href="#Tip" class="headerlink" title="Tip"></a>Tip</h2><p>本周分享：<a href="https://zyszero.github.io/2019/06/07/JMeter01/" target="_blank" rel="noopener">Apache JMeter 的使用入门</a>。</p>
+<h2 id="Share"><a href="#Share" class="headerlink" title="Share"></a>Share</h2><p>本周分享猪猪大佬的公众号-<strong>工匠人生</strong>中的一篇文章：<a href="https://mp.weixin.qq.com/s/L4fc7IAnyMlY8-1kLbRBqw" target="_blank" rel="noopener">《如何将长URL转换为短URL？》</a><br>通过这篇文章，我们可以了解到：</p>
+<ul>
+<li>如何将长URL生成短URL</li>
+<li>短地址从URL输入到页面展现到底发生了什么？</li>
+<li>短连接的设计思路</li>
+<li>发号器的设计思路</li>
+<li>知乎关于生成短地址的讨论</li>
+</ul>
+<p>这里摘取文中提到的，一部分参考文章的地址：</p>
+<ol>
+<li><a href="https://hufangyun.com/2017/short-url/" target="_blank" rel="noopener">短网址(short URL)系统的原理及其实现</a></li>
+<li><a href="https://www.zhihu.com/question/29270034/answer/46446911" target="_blank" rel="noopener">短 URL 系统是怎么设计的？</a></li>
+<li><a href="https://stackoverflow.com/questions/742013/how-do-i-create-a-url-shortener" target="_blank" rel="noopener">How do I create a URL shortener?</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/02/ARTS0010/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2118,201 +2316,6 @@ undefined
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/27/ARTS002/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="渴望飞的哺乳类">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/author.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="哺乳类的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/27/ARTS002/" itemprop="url">ARTS打卡：第二周</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-27T23:21:10+08:00">
-                2019-03-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ARTS/" itemprop="url" rel="index">
-                    <span itemprop="name">ARTS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="ARTS-第二周分享"><a href="#ARTS-第二周分享" class="headerlink" title="ARTS 第二周分享"></a>ARTS 第二周分享</h1><blockquote><p>每周完成一个ARTS：</p>
-<ol>
-<li>Algorithm：每周至少做一个 leetcode 的算法题</li>
-<li>Review：阅读并点评至少一篇英文技术文章</li>
-<li>Tip：学习至少一个技术技巧</li>
-<li>Share：分享一篇有观点和思考的技术文章</li>
-</ol>
-</blockquote>
-<h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><p>本周记录如下：</p>
-<h3 id="118-Pascal’s-Triangle（Easy）"><a href="#118-Pascal’s-Triangle（Easy）" class="headerlink" title="118. Pascal’s Triangle（Easy）"></a><strong>118. Pascal’s Triangle（Easy）</strong></h3><blockquote>
-<p>Given a non-negative integer numRows, generate the first numRows of Pascal’s triangle.<br><img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/PascalTriangleAnimated2.gif" alt="Pascal&#39;s Triangle"><br>In Pascal’s triangle, each number is the sum of the two numbers directly above it.<br>Example:</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Input: <span class="number">5</span></span><br><span class="line">Output:</span><br><span class="line">[</span><br><span class="line">     [<span class="number">1</span>],</span><br><span class="line">    [<span class="number">1</span>,<span class="number">1</span>],</span><br><span class="line">   [<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>],</span><br><span class="line">  [<span class="number">1</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">1</span>],</span><br><span class="line"> [<span class="number">1</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">4</span>,<span class="number">1</span>]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<p>题目大致意思：给定一个负整数，生成一个帕斯卡三角形，如Example所示。</p>
-<p>思路：这里的动图非常形象，我们可以从动图中看出，每个数组的首尾元素是 1，且数组长度与深度一致，紧接着我们将动图转换成阶梯型，代入二维数组的概念来看，如下所示：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>]</span><br><span class="line">[<span class="number">1</span>,<span class="number">1</span>]</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>]</span><br><span class="line">[<span class="number">1</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">1</span>]</span><br><span class="line">[<span class="number">1</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">4</span>,<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
-<p>就可以很容易看出 除首尾元素为 1 外，其余元素等于上一个数组对应下标的值加上上一个数组对应下标-1的值，即curr[n] = prev[n] + prev[n-1]。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; getPascalsTriangle(<span class="keyword">int</span> numRows) &#123;</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; pascalsTriangle = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span> (numRows == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> pascalsTriangle;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 首个数组一定是 1</span></span><br><span class="line">        ArrayList&lt;Integer&gt; firstArray = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        firstArray.add(<span class="number">1</span>);</span><br><span class="line">        pascalsTriangle.add(firstArray);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; numRows; i++) &#123;</span><br><span class="line">            List&lt;Integer&gt; temp = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">            <span class="comment">// 上一个数组</span></span><br><span class="line">            List&lt;Integer&gt; preList = pascalsTriangle.get(i - <span class="number">1</span>);</span><br><span class="line">            <span class="comment">// 每个数组头部元素总是 1</span></span><br><span class="line">            temp.add(<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; i; j++) &#123;</span><br><span class="line">                temp.add(preList.get(j) + preList.get(j - <span class="number">1</span>));</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 每个数组尾部元素总是 1</span></span><br><span class="line">            temp.add(<span class="number">1</span>);</span><br><span class="line">            pascalsTriangle.add(temp);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> pascalsTriangle;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>结果：<br>Runtime: 0 ms, faster than 100.00% of Java online submissions for Pascal’s Triangle.<br>Memory Usage: 32.7 MB, less than 100.00% of Java online submissions for Pascal’s Triangle.</p>
-<h3 id="119-Pascal’s-Triangle-II"><a href="#119-Pascal’s-Triangle-II" class="headerlink" title="119. Pascal’s Triangle II"></a>119. Pascal’s Triangle II</h3><blockquote><p>Given a non-negative index k where k ≤ 33, return the kth index row of the Pascal’s triangle.</p>
-<p>Note that the row index starts from 0.</p>
-<p><strong>Example:</strong><br>Input: 3<br>Output: [1,3,3,1]<br>Follow up:</p>
-<p>Could you optimize your algorithm to use only O(k) extra space?</p>
-<footer><strong>@DevDocs</strong><cite><a href="https://leetcode.com/problems/pascals-triangle-ii/" target="_blank" rel="noopener">leetcode.com/problems/pascals-triangle-ii</a></cite></footer></blockquote>
-<p>题目大致意思：跟题118差不多，要求只使用O（k）额外空间，如Example所示。</p>
-<p>思路：跟题118差不多一致，可以用递归实现。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">getRow</span><span class="params">(<span class="keyword">int</span> rowIndex)</span> </span>&#123;</span><br><span class="line">            <span class="comment">// 终止条件</span></span><br><span class="line">            <span class="keyword">if</span> (rowIndex == <span class="number">0</span>) &#123;</span><br><span class="line">                List&lt;Integer&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;(rowIndex + <span class="number">1</span>);</span><br><span class="line">                result.add(<span class="number">1</span>);</span><br><span class="line">                <span class="keyword">return</span> result;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 获取上一个数组，利用递归获取</span></span><br><span class="line">            List&lt;Integer&gt; prevList = getRow(rowIndex - <span class="number">1</span>);</span><br><span class="line">            <span class="comment">// 从后往前遍历</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = rowIndex - <span class="number">1</span>; i &gt; <span class="number">0</span>; i--) &#123;</span><br><span class="line">                <span class="comment">// 即 curr[i] = prev[i] + prev[i - 1]</span></span><br><span class="line">                prevList.set(i, prevList.get(i) + prevList.get(i - <span class="number">1</span>));</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 加入尾部元素 1</span></span><br><span class="line">            prevList.add(<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">return</span> prevList;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>结果：<br>Runtime: 1 ms, faster than 84.50% of Java online submissions for Pascal’s Triangle II.<br>Memory Usage: 32.3 MB, less than 100.00% of Java online submissions for Pascal’s Triangle II.</p>
-<p>从结果上来看，运行时间上，还可以进行优化，最后脑细胞不够，想不出如何优化，查看了下Runtime：0ms答案，答案如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">getRow</span><span class="params">(<span class="keyword">int</span> rowIndex)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        <span class="keyword">long</span> nk = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= rowIndex; i++)&#123;</span><br><span class="line">            res.add((<span class="keyword">int</span>)nk);</span><br><span class="line">            nk = nk * (rowIndex - i) / (i + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Review"><a href="#Review" class="headerlink" title="Review"></a>Review</h2><p>本周阅读的是专栏里推荐的两篇文章：<a href="http://norvig.com/21-days.html" target="_blank" rel="noopener">《Teach Yourself Programming in Ten Years》</a>（<a href="https://liuyandong.com/2017/10/25/122/" target="_blank" rel="noopener">中英对照</a>） 和 <a href="http://brianknapp.me/most-basic-things-every-programmer-should-know/" target="_blank" rel="noopener">《What are some of the most basic things every programmer should know?》</a></p>
-<p>作者在这篇 《Teach Yourself Programming in Ten Years》（十年学会编程）文章中提出了当前人们急于求成这种不好的风气，批判了诸如24小时或天学会XXX的书籍的无用，并举了诸多著名的例子来证明“十年”学会编程的观点，比如“10000小时理论”等。</p>
-<p>作者还列出自己编程成功的秘笈，以下列出我印象比较深的几点：</p>
-<ol>
-<li>对编程感兴趣，从编程中获取乐趣，这样才能坚持10000小时或10年。</li>
-<li>动手编程，边学边做，实践出真知。</li>
-<li>和其他的程序猿交流，能比培训或看书收获更多。</li>
-<li>在大学期间或加上研究生期间，深入计算机领域学习；如果不喜欢读书，那直接通过工作获取经验也可以，但不能死读书，计算机科学并不能让你成为编程专家，正如学习颜料和画笔不能让你成为一个画家一样。</li>
-<li>与其他程序猿一起参与一些项目，在一些项目中成为最好的程序猿，尽自己最大的能力去带领团队，用自己的视野去启发别人；在一些项目中当最差的程序猿，当你是最差的时候，学习其他大牛。</li>
-<li>接收他人项目时，理解他人写的代码，修复他人的BUG；思考设计自己的软件，让其容易被他人维护。</li>
-<li>至少学会6种编程语言，一种支持抽象类的语言（例如 C++ 或 Java ）,一种支持函数的语言（例如 Lisp，ML 或 Haskell），一种支持语义抽象的语言（例如 Lisp ）,一种支持声明性规范的语言（例如 Prolog 或 C++ templates ），一种强调并行性的语言（例如 Go 或 Clojure ）。</li>
-</ol>
-<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>学习编程是一件漫长且要持续投入的事情，不存在任何的捷径，想要一蹴而就无疑是痴人说梦，是需要一步一个脚印，脚踏实地的努力才行，就如上一周分享的文章所说，跨越编程拐点之前，将可能是一段令人沮丧的经历，所以我们要进行有针对性的日复一日年复一年的训练，并且要有合理的反馈渠道，根据反馈做出相对的改进，需要多一点正向反馈，这样才能坚持下去，跨越一个接一个的拐点，最后达成“十年学习编程”的成就。</p>
-<p>《What are some of the most basic things every programmer should know?》，这篇文章不长，感兴趣的小伙伴们可以自行查看。</p>
-<h2 id="Tip"><a href="#Tip" class="headerlink" title="Tip"></a>Tip</h2><p>介绍一个开发利器 Lombok，以注解的形式，简化消除getter、setter、equals、hashcode、toString等代码。</p>
-<p>官方地址：<a href="https://projectlombok.org/" target="_blank" rel="noopener">https://projectlombok.org/</a><br>github地址：<a href="https://github.com/rzwitserloot/lombok" target="_blank" rel="noopener">https://github.com/rzwitserloot/lombok</a></p>
-<p>具体使用方法，可以参看<a href="https://blog.52itstyle.vip/archives/1418/" target="_blank" rel="noopener">JAVA奇技淫巧简化代码之lombok</a>这篇博客。</p>
-<p>上面那篇博客只介绍了 Eclipse，如果是InteliJ IDEA 的用户，需在安装一个Lombok插件，如下图所示：<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g1lacdoy4aj30z80mlq3v.jpg" alt="lombok"></p>
-<p>这里介绍一下 @Builder 这个注解，可以很容易生成建造者模式的代码，效果如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Builder</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Apple</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String color;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Double wight;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Apple apple = Apple.builder().color(<span class="string">"Red"</span>).wight(<span class="number">100.0</span>).build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>可以通过链式设置类的属性值，尤其是当类属性很多时，这样非常方便，且代码看起来很优雅。通过注解生成代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Apple</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String color;</span><br><span class="line">    <span class="keyword">private</span> Double wight;</span><br><span class="line"></span><br><span class="line">    Apple(String color, Double wight) &#123;</span><br><span class="line">        <span class="keyword">this</span>.color = color;</span><br><span class="line">        <span class="keyword">this</span>.wight = wight;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Apple.<span class="function">AppleBuilder <span class="title">builder</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Apple.AppleBuilder();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">AppleBuilder</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> String color;</span><br><span class="line">        <span class="keyword">private</span> Double wight;</span><br><span class="line"></span><br><span class="line">        AppleBuilder() &#123;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> Apple.<span class="function">AppleBuilder <span class="title">color</span><span class="params">(String color)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.color = color;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> Apple.<span class="function">AppleBuilder <span class="title">wight</span><span class="params">(Double wight)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.wight = wight;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> Apple <span class="title">build</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> Apple(<span class="keyword">this</span>.color, <span class="keyword">this</span>.wight);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            String var10000 = <span class="keyword">this</span>.color;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.wight;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>更多详情请查看<a href="https://projectlombok.org/features/Builder" target="_blank" rel="noopener">https://projectlombok.org/features/Builder</a></p>
-<h2 id="Share"><a href="#Share" class="headerlink" title="Share"></a>Share</h2><p><a href="https://zyszero.github.io/2019/03/31/java%208-optional/" target="_blank" rel="noopener">使用 Java 8 的 Optional 类进行优雅的判空</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2365,7 +2368,7 @@ undefined
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

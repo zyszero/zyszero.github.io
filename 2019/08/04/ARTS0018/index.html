@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="ARTS,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="ARTS打卡：第十八周 每周完成一个ARTS：  Algorithm：每周至少做一个 leetcode 的算法题 Review：阅读并点评至少一篇英文技术文章 Tip：学习至少一个技术技巧 Share：分享一篇有观点和思考的技术文章   Algorithm8. String to Integer (atoi) (Medium)Implement atoi which converts a stri">
+<meta name="keywords" content="ARTS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ARTS打卡：第十八周">
+<meta property="og:url" content="http://yoursite.com/2019/08/04/ARTS0018/index.html">
+<meta property="og:site_name" content="哺乳类的博客">
+<meta property="og:description" content="ARTS打卡：第十八周 每周完成一个ARTS：  Algorithm：每周至少做一个 leetcode 的算法题 Review：阅读并点评至少一篇英文技术文章 Tip：学习至少一个技术技巧 Share：分享一篇有观点和思考的技术文章   Algorithm8. String to Integer (atoi) (Medium)Implement atoi which converts a stri">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/007hWkdxgy1g5vwlt2in7j32se4yu7wj.jpg">
+<meta property="og:updated_time" content="2019-08-11T16:21:32.972Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ARTS打卡：第十八周">
+<meta name="twitter:description" content="ARTS打卡：第十八周 每周完成一个ARTS：  Algorithm：每周至少做一个 leetcode 的算法题 Review：阅读并点评至少一篇英文技术文章 Tip：学习至少一个技术技巧 Share：分享一篇有观点和思考的技术文章   Algorithm8. String to Integer (atoi) (Medium)Implement atoi which converts a stri">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/007hWkdxgy1g5vwlt2in7j32se4yu7wj.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/08/04/ARTS0018/">
+
+
+
+
+
+  <title>ARTS打卡：第十八周 | 哺乳类的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">哺乳类的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/ARTS0018/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="渴望飞的哺乳类">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/author.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="哺乳类的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ARTS打卡：第十八周</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-04T22:45:30+08:00">
+                2019-08-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ARTS/" itemprop="url" rel="index">
+                    <span itemprop="name">ARTS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="ARTS打卡：第十八周"><a href="#ARTS打卡：第十八周" class="headerlink" title="ARTS打卡：第十八周"></a>ARTS打卡：第十八周</h1><blockquote>
+<p>每周完成一个ARTS：</p>
+<ol>
+<li>Algorithm：每周至少做一个 leetcode 的算法题</li>
+<li>Review：阅读并点评至少一篇英文技术文章</li>
+<li>Tip：学习至少一个技术技巧</li>
+<li>Share：分享一篇有观点和思考的技术文章</li>
+</ol>
+</blockquote>
+<h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><h3 id="8-String-to-Integer-atoi-Medium"><a href="#8-String-to-Integer-atoi-Medium" class="headerlink" title="8. String to Integer (atoi) (Medium)"></a>8. String to Integer (atoi) (Medium)</h3><blockquote><p>Implement <code>atoi</code> which converts a string to an integer.</p>
+<p>The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then, starting from this character, takes an optional initial plus or minus sign followed by as many numerical digits as possible, and interprets them as a numerical value.</p>
+<p>The string can contain additional characters after those that form the integral number, which are ignored and have no effect on the behavior of this function.</p>
+<p>If the first sequence of non-whitespace characters in str is not a valid integral number, or if no such sequence exists because either str is empty or it contains only whitespace characters, no conversion is performed.</p>
+<p>If no valid conversion could be performed, a zero value is returned.</p>
+<p><strong>Note:</strong></p>
+<ul>
+<li>Only the space character <code>&#39; &#39;</code> is considered as whitespace character.</li>
+<li>Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−231,  231 − 1]. If the numerical value is out of the range of representable values, INT_MAX (231 − 1) or INT_MIN (−231) is returned.</li>
+</ul>
+<p><strong>Example 1:</strong></p>
+<blockquote>
+<p>Input: “42”<br>Output: 42</p>
+</blockquote>
+<p><strong>Example 2:</strong></p>
+<blockquote>
+<p>Input: “   -42”<br>Output: -42<br>Explanation: </p>
+<p>The first non-whitespace character is ‘-‘, which is the minus sign.</p>
+<p>Then take as many numerical digits as possible, which gets 42.</p>
+</blockquote>
+<p><strong>Example 3:</strong></p>
+<blockquote>
+<p>Input: “4193 with words”<br>Output: 4193<br>Explanation: Conversion stops at digit ‘3’ as the next character is not a numerical digit.</p>
+</blockquote>
+<p><strong>Example 4:</strong></p>
+<blockquote>
+<p>Input: “words and 987”<br>Output: 0<br>Explanation: The first non-whitespace character is ‘w’, which is not a numerical digit or a +/- sign. Therefore no valid conversion could be performed.</p>
+</blockquote>
+<p><strong>Example 5:</strong></p>
+<blockquote>
+<p>Input: “-91283472332”<br>Output: -2147483648<br>Explanation: The number “-91283472332” is out of the range of a 32-bit signed integer.Thefore INT_MIN (−231) is returned.</p>
+</blockquote>
+<footer><strong>@DevDocshttps://leetcode.com/problems/string-to-integer-atoi/</strong></footer></blockquote>
+<h4 id="题意（译文）"><a href="#题意（译文）" class="headerlink" title="题意（译文）"></a>题意（译文）</h4><p>请你来实现一个 atoi 函数，使其能将字符串转换成整数。</p>
+<p>首先，该函数会根据需要丢弃无用的开头空格字符，直到寻找到第一个非空格的字符为止。</p>
+<p>当我们寻找到的第一个非空字符为正或者负号时，则将该符号与之后面尽可能多的连续数字组合起来，作为该整数的正负号；假如第一个非空字符是数字，则直接将其与之后连续的数字字符组合起来，形成整数。</p>
+<p>该字符串除了有效的整数部分之后也可能会存在多余的字符，这些字符可以被忽略，它们对于函数不应该造成影响。</p>
+<p>注意：假如该字符串中的第一个非空格字符不是一个有效整数字符、字符串为空或字符串仅包含空白字符时，则你的函数不需要进行转换。</p>
+<p>在任何情况下，若函数不能进行有效的转换时，请返回 0。</p>
+<p>说明：</p>
+<p>假设我们的环境只能存储 32 位大小的有符号整数，那么其数值范围为 [−231,  231 − 1]。如果数值超过这个范围，请返回  INT_MAX (231 − 1) 或 INT_MIN (−231) 。</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/string-to-integer-atoi" target="_blank" rel="noopener">https://leetcode-cn.com/problems/string-to-integer-atoi</a></p>
+<h4 id="解题思路（1）"><a href="#解题思路（1）" class="headerlink" title="解题思路（1）"></a>解题思路（1）</h4><p>仔细阅读题目，我们可以从中得出这道题的限制条件：</p>
+<ol>
+<li>函数需要过滤开头的空格字符，直到寻找到第一个非空格的字符为止</li>
+<li>第一个非空字符为正或者负号时，需要保留，与之后的数字组合起来</li>
+<li>有效整数部分之后，出现非数字字符，返回前面的有效整数部分（emm….这一点，根据题意，我根本看不出来，是多次踩坑后，得来的血泪经验，巨坑….）</li>
+<li>假如该字符串中的第一个非空格字符不是一个有效整数字符、字符串为空或字符串仅包含空白字符时，返回0</li>
+<li>只能存储 32 位大小的有符号整数，那么其数值范围为 [−231,  231 − 1]；如果超出范围，则返回 INT_MAX (231 − 1) 或 INT_MIN (−231) 。</li>
+</ol>
+<p>根据以上的限制，我们的解题思路就可以这样：</p>
+<ol>
+<li>借鉴上周的解题思路，由于ASCII 码表加上拓展集共256个字符，所以我们可以定义一个长度为256的整形数组来模拟散列表，下标为字符的值，数组的值用于标识字符。</li>
+<li>根据限制条件来写判断条件，详情请查看实现代码</li>
+</ol>
+<h4 id="代码实现（1）"><a href="#代码实现（1）" class="headerlink" title="代码实现（1）"></a>代码实现（1）</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> map[] = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">256</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="comment">// 初始化字符 '0' - '9'</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            map[i + <span class="string">'0'</span>] = i + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">myAtoi</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(str == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 去掉字符串首尾的空格</span></span><br><span class="line">        String trim = str.trim();</span><br><span class="line">        <span class="keyword">if</span> (trim.isEmpty()) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 将字符串转成字符数组</span></span><br><span class="line">        <span class="keyword">char</span>[] chars = trim.toCharArray();</span><br><span class="line">        <span class="comment">// 用于标识数字的正负 1 代表的是正数，-1代表的是负数</span></span><br><span class="line">        <span class="keyword">int</span> sign = <span class="number">1</span>;</span><br><span class="line">        <span class="comment">// 限制条件2</span></span><br><span class="line">        <span class="keyword">int</span> start = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (chars[<span class="number">0</span>] == <span class="string">'-'</span>) &#123;</span><br><span class="line">            sign = -<span class="number">1</span>;</span><br><span class="line">            start++;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span> (chars[<span class="number">0</span>] == <span class="string">'+'</span>)&#123;</span><br><span class="line">            start++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 表示遇到有效数字字符个数</span></span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        StringBuilder tmp = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = start; i &lt; chars.length; i++) &#123;</span><br><span class="line">            <span class="comment">// 限制条件3，count != 0表示有效字符存在了；map[chars[i]] = 0 表示当前字符不是‘0’-‘9’</span></span><br><span class="line">            <span class="keyword">if</span> (count != <span class="number">0</span> &amp;&amp; map[chars[i]] == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 限制条件4</span></span><br><span class="line">            <span class="keyword">if</span> (map[chars[i]] == <span class="number">0</span> &amp;&amp; count == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 当前字符属于‘0’-‘9’，需要保存起来</span></span><br><span class="line">            <span class="keyword">if</span> (map[chars[i]] != <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="comment">// 有效字符+1</span></span><br><span class="line">                count++;</span><br><span class="line">                tmp.append(chars[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 将有效数字字符串转成数组，不直接强转的原因是，存在限制条件5，可能会溢出</span></span><br><span class="line">        <span class="keyword">char</span>[] cChars = tmp.toString().toCharArray();</span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> length = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// 从数值的低位遍历至高位</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = cChars.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="comment">// 转成有效数字</span></span><br><span class="line">            <span class="keyword">int</span> c = cChars[i] - <span class="string">'0'</span>;</span><br><span class="line">            <span class="keyword">int</span> newResult = result + c * (<span class="keyword">int</span>) StrictMath.pow(<span class="number">10</span>, length);</span><br><span class="line">            <span class="comment">// 判断溢出的方法，当新值➗当前位数后，得到的结果与当前的数字不一致，那么就是出现溢出的情况了，假设字符串为“8678”， 8/1 = 8, 78/10 = 7，以此类推，只有溢出时，才会不一致</span></span><br><span class="line">            <span class="keyword">if</span> (newResult / (<span class="keyword">int</span>) StrictMath.pow(<span class="number">10</span>, length) != c) &#123;</span><br><span class="line">                <span class="comment">// 根据正负，返回不同的结果</span></span><br><span class="line">                <span class="keyword">if</span> (sign &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                    <span class="keyword">return</span> Integer.MAX_VALUE;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">return</span> Integer.MIN_VALUE;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            result = newResult;</span><br><span class="line">            ++length;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 相当于 result * 1 或 result * -1</span></span><br><span class="line">        <span class="keyword">return</span> result * sign;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="运行结果（1）"><a href="#运行结果（1）" class="headerlink" title="运行结果（1）"></a>运行结果（1）</h4><p>Runtime: 3 ms, faster than 25.42% of Java online submissions for String to Integer (atoi).</p>
+<p>Memory Usage: 37 MB, less than 81.37% of Java online submissions for String to Integer (atoi).</p>
+<p>emm….解是解出来了，但结果就不怎么理想了，代码也太冗余了点</p>
+<h4 id="解题思路（2）"><a href="#解题思路（2）" class="headerlink" title="解题思路（2）"></a>解题思路（2）</h4><p>与解题思路（1）一致，代码上进行调整，减少for循环，降低时间复杂度，详情查看代码实现。</p>
+<h4 id="代码实现（2）"><a href="#代码实现（2）" class="headerlink" title="代码实现（2）"></a>代码实现（2）</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> map[] = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">256</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="comment">// 初始化字符 '0' - '9'</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            map[i + <span class="string">'0'</span>] = i + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">myAtoi</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (str == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 去掉字符串首尾的空格</span></span><br><span class="line">        String s = str.trim();</span><br><span class="line">        <span class="keyword">if</span> (s.isEmpty()) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 用于标识数字的正负 1 代表的是正数，-1代表的是负数；start 表示开始的下标；result表示数字的累加结果</span></span><br><span class="line">        <span class="keyword">int</span> sign = <span class="number">1</span>, start = <span class="number">0</span>, result = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// 满足限制条件2</span></span><br><span class="line">        <span class="keyword">if</span> (s.charAt(<span class="number">0</span>) == <span class="string">'-'</span>) &#123;</span><br><span class="line">            sign = -<span class="number">1</span>;</span><br><span class="line">            start++;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (s.charAt(<span class="number">0</span>) == <span class="string">'+'</span>) &#123;</span><br><span class="line">            start++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 当遍历字符为无效字符时，终止遍历</span></span><br><span class="line">        <span class="keyword">while</span> (start &lt; s.length() &amp;&amp; map[s.charAt(start)] != <span class="number">0</span>) &#123;</span><br><span class="line">           	<span class="comment">// 将当前字符转为数值</span></span><br><span class="line">            <span class="keyword">int</span> num = s.charAt(start) - <span class="string">'0'</span>;</span><br><span class="line">            <span class="comment">// 当前累加数值大于 Integer.MAX_VALUE / 10，那么接下来，继续累加必然会溢出</span></span><br><span class="line">            <span class="comment">// 还需排除一种特殊情况，当前累加数值等于 Integer.MAX_VALUE / 10，需要比较接下来的累加值是否大于 Integer.MAX_VALUE的最后一位数，大于则溢出</span></span><br><span class="line">            <span class="keyword">if</span> (result &gt; Integer.MAX_VALUE / <span class="number">10</span> ||</span><br><span class="line">                    (result == Integer.MAX_VALUE / <span class="number">10</span> &amp;&amp; num &gt; Integer.MAX_VALUE % <span class="number">10</span>)) &#123;</span><br><span class="line">                <span class="comment">// 根据标识，判断是Integer.MAX_VALUE还是Integer.MIN_VALUE</span></span><br><span class="line">                <span class="keyword">return</span> sign &gt; <span class="number">0</span> ? Integer.MAX_VALUE : Integer.MIN_VALUE;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 数值累加</span></span><br><span class="line">            result = result * <span class="number">10</span> + num;</span><br><span class="line">            <span class="comment">// 往前继续遍历</span></span><br><span class="line">            start++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result * sign;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="运行结果和复杂度分析（2）"><a href="#运行结果和复杂度分析（2）" class="headerlink" title="运行结果和复杂度分析（2）"></a>运行结果和复杂度分析（2）</h4><p><strong>运行结果</strong></p>
+<p>Runtime: 1 ms, faster than 100.00% of Java online submissions for String to Integer (atoi).</p>
+<p>Memory Usage: 36 MB, less than 100.00% of Java online submissions for String to Integer (atoi).</p>
+<p><strong>复杂度分析</strong></p>
+<p>时间复杂度：O(n)，n是有效字符长度</p>
+<p>空间复杂度：O(1)</p>
+<h2 id="Review"><a href="#Review" class="headerlink" title="Review"></a>Review</h2><p>本周分享：<a href="http://www.catb.org/~esr/faqs/smart-questions.html" target="_blank" rel="noopener">How To Ask Questions The Smart Way</a></p>
+<p>对应的简体中文翻译版：<a href="http://doc.zengrong.net/smart-questions/cn.html" target="_blank" rel="noopener">提问的智慧</a></p>
+<p>经久不衰的文章，很值得我们再看一遍。</p>
+<h2 id="Tip"><a href="#Tip" class="headerlink" title="Tip"></a>Tip</h2><p>本周分享从<a href="https://time.geekbang.org/column/intro/192" target="_blank" rel="noopener">《SQL必知必会》</a>专栏中，学习到的索引知识和SQL调优的Tip：</p>
+<p><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g5vwlt2in7j32se4yu7wj.jpg" alt></p>
+<p>ps：思维导图中的图片都来源于专栏，以上是学习笔记</p>
+<h2 id="Share"><a href="#Share" class="headerlink" title="Share"></a>Share</h2><p>本周分享：<a href="https://juejin.im/post/5d4f80f66fb9a06ae439e52c" target="_blank" rel="noopener">Spring Leader分享：Spring Framework之再探Core Container 上</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ARTS/" rel="tag"># ARTS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/03/OpenLDAP/" rel="next" title="OpenLDAP 的安装与部署 - Linux">
+                <i class="fa fa-chevron-left"></i> OpenLDAP 的安装与部署 - Linux
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/author.jpg" alt="渴望飞的哺乳类">
+            
+              <p class="site-author-name" itemprop="name">渴望飞的哺乳类</p>
+              <p class="site-description motion-element" itemprop="description">愿你仗剑走天涯，归来仍是少年</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ARTS打卡：第十八周"><span class="nav-number">1.</span> <span class="nav-text">ARTS打卡：第十八周</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Algorithm"><span class="nav-number">1.1.</span> <span class="nav-text">Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-String-to-Integer-atoi-Medium"><span class="nav-number">1.1.1.</span> <span class="nav-text">8. String to Integer (atoi) (Medium)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题意（译文）"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">题意（译文）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解题思路（1）"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">解题思路（1）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码实现（1）"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">代码实现（1）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运行结果（1）"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">运行结果（1）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解题思路（2）"><span class="nav-number">1.1.1.5.</span> <span class="nav-text">解题思路（2）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码实现（2）"><span class="nav-number">1.1.1.6.</span> <span class="nav-text">代码实现（2）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运行结果和复杂度分析（2）"><span class="nav-number">1.1.1.7.</span> <span class="nav-text">运行结果和复杂度分析（2）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Review"><span class="nav-number">1.2.</span> <span class="nav-text">Review</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tip"><span class="nav-number">1.3.</span> <span class="nav-text">Tip</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Share"><span class="nav-number">1.4.</span> <span class="nav-text">Share</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">渴望飞的哺乳类</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 访问总量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
