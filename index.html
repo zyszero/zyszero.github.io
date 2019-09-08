@@ -261,7 +261,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/08/27/ARTS0019/" itemprop="url">ARTS0019</a></h1>
+                <a class="post-title-link" href="/2019/08/27/ARTS0019/" itemprop="url">ARTS打卡：第十九周</a></h1>
         
 
         <div class="post-meta">
@@ -374,7 +374,9 @@
 <p>以下链接，是我的学习BM算法和AC算法的笔记，感兴趣的小伙伴们，也可以查看一下👀</p>
 <p><a href="https://github.com/zyszero/awesome-java-algo/blob/master/src/main/java/com/zys/data/structure/BM.java" target="_blank" rel="noopener">https://github.com/zyszero/awesome-java-algo/blob/master/src/main/java/com/zys/data/structure/BM.java</a></p>
 <p><a href="https://github.com/zyszero/awesome-java-algo/blob/master/src/main/java/com/zys/data/structure/AC.java" target="_blank" rel="noopener">https://github.com/zyszero/awesome-java-algo/blob/master/src/main/java/com/zys/data/structure/AC.java</a></p>
-<h1 id="Review-TODO"><a href="#Review-TODO" class="headerlink" title="Review(TODO)"></a>Review(TODO)</h1><h1 id="Tip"><a href="#Tip" class="headerlink" title="Tip"></a>Tip</h1><p>最近遇到一个问题，在这里记录一下解决方案。</p>
+<h1 id="Review-TODO"><a href="#Review-TODO" class="headerlink" title="Review(TODO)"></a>Review(TODO)</h1><p>本周阅读：<a href="https://dzone.com/articles/jvm-architecture-explained" target="_blank" rel="noopener">The JVM Architecture Explained</a></p>
+<p>作者在文中详细的介绍了JVM的体系结构以及JVM不同组件，感兴趣的小伙们可以自行查阅。</p>
+<h1 id="Tip"><a href="#Tip" class="headerlink" title="Tip"></a>Tip</h1><p>最近遇到一个问题，在这里记录一下解决方案。</p>
 <p>背景：存在主从两台服务器，主机做 nfs的服务端，从机做客户端；由于服务器IP的更换，导致 nfs服务端了挂了，nfs客户端直接卡死，导致尝试访问挂载目录、df -h等操作都会使终端卡住，ctrl+c也不能强行退出，尝试过 kill - 9 也不起作用。</p>
 <p>解决办法：先是采用 <code>umount -f NFS挂载目录</code>命令（-f 强制卸载），然后报<code>device is busy</code>的错误，然后尝试<code>umount -l NFS挂载目录</code> 命令（-l 当设备空闲时，进行umount），等了一会，发现 umount 成功了，还可以先用命令ps aux 来查看占用设备的程序PID，然后用命令kill来杀死占用设备的进程，最后进行 umount 。</p>
 <p>原因：</p>
