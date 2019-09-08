@@ -242,6 +242,230 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/31/java 8-optional/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="渴望飞的哺乳类">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/author.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="哺乳类的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/31/java 8-optional/" itemprop="url">使用Java 8 的 Optional 类进行优雅的判空</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-31T15:30:13+08:00">
+                2019-03-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java-8/" itemprop="url" rel="index">
+                    <span itemprop="name">Java 8</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="使用Java-8-的-Optional-类进行优雅的判空"><a href="#使用Java-8-的-Optional-类进行优雅的判空" class="headerlink" title="使用Java 8 的 Optional 类进行优雅的判空"></a>使用Java 8 的 Optional 类进行优雅的判空</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这篇是身为技术菜鸟的博主写的第一篇技术文章，新手上路，文笔粗糙，还请大家多多担待。</p>
+<p>之所以写这篇文章，起因是我看完《Java 8 in Action》 也有一段时间了，在日常工作中，也经常使用 Java 8 的语法，就打算写下有关 Java 8 的一系列文章，用于自我复习和总结，加深自己对 Java 8的理解和使用，好了，言归正传，下面就让我们进入主题吧。</p>
+<p>你是否曾经被 NullPointerException 异常折磨的苦不堪言？你是否曾为复杂的POJO 类写非空判断，为那多个 if xxx != null 或多层嵌套 if xxx != null 的代码感到烦恼心累？</p>
+<p>呐，程序猿们，我们是时候用Java 8 的 Optional 类进行优雅的判空啦，当然，如果你用的是 Java 8 的话<em>(:з」∠)</em>。</p>
+<h2 id="Optional-是什么？"><a href="#Optional-是什么？" class="headerlink" title="Optional 是什么？"></a>Optional 是什么？</h2><p>java.util.Optional<t> 类是 Java 8 引入的一个新的类，是一个容器，可以保存类型为T的值，也可以保存null值，它提供了许多有用的方法，使得我们可以不用显示进行空值检查。</t></p>
+<h2 id="Optional-的类方法"><a href="#Optional-的类方法" class="headerlink" title="Optional 的类方法"></a>Optional 的类方法</h2><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>static<t> Optional<t> empty()</t></t></td>
+<td>返回一个空的 Optional 实例</td>
+</tr>
+<tr>
+<td>static <t> Optional<t> of(T value)</t></t></td>
+<td>返回一个包含指定 value 的 Optional，如果 value 为空，则抛出 NullPointerException</td>
+</tr>
+<tr>
+<td>static <t> Optional<t> ofNullable(T value)</t></t></td>
+<td>将指定的值用 Optional 封装之后返回，如果 value 为null，则返回一个空的 Optional 对象</td>
+</tr>
+<tr>
+<td>T get()</td>
+<td>如果 Optional 包含有值，则返回该值，否则抛出 NoSuchElementException 异常</td>
+</tr>
+<tr>
+<td>boolean isPresent()</td>
+<td>如果 Optional 有值，则返回 true，否则返回 false</td>
+</tr>
+<tr>
+<td>void ifPresent(Consumer&lt;? super T&gt; action)</td>
+<td>如果 Optional 有值，则使用该值调用 consumer，否则不做任何事情</td>
+</tr>
+<tr>
+<td>Optional<t> filter(Predicate&lt;? super T&gt; predicate)</t></td>
+<td>如果 Optional 有值，且该值与给定的 predicate 匹配，则返回 该 Optional，否则返回一个空的 Optional</td>
+</tr>
+<tr>
+<td><u> Optional<u> map(Function&lt;? super T, ? extends U&gt; mapper)</u></u></td>
+<td>如果 Optional 有值存在，就对该值执行提供的mapping 函数调用</td>
+</tr>
+<tr>
+<td><u> Optional<u> flatMap(Function&lt;? super T, ? extends Optional&lt;? extends U&gt;&gt; mapper)</u></u></td>
+<td>如果 Optional 有值存在，就对该值执行提供的mapping 函数调用，返回一个Optional 类型的值，否则就返回一个空的Optional 对象</td>
+</tr>
+<tr>
+<td>T orElse(T other)</td>
+<td>如果 Optional 有值，则将其返回，否则返回指定 other 值</td>
+</tr>
+<tr>
+<td>T orElseGet(Supplier&lt;? extends T&gt; supplier)</td>
+<td>如果 Optional 有值则将其返回，否则返回一个由指定的Supplier 接口生成的值</td>
+</tr>
+<tr>
+<td>T orElseThrow()</td>
+<td>如果 Optional 有值，则将其返回，否则抛出 NoSuchElementException 异常</td>
+</tr>
+<tr>
+<td><x extends throwable> T orElseThrow(Supplier&lt;? extends X&gt; exceptionSupplier) throws X</x></td>
+<td>如果 Optional 有值则将其返回，否则抛出一个由指定的 Supplier 接口生成的异常</td>
+</tr>
+<tr>
+<td>Stream<t> stream()</t></td>
+<td>如果 Optional 有值，则返回一个包含 Optional 的 Stream，否则返回一个空的 Stream</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Optional-的应用实例"><a href="#Optional-的应用实例" class="headerlink" title="Optional 的应用实例"></a>Optional 的应用实例</h2><p>上面基本上列出了 Optional 类的所有方法，下面挑几个常用的方法进行介绍：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OptionalTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Data</span></span><br><span class="line">    <span class="meta">@AllArgsConstructor</span></span><br><span class="line">    <span class="meta">@NoArgsConstructor</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Basket</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> Apple apple;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Data</span></span><br><span class="line">    <span class="meta">@AllArgsConstructor</span></span><br><span class="line">    <span class="meta">@NoArgsConstructor</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Apple</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> String color;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> Double weight;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Apple apple = <span class="keyword">new</span> Apple(<span class="string">"red"</span>, <span class="number">20.00</span>);</span><br><span class="line">        Basket basket = <span class="keyword">new</span> Basket(apple);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 返回一个包含指定 apple 的 Optional，如果 apple 为空，则抛出 NullPointerException</span></span><br><span class="line">            Optional&lt;Apple&gt; optionalApple1 = Optional.of(apple);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (NullPointerException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 将 apple 用 Optional 封装之后返回，如果 apple 为null，则返回一个空的 Optional 对象</span></span><br><span class="line">        <span class="comment">// 推荐采用这种方式</span></span><br><span class="line">        Optional&lt;Apple&gt; optionalApple2 = Optional.ofNullable(apple);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 如果 optionalApple 包含有值，则返回该值，否则抛出 NoSuchElementException 异常</span></span><br><span class="line">            Apple apple1 = optionalApple2.get();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (NoSuchElementException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 如果不想get()抛出异常，可以使用 orElse() 方法</span></span><br><span class="line">        <span class="comment">// 如果 optionalApple2 有值，则将其返回，否则返回指定 null 值</span></span><br><span class="line">        Apple apple1 = optionalApple2.orElse(<span class="keyword">null</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 如果 optionalApple2 有值存在，就对该值执行提供的mapping 函数调用</span></span><br><span class="line">        Optional&lt;Double&gt; weightOptional = optionalApple2.map(Apple::getWeight);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 可以与 get() 一起使用，或者与 orElse() 一起使用</span></span><br><span class="line">        Double weight1 = optionalApple2.map(Apple::getWeight).get();</span><br><span class="line">        Double weight2 = optionalApple2.map(Apple::getWeight).orElse(<span class="number">00.00</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 从 Basket 中 获取 Apple 的 weight</span></span><br><span class="line">        Double appleWeight1 = Optional.ofNullable(basket)</span><br><span class="line">                .map(Basket::getApple)</span><br><span class="line">                .map(Apple::getWeight)</span><br><span class="line">                .orElse(<span class="number">00.00</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 使用 orElseThrow</span></span><br><span class="line">        Double appleWeight2 = Optional.ofNullable(basket)</span><br><span class="line">                .map(Basket::getApple)</span><br><span class="line">                .map(Apple::getWeight)</span><br><span class="line">                .orElseThrow(NullPointerException::<span class="keyword">new</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="使用-Optional-进行优雅判空"><a href="#使用-Optional-进行优雅判空" class="headerlink" title="使用 Optional 进行优雅判空"></a>使用 Optional 进行优雅判空</h2><p>还是用上面列举的类，如果不用使用 Optional，想要获取 Basket 类内的 Apple 类的 weight 值，得这样写：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getAppleWeight</span><span class="params">(Basket basket)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (basket != <span class="keyword">null</span>)&#123;</span><br><span class="line">        Apple apple = basket.getApple();</span><br><span class="line">        <span class="keyword">if</span> (apple != <span class="keyword">null</span>)&#123;</span><br><span class="line">            Double weight = apple.getWeight();</span><br><span class="line">            <span class="keyword">if</span> (weight != <span class="keyword">null</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> weight;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0.0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>看看这个 if 嵌套，emm…，这还是较为简单的 pojo 类，如果是复杂的，简直不堪入目啊。<br>而在 Optional 的加持下，只需这样写：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getAppleWeight</span><span class="params">(Basket basket)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Optional.ofNullable(basket)</span><br><span class="line">            .map(Basket::getApple)</span><br><span class="line">            .map(Apple::getWeight)</span><br><span class="line">            .orElse(<span class="number">0.0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>瞬间代码就清爽了，嘻嘻，人也跟着欢快起来了。</p>
+<p>当然 Optional 不止能进行优雅的判空，还可以利用 Optional 的其它的API，进行一些神奇的操作，比如使用 filter 进行参数校验之类的。</p>
+<h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><ol>
+<li>《Java 8 in Action》</li>
+<li><a href="http://www.importnew.com/26066.html" target="_blank" rel="noopener">Java8 如何正确使用 Optional</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/27/ARTS002/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -659,7 +883,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
