@@ -242,6 +242,201 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/09/ARTS0020/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="渴望飞的哺乳类">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/author.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="哺乳类的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/09/ARTS0020/" itemprop="url">ARTS打卡：第二十周</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-09T00:08:35+08:00">
+                2019-09-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ARTS/" itemprop="url" rel="index">
+                    <span itemprop="name">ARTS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="ARTS打卡：第二十周"><a href="#ARTS打卡：第二十周" class="headerlink" title="ARTS打卡：第二十周"></a>ARTS打卡：第二十周</h1><blockquote>
+<p>每周完成一个ARTS：</p>
+<ol>
+<li>Algorithm：每周至少做一个 leetcode 的算法题</li>
+<li>Review：阅读并点评至少一篇英文技术文章</li>
+<li>Tip：学习至少一个技术技巧</li>
+<li>Share：分享一篇有观点和思考的技术文章</li>
+</ol>
+</blockquote>
+<h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><h3 id="38-报数"><a href="#38-报数" class="headerlink" title="38. 报数"></a>38. 报数</h3><p>报数序列是一个整数序列，按照其中的整数的顺序进行报数，得到下一个数。其前五项如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.     1</span><br><span class="line">2.     11</span><br><span class="line">3.     21</span><br><span class="line">4.     1211</span><br><span class="line">5.     111221</span><br></pre></td></tr></table></figure>
+<p><code>1</code> 被读作 <code>&quot;one 1&quot;  (&quot;一个一&quot;)</code> , 即 <code>11</code>。<br><code>11</code> 被读作 <code>&quot;two 1s&quot; (&quot;两个一&quot;）</code>, 即 <code>21</code>。<br><code>21</code> 被读作 <code>&quot;one 2&quot;,  &quot;one 1&quot; （&quot;一个二&quot; ,  &quot;一个一&quot;)</code>, 即 <code>1211</code>。</p>
+<p>给定一个正整数 <em>n</em>（1 ≤ <em>n</em> ≤ 30），输出报数序列的第 <em>n</em> 项。</p>
+<p>注意：整数顺序将表示为一个字符串。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: 1</span><br><span class="line">输出: &quot;1&quot;</span><br></pre></td></tr></table></figure>
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: 4</span><br><span class="line">输出: &quot;1211&quot;</span><br></pre></td></tr></table></figure>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/count-and-say" target="_blank" rel="noopener">https://leetcode-cn.com/problems/count-and-say</a></p>
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>这道题其实并不难，只要理解了题目的意思，这道题就很容易解出来了。</p>
+<p>仔细阅读题目，你会发现从报数序列1开始，往后的序列，都是基于上一个报数序列来得出结果的；报数结果可以拆分两个数，一个是要报的数字，假设为：say，一个是要报数的个数，假设为 count，比如说<code>1</code> 被读作 <code>&quot;one 1&quot;  (&quot;一个一&quot;)</code>，那么 say = 1，count = 1，以此类推即可。</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">countAndSay</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 限制条件，当序列为1时，直接返回结果“1”</span></span><br><span class="line">        <span class="keyword">if</span> (n == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"1"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 初始化序列</span></span><br><span class="line">        StringBuilder currSequence = <span class="keyword">new</span> StringBuilder(<span class="string">"1"</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="comment">// 初始化个数</span></span><br><span class="line">            <span class="keyword">int</span> count = <span class="number">1</span>;</span><br><span class="line">            <span class="comment">// 要报数的序列</span></span><br><span class="line">            <span class="keyword">char</span>[] sequence = currSequence.toString().toCharArray();</span><br><span class="line">            <span class="comment">// 重置结果序列</span></span><br><span class="line">            currSequence = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">            <span class="comment">// 遍历要进行报数的序列，逐一报数</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; sequence.length; j++) &#123;</span><br><span class="line">                <span class="comment">// sequence[j] 可以看做是要报的数</span></span><br><span class="line">                <span class="comment">// 报数完毕</span></span><br><span class="line">                <span class="keyword">if</span> (j == sequence.length - <span class="number">1</span>) &#123;</span><br><span class="line">                    currSequence.append(count).append(sequence[j]);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 下一个要报的数，与当前报的数一样，数量 count+1</span></span><br><span class="line">                <span class="comment">// 比如 11 ，say 为 1，count 为 2</span></span><br><span class="line">                <span class="keyword">if</span> (sequence[j] == sequence[j + <span class="number">1</span>]) &#123;</span><br><span class="line">                    ++count;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="comment">// 报下一个数</span></span><br><span class="line">                    currSequence.append(count).append(sequence[j]);</span><br><span class="line">                    <span class="comment">// 重置要报的数的个数</span></span><br><span class="line">                    count = <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> currSequence.toString();</span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>执行结果：</p>
+<p>执行用时 :3 ms, 在所有 Java 提交中击败了94.08%的用户</p>
+<p>内存消耗 :34.9 MB, 在所有 Java 提交中击败了85.08%的用户</p>
+<h2 id="Review"><a href="#Review" class="headerlink" title="Review"></a>Review</h2><p>这周分享：<a href="https://dzone.com/articles/java-memory-management" target="_blank" rel="noopener">《Java Memory Management》</a></p>
+<p>作者在文中深入的介绍了 Java的 内存管理机制，大致可以概括为以下几点：</p>
+<ol>
+<li>介绍了Java 内存通常可分为 堆栈（<strong>Stack</strong>）和 堆（<strong>Heap</strong>）两块，且分别进行了说明</li>
+<li>介绍了堆中对象引用的类型，可分为强引用（<strong>Strong Reference</strong>）、弱引用（<strong>Weak Reference</strong>）、软引用（<strong>Soft Reference</strong>）、幻想引用（<strong>Phantom Reference</strong>）。</li>
+<li>结合图文，详细的说明了垃圾回收的过程。</li>
+<li>介绍了垃圾收集器的类型，可分为：<ol>
+<li>串行化GC（<strong>Serial GC</strong>）：一个单线程垃圾收集器，适用于数据量小的小型应用。启用选项：<code>-XX:+UseSerialGC</code></li>
+<li>并行化GC（<strong>Parallel GC</strong>）：与 <strong>Serial GC</strong> 最大的区别在于 <strong>Parallel GC</strong> 是多线程进行垃圾回收的。启用选项：<code>-XX:+UseParallelGC</code></li>
+<li>高并发GC（ <strong>Mostly concurrent GC</strong>），主要分为以下两种：<ol>
+<li><strong>Garbage First</strong>：具有高吞吐量和合理的应用程序暂停时间。启用选项：<code>-XX:+UseG1GC</code></li>
+<li><strong>Concurrent Mark Sweep</strong>：应用程序暂停时间保持在最小值。可以通过指定选项：<code>-XX:+UseConcMarkSweepGC</code>来使用它。JDK9开始，这种GC类型被声明为<code>deprecated</code>，不再推荐使用。</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="Tip"><a href="#Tip" class="headerlink" title="Tip"></a>Tip</h2><p>这周分享一些 Linux 命令：</p>
+<ol>
+<li><code>ulimit -n</code>：查看系统默认的最大文件句柄数，系统默认是1024</li>
+<li><code>lsof -n|awk &#39;{print $2}&#39;|sort|uniq -c|sort -nr|more</code>：查看当前进程打开了多少句柄数</li>
+<li><code>ulimit -HSn 4096</code>：以root用户运行，H指定了硬性大小，S指定了软性大小，n表示设定单个进程最大的打开文件句柄数量。</li>
+<li>设定句柄数量后，系统重启后，又会恢复默认值。如果想永久保存下来，可以修改.bash_profile文件，可以修改 /etc/profile 把上面命令加到最后。</li>
+</ol>
+<p>应用场景：解决Linux系统报出 <strong>“too many open files”</strong> 的错误。</p>
+<p>参考链接：</p>
+<p><a href="https://blog.csdn.net/lastsweetop/article/details/6440136" target="_blank" rel="noopener">https://blog.csdn.net/lastsweetop/article/details/6440136</a></p>
+<p><a href="https://blog.csdn.net/lck5602/article/details/79670147" target="_blank" rel="noopener">https://blog.csdn.net/lck5602/article/details/79670147</a></p>
+<h2 id="Share"><a href="#Share" class="headerlink" title="Share"></a>Share</h2><p>本周继续分享<strong>simviso</strong>团队带来的优质翻译学习视频：<a href="https://space.bilibili.com/2494318/channel/detail?cid=85436" target="_blank" rel="noopener">《国外精选翻译课程之编译原理入门》</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/27/ARTS0019/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -374,7 +569,7 @@
 <p>以下链接，是我的学习BM算法和AC算法的笔记，感兴趣的小伙伴们，也可以查看一下👀</p>
 <p><a href="https://github.com/zyszero/awesome-java-algo/blob/master/src/main/java/com/zys/data/structure/BM.java" target="_blank" rel="noopener">https://github.com/zyszero/awesome-java-algo/blob/master/src/main/java/com/zys/data/structure/BM.java</a></p>
 <p><a href="https://github.com/zyszero/awesome-java-algo/blob/master/src/main/java/com/zys/data/structure/AC.java" target="_blank" rel="noopener">https://github.com/zyszero/awesome-java-algo/blob/master/src/main/java/com/zys/data/structure/AC.java</a></p>
-<h1 id="Review-TODO"><a href="#Review-TODO" class="headerlink" title="Review(TODO)"></a>Review(TODO)</h1><p>本周阅读：<a href="https://dzone.com/articles/jvm-architecture-explained" target="_blank" rel="noopener">The JVM Architecture Explained</a></p>
+<h1 id="Review"><a href="#Review" class="headerlink" title="Review"></a>Review</h1><p>本周阅读：<a href="https://dzone.com/articles/jvm-architecture-explained" target="_blank" rel="noopener">The JVM Architecture Explained</a></p>
 <p>作者在文中详细的介绍了JVM的体系结构以及JVM不同组件，感兴趣的小伙们可以自行查阅。</p>
 <h1 id="Tip"><a href="#Tip" class="headerlink" title="Tip"></a>Tip</h1><p>最近遇到一个问题，在这里记录一下解决方案。</p>
 <p>背景：存在主从两台服务器，主机做 nfs的服务端，从机做客户端；由于服务器IP的更换，导致 nfs服务端了挂了，nfs客户端直接卡死，导致尝试访问挂载目录、df -h等操作都会使终端卡住，ctrl+c也不能强行退出，尝试过 kill - 9 也不起作用。</p>
@@ -1994,184 +2189,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/10/Jenkins001/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="渴望飞的哺乳类">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/author.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="哺乳类的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/10/Jenkins001/" itemprop="url">Jenkins 子节点构建配置</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-10T23:49:40+08:00">
-                2019-06-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Jenkins/" itemprop="url" rel="index">
-                    <span itemprop="name">Jenkins</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Jenkins-子节点构建配置"><a href="#Jenkins-子节点构建配置" class="headerlink" title="Jenkins 子节点构建配置"></a>Jenkins 子节点构建配置</h1><p>Jenkins是一个开源软件项目，是基于Java开发的一种持续集成工具，提供超过1000个插件来支持构建、部署、自动化， 满足任何项目的需要。</p>
-<p>本文适用于对 Jenkins 有所了解人群。</p>
-<h2 id="配置子节点"><a href="#配置子节点" class="headerlink" title="配置子节点"></a>配置子节点</h2><ol>
-<li>进入jenkins服务器的首页，点击左边的系统管理，如下图所示：<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2cvty5dj30b30dmgme.jpg" alt="image1"></li>
-<li>然后点击右边的管理节点，如下图所示：<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2d7564wj31ms0xwtdl.jpg" alt="image2"></li>
-<li>继续点击左边的新建节点，然后按如下图操作，最后点击OK：<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2dhedfbj31z009340i.jpg" alt="image3"></li>
-<li>点击OK后，进入到节点的配置界面，进行配置，如下图：<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2drvhy2j31nd0x1n37.jpg" alt="image4"></li>
-</ol>
-<h2 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h2><p>登录远程子节点机器，使用以下命令，创建一个新用户：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># adduser xxx</span><br></pre></td></tr></table></figure>
-<p>这里我们使用root用户，就不创建一个新用户了。</p>
-<h2 id="生成xxx用户的ssh密钥"><a href="#生成xxx用户的ssh密钥" class="headerlink" title="生成xxx用户的ssh密钥"></a>生成xxx用户的ssh密钥</h2><p>如果是使用新创建的用户，则需要先切换至新用户：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su - xxx</span><br></pre></td></tr></table></figure>
-<p>使用以下命令生成ssh密钥：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
-<p>一路回车默认空密码即可，最终会在/home/xxx/.ssh目录中生成公钥<code>id_rsa.pub</code>和私钥<code>id_rsa</code>这两个文件。</p>
-<p>然后将公钥添加到这台主机的 authorized_keys 文件中，并修改权限为600</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 添加命令</span><br><span class="line">cat id_rsa.pub &gt;&gt; authorized_keys</span><br><span class="line"></span><br><span class="line">// 修改权限的命令</span><br><span class="line">chmod 600 authorized_keys</span><br></pre></td></tr></table></figure>
-<h2 id="创建-Jenkins-Credentials-认证"><a href="#创建-Jenkins-Credentials-认证" class="headerlink" title="创建 Jenkins Credentials 认证"></a>创建 Jenkins Credentials 认证</h2><p>回到首页，按照下图操作：<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2e0upsuj31yp0iaq6r.jpg" alt="image5"><br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2ecfd53j312w04bgm5.jpg" alt="image6"><br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2ernv8wj31x50p47am.jpg" alt="image7"></p>
-<p>第三步也可以像下图一样操作，不过使用的是主节点的私钥，然后将主节点生成的公钥加入到子节点的 authorized_keys 文件中；生成秘钥和添加公钥的命令，请参考<a href="#user-content-生成xxx用户的ssh密钥">生成xxx用户的ssh密钥</a>。<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2f9aoqlj31yi0hlacz.jpg" alt="image8"></p>
-<h2 id="继续节点信息配置"><a href="#继续节点信息配置" class="headerlink" title="继续节点信息配置"></a>继续节点信息配置</h2><p>进入节点配置界面，继续节点配置：<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2fgrennj31n60hs760.jpg" alt="9"><br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2fo1kqwj31q00u60ug.jpg" alt="10"><br>回到jenkins服务首页，在左边下方出现，如图所示，即为成功了：<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2fuvub7j30ck0uewg0.jpg" alt="image11"></p>
-<h2 id="将Job关联至子节点"><a href="#将Job关联至子节点" class="headerlink" title="将Job关联至子节点"></a>将Job关联至子节点</h2><ol>
-<li>选择你想关联的 Job，进入配置页面，如下图进行操作：<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2g5cxf1j31jp06haap.jpg" alt="12"><br>标签就是子节点配置页面中填写的标签</li>
-<li>配置 maven<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2gbrmz1j31iw09dmxw.jpg" alt="13"></li>
-<li>配置SSH Server<ol>
-<li>系统管理-&gt;系统设置-&gt;Publish over SSH</li>
-<li>新增 SSH Server 配置<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2gi0z85j31eq0t1q61.jpg" alt="14"></li>
-</ol>
-</li>
-<li>在构建设置配置构建后操作<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g3w2gsxsgkj31kl0t6wiu.jpg" alt="16"></li>
-</ol>
-<p>到此，我们的 Jenkins 子节点配置就大功告成了。</p>
-<p>参考链接：</p>
-<ul>
-<li><a href="https://blog.csdn.net/lusyoe/article/details/54880836" target="_blank" rel="noopener">Jenkins子节点构建配置</a></li>
-<li><a href="https://blog.csdn.net/u012946310/article/details/80969447" target="_blank" rel="noopener">jenkins通过SSH Publishers自动构建发包到远程服务器</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2224,7 +2241,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
