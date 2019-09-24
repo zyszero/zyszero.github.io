@@ -961,7 +961,30 @@
 <li><p>使用 yum 安装（推荐）</p>
 <p>命令：<code>yum -y install openldap compat-openldap openldap-clients openldap-servers openldap-servers-sql openldap-devel migrationtools</code></p>
 </li>
-<li><p>使用下载好的rpm进行安装（无网/内网环境下推荐）(TODO)</p>
+<li><p>使用下载好的rpm进行安装（无网/内网环境下推荐）</p>
+<p>先在可以联网的机器下，下载好对应的 rpm 文件，然后拷贝到无网/内网环境下的机器。</p>
+<ol>
+<li><p>先确保目标机器有安装好yum，需要用yum对下载好的rpm 进行本地安装，好处在于无需明确rpm的安装顺序，仅使用rpm 命令来安装，依照依赖顺序，一个一个安装rpm，很反人类。</p>
+</li>
+<li><p>在能联网的机器上通过yum 下载rpm，需要先安装yum-plugin-downloadonly </p>
+<p>命令：<code>yum -y install yum-plugin-downloadonly</code></p>
+</li>
+</ol>
+</li>
+<li><p>yum-plugin-downloadonly 安装完成后，通过以下命令下载rpm</p>
+<p>命令：<code>yum -y install --downloadonly --downloaddir=/xxx
+openldap compat-openldap openldap-clients openldap-servers openldap-servers-sql
+openldap-devel migrationtools</code></p>
+<p>   <strong>注意：–downloaddir=/xxx指定rpm的下载目录</strong></p>
+<p>   <img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g7ayu7osn4j31bm09m3zh.jpg" alt="ldap - 1.png"></p>
+<p>   <img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g7ayvtxl4yj316f0q5qco.jpg" alt="ldap - 2.png"></p>
+<p>   <img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g7ayw1w4r5j30g60fdab4.jpg" alt="ldap - 3.png"></p>
+<p>   <strong>注意：</strong></p>
+<p>   <strong>我的虚拟机已经安装了一些rpm，实际上所需的 rpm包不止这些。</strong></p>
+<p>   <code>yum -y install --downloadonly --downloaddir=/xxx rpm_name</code> ：<strong>这个命令是有缺陷的，就是系统已有的rpm包，不会重复下载，所以建议在一个比较干净的虚拟机做这个事情。</strong></p>
+</li>
+<li><p>通过 <code>yum localinstall /usr/openldap/rpm/*.rpm</code> 来安装 rpm</p>
+<p><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g7az5klc1rj318c0jejv0.jpg" alt="ldap - 4.png"></p>
 </li>
 </ol>
 <h2 id="配置-OpenLDAP"><a href="#配置-OpenLDAP" class="headerlink" title="配置 OpenLDAP"></a>配置 OpenLDAP</h2><h3 id="查看-OpenLDAP-的版本"><a href="#查看-OpenLDAP-的版本" class="headerlink" title="查看 OpenLDAP 的版本"></a>查看 OpenLDAP 的版本</h3><p>安装成功后，使用以下命令查看 OpenLDAP 的版本信息</p>
