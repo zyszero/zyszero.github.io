@@ -242,6 +242,752 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/06/ARTS0015/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="渴望飞的哺乳类">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/author.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="哺乳类的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/06/ARTS0015/" itemprop="url">ARTS打卡：第十五周</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-06T17:50:08+08:00">
+                2019-07-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ARTS/" itemprop="url" rel="index">
+                    <span itemprop="name">ARTS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="ARTS打卡：第十五周"><a href="#ARTS打卡：第十五周" class="headerlink" title="ARTS打卡：第十五周"></a>ARTS打卡：第十五周</h1><blockquote><p>每周完成一个ARTS：</p>
+<ol>
+<li>Algorithm：每周至少做一个 leetcode 的算法题</li>
+<li>Review：阅读并点评至少一篇英文技术文章</li>
+<li>Tip：学习至少一个技术技巧</li>
+<li>Share：分享一篇有观点和思考的技术文章</li>
+</ol>
+</blockquote>
+<h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><h3 id="387-First-Unique-Character-in-a-String-Easy"><a href="#387-First-Unique-Character-in-a-String-Easy" class="headerlink" title="387. First Unique Character in a String(Easy)"></a>387. First Unique Character in a String(Easy)</h3><blockquote><p>Given a string, find the first non-repeating character in it and return it’s index. If it doesn’t exist, return -1.</p>
+<p><strong>Examples:</strong></p>
+<p>s = “leetcode”<br>return 0.</p>
+<p>s = “loveleetcode”,<br>return 2.</p>
+<p><strong>Note:</strong> You may assume the string contain only lowercase letters.</p>
+<footer><strong>@DevDocs</strong><cite><a href="https://leetcode.com/problems/first-unique-character-in-a-string/" target="_blank" rel="noopener">leetcode.com/problems/first-unique-character-in-a-string</a></cite></footer></blockquote>
+<h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>给一串字符串，在字符串中找到第一个不重复的字符并返回该字符的下标，若果不存在，则返回 -1。</p>
+<p>注意：你可以假设该字符串只包含小写字母。</p>
+<h4 id="解题思路-1"><a href="#解题思路-1" class="headerlink" title="解题思路(1)"></a>解题思路(1)</h4><p>这道题解法其实很简单，可以用暴力破解来做，双重遍历就能找出答案，不过我们作为新时代的好青年，一定是要有追求的😏，我们可以借助散列表，将时间复杂度从 O(n²) 降至 O(n)。<br>我就不多解释，直接上代码了😝。</p>
+<h4 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现(1)"></a>代码实现(1)</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">firstUniqChar</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 边界条件</span></span><br><span class="line">        <span class="keyword">if</span> (s == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 创建一个哈希 map</span></span><br><span class="line">        Map&lt;Character, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;(<span class="number">16</span>);</span><br><span class="line">        <span class="keyword">int</span> n = s.length();</span><br><span class="line">        <span class="comment">// 首先遍历字符串中每个字符</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            Character key = s.charAt(i);</span><br><span class="line">            <span class="comment">// 将字符作为 key，在字符串中出现的次数作为 value；判断 map 中有无包含当前字符，有则 value + 1，无则，将当前字符作为 key，value 设为 1</span></span><br><span class="line">            map.put(key, map.getOrDefault(key, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 第二次遍历字符串，找出 map 中 value == 1 的字符，并返回当前下标</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            Character key = s.charAt(i);</span><br><span class="line">            <span class="keyword">if</span> (map.get(key) == <span class="number">1</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 无符合要求的字符，返回 -1</span></span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="运行结果和复杂度分析-1"><a href="#运行结果和复杂度分析-1" class="headerlink" title="运行结果和复杂度分析(1)"></a>运行结果和复杂度分析(1)</h4><p>结果：Runtime: 38 ms, faster than 38.79% of Java online submissions for First Unique Character in a String.<br>Memory Usage: 38.1 MB, less than 98.75% of Java online submissions for First Unique Character in a String.</p>
+<p>时间复杂度：在最坏的情况下，即不存在无重复的字符，时间复杂度是O(2n)，最好的情况下是 O(n)，所以时间复杂度位是 O(n)。<br>空间复杂度：O(n)。</p>
+<h4 id="解题思路-2"><a href="#解题思路-2" class="headerlink" title="解题思路(2)"></a>解题思路(2)</h4><p>解法来源于别人提交记录，题目中有说明，我们可以假设输入的字符串是一串小写字母串，那么就可以从这个角度出发，借助 Java API 来实现，详细思路看代码注释。</p>
+<h4 id="代码实现-2"><a href="#代码实现-2" class="headerlink" title="代码实现(2)"></a>代码实现(2)</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">firstUniqChar</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 边界条件</span></span><br><span class="line">    <span class="keyword">if</span> (s == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 字符串长度</span></span><br><span class="line">    <span class="keyword">int</span> index = s.length();</span><br><span class="line">    <span class="comment">// 字符串是小写字母组成的字符串，所以字符范围在 a ~ z</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">char</span> i = <span class="string">'a'</span>; i &lt;= <span class="string">'z'</span>; i++) &#123;</span><br><span class="line">        <span class="comment">// String.indexOf（返回第一次出现指定字符的字符串中的索引，没有出现则返回 -1），所以 s.indexOf(i) != -1</span></span><br><span class="line">        <span class="comment">// String.lastIndexOf(返回指定字符的最后一次出现的字符串中的索引)，所以 s.indexOf(i) == s.lastIndexOf(i) 时，该字符没有重复</span></span><br><span class="line">        <span class="comment">// s.indexOf(i) &lt; index 是要求出第一个没有重复字符</span></span><br><span class="line">        <span class="keyword">if</span> (s.indexOf(i) != -<span class="number">1</span> &amp;&amp; s.indexOf(i) == s.lastIndexOf(i) &amp;&amp; s.indexOf(i) &lt; index) &#123;</span><br><span class="line">            index = s.indexOf(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 当index != s.length() 证明存在没有重复的字符</span></span><br><span class="line">    <span class="keyword">if</span> (index != s.length()) &#123;</span><br><span class="line">        <span class="keyword">return</span> index;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="运行结果和复杂度分析-2"><a href="#运行结果和复杂度分析-2" class="headerlink" title="运行结果和复杂度分析(2)"></a>运行结果和复杂度分析(2)</h4><p>Runtime: 1 ms, faster than 100.00% of Java online submissions for First Unique Character in a String.<br>Memory Usage: 36.6 MB, less than 99.82% of Java online submissions for First Unique Character in a String.</p>
+<p>时间复杂度：O(1)<br>空间复杂度：O(1)</p>
+<h2 id="Review"><a href="#Review" class="headerlink" title="Review"></a>Review</h2><p>本周阅读：<a href="https://www.joelonsoftware.com/2000/08/09/the-joel-test-12-steps-to-better-code/" target="_blank" rel="noopener">《The Joel Test: 12 Steps to Better Code》</a><br>这一篇很老的文章，发行于2000年，不过作者在文章中写到的内容，现在来看还是挺有价值的，值的小伙伴们阅读。</p>
+<h2 id="Tip"><a href="#Tip" class="headerlink" title="Tip"></a>Tip</h2><p>本周分享从极客时间的《SQL必知必会》专栏中学习到的技巧：</p>
+<ul>
+<li><code>mysql&gt; select @@profiling;</code>：查看<code>profiling</code>是否开启，开启能让<code>MySQL</code>收集在执行SQL时所使用的资源情况<ul>
+<li><code>profiling = 1</code> 表示开启</li>
+<li><code>profiling = 0</code> 表示关闭<br><img src="https://static001.geekbang.org/resource/image/bc/c1/bcbfdd58b908dc8820fb57d00ff4dcc1.png" alt="image"></li>
+</ul>
+</li>
+<li><code>show profilings</code>：查看当前会话产生的所有<code>profiling</code></li>
+<li><code>show profiling</code>：获取上一次查询的执行时间<br><img src="https://static001.geekbang.org/resource/image/09/7d/09ef901a55ffcd32ed263d82e3cf1f7d.png" alt="image"></li>
+</ul>
+<h2 id="Share"><a href="#Share" class="headerlink" title="Share"></a>Share</h2><p>本周分享：</p>
+<ul>
+<li>梁大的文章：<a href="https://mp.weixin.qq.com/s/tm2fp6HV0JM0vZLclX8kWg" target="_blank" rel="noopener">《颠覆微服务认知：深入思考微服务的七个主流观点》</a></li>
+<li>琦总的文章：<a href="https://mp.weixin.qq.com/s/lvs-3VXfrScdOQVRkkLyRw" target="_blank" rel="noopener">《简单的 HTTP 调用，为什么时延这么大？》</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/03/ARTS0014/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="渴望飞的哺乳类">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/author.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="哺乳类的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/03/ARTS0014/" itemprop="url">ARTS打卡：第十四周</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-03T22:08:10+08:00">
+                2019-07-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ARTS/" itemprop="url" rel="index">
+                    <span itemprop="name">ARTS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="ARTS打卡：第十四周"><a href="#ARTS打卡：第十四周" class="headerlink" title="ARTS打卡：第十四周"></a>ARTS打卡：第十四周</h1><blockquote><p>每周完成一个ARTS：</p>
+<ol>
+<li>Algorithm：每周至少做一个 leetcode 的算法题</li>
+<li>Review：阅读并点评至少一篇英文技术文章</li>
+<li>Tip：学习至少一个技术技巧</li>
+<li>Share：分享一篇有观点和思考的技术文章</li>
+</ol>
+</blockquote>
+<h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><h3 id="7-Reverse-Integer-Easy"><a href="#7-Reverse-Integer-Easy" class="headerlink" title="7. Reverse Integer(Easy)"></a>7. Reverse Integer(Easy)</h3><blockquote><p>Given a 32-bit signed integer, reverse digits of an integer.</p>
+<p><strong>Example 1:</strong></p>
+<p>Input: 123<br>Output: 321</p>
+<p><strong>Example 2:</strong></p>
+<p>Input: -123<br>Output: -321<br>Example 3:</p>
+<p>Input: 120<br>Output: 21</p>
+<p><strong>Note:</strong><br>Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−2^31,  2^31 − 1]. For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.</p>
+<footer><strong>@DevDocs</strong><cite><a href="https://leetcode.com/problems/reverse-integer/" target="_blank" rel="noopener">leetcode.com/problems/reverse-integer</a></cite></footer></blockquote>
+<h4 id="大致题意"><a href="#大致题意" class="headerlink" title="大致题意"></a>大致题意</h4><p>给定一个32位的带符号的整数，求翻转之后的整数。</p>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><p>解题思路在代码注释，看注释就行了，这题虽然难度是 easy ，但我也是看讨论区才恍然大悟的，人与人之间的差距，一下子就显现出来了<em>(:зゝ∠)</em>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (x != <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">//求整数的尾部数字，比如 123，那么当前的尾数是 3</span></span><br><span class="line">        <span class="keyword">int</span> tail = x % <span class="number">10</span>;</span><br><span class="line">        <span class="comment">// 逐位数字进行翻转，比如 123，先翻转一位是 3，继续翻转则是 3*10 + 2，以此类推</span></span><br><span class="line">        <span class="keyword">int</span> newResult = result * <span class="number">10</span> + tail;</span><br><span class="line">        <span class="comment">// 如果 result * 10 + tail 发生溢出，溢出值 newResult/10 是不等于 result 的，这里不减去尾部值 tail，是因为值为整形，除于10后，小数点会被移除。</span></span><br><span class="line">        <span class="keyword">if</span> (newResult / <span class="number">10</span> != result) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 没有溢出则继续遍历</span></span><br><span class="line">        x /= <span class="number">10</span>;</span><br><span class="line">        result = newResult;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="运行结果-amp-复杂度分析"><a href="#运行结果-amp-复杂度分析" class="headerlink" title="运行结果&amp;复杂度分析"></a>运行结果&amp;复杂度分析</h4><p>运行结果：<br>Runtime: 1 ms, faster than 100.00% of Java online submissions for Reverse Integer.<br>Memory Usage: 33.6 MB, less than 9.08% of Java online submissions for Reverse Integer.</p>
+<p>时间复杂度：O(logx)<br>空间复杂度：O(1)</p>
+<h2 id="Review"><a href="#Review" class="headerlink" title="Review"></a>Review</h2><p>本周阅读：<a href="https://medium.com/free-code-camp/how-to-write-code-you-will-love-in-the-future-ee5decae5ce4" target="_blank" rel="noopener">《How to write code you will love in the future》</a></p>
+<p>作者在文中根据自己多年的行业经验，提出了几点建议，并结合自身的经历，对之一一说明。</p>
+<ol>
+<li>Never compromise on code quality（从不对代码质量妥协）</li>
+<li>Always document and write code comments（总是编写文档和代码注释）</li>
+<li>Don’t reinvent the wheel, unless you ensure it is maintainable（不要重复造轮子，除非你能确保它是可维护的）</li>
+<li>Always test your codebase（总是测试你的代码库）</li>
+<li>Keep learning（保持学习）</li>
+</ol>
+<h2 id="Tip"><a href="#Tip" class="headerlink" title="Tip"></a>Tip</h2><p>最近学到什么新技巧<em>(:зゝ∠)</em>，就随意分享个 windows 10 多窗口和多桌面的快捷键吧。</p>
+<p>多桌面快捷键<br><strong>win + tab</strong>：打开多桌面视图<br><strong>ctrl + win + ← 或 ctrl + win + →</strong>：快速左右切换虚拟桌面</p>
+<p>多窗口快捷键<br><strong>win + ↑</strong>：上分屏<br><strong>win + ↓</strong>：下分屏<br><strong>win + ←</strong>：左分屏<br><strong>win + →</strong>：右分屏</p>
+<h2 id="Share"><a href="#Share" class="headerlink" title="Share"></a>Share</h2><p>本周分享：</p>
+<ul>
+<li><a href="https://mp.weixin.qq.com/s/mJVkLn2I1O7V8jvxc_Z4zw" target="_blank" rel="noopener">《JVM内存结构 VS Java内存模型 VS Java对象模型》</a></li>
+<li><a href="https://mp.weixin.qq.com/s/ME_rVwhstQ7FGLPVcfpugQ" target="_blank" rel="noopener">《再有人问你Java内存模型是什么，就把这篇文章发给他。》</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/23/ARTS0013/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="渴望飞的哺乳类">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/author.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="哺乳类的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/23/ARTS0013/" itemprop="url">ARTS打卡：第十三周</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-23T15:17:50+08:00">
+                2019-06-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ARTS/" itemprop="url" rel="index">
+                    <span itemprop="name">ARTS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="ARTS打卡：第十三周"><a href="#ARTS打卡：第十三周" class="headerlink" title="ARTS打卡：第十三周"></a>ARTS打卡：第十三周</h1><blockquote><p>每周完成一个ARTS：</p>
+<ol>
+<li>Algorithm：每周至少做一个 leetcode 的算法题</li>
+<li>Review：阅读并点评至少一篇英文技术文章</li>
+<li>Tip：学习至少一个技术技巧</li>
+<li>Share：分享一篇有观点和思考的技术文章</li>
+</ol>
+</blockquote>
+<h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><h3 id="48-Rotate-Image-Medium"><a href="#48-Rotate-Image-Medium" class="headerlink" title="48. Rotate Image(Medium)"></a>48. Rotate Image(Medium)</h3><blockquote><p>You are given an n x n 2D matrix representing an image.</p>
+<p>Rotate the image by 90 degrees (clockwise).</p>
+<p><strong>Note:</strong></p>
+<p>You have to rotate the image <code>in-place</code>, which means you have to modify the input 2D matrix directly. <strong>DO NOT</strong> allocate another 2D matrix and do the rotation.</p>
+<p><strong>Example 1:</strong></p>
+<p>Given input matrix =<br>[<br>  [1,2,3],<br>  [4,5,6],<br>  [7,8,9]<br>],</p>
+<p>rotate the input matrix in-place such that it becomes:<br>[<br>  [7,4,1],<br>  [8,5,2],<br>  [9,6,3]<br>]</p>
+<p><strong>Example 2:</strong></p>
+<p>Given input matrix =<br>[<br>  [ 5, 1, 9,11],<br>  [ 2, 4, 8,10],<br>  [13, 3, 6, 7],<br>  [15,14,12,16]<br>],</p>
+<p>rotate the input matrix in-place such that it becomes:<br>[<br>  [15,13, 2, 5],<br>  [14, 3, 4, 1],<br>  [12, 6, 8, 9],<br>  [16, 7,10,11]<br>]</p>
+<footer><strong>@DevDocs</strong><cite><a href="https://leetcode.com/problems/rotate-image/" target="_blank" rel="noopener">leetcode.com/problems/rotate-image</a></cite></footer></blockquote>
+<h4 id="大致题意"><a href="#大致题意" class="headerlink" title="大致题意"></a>大致题意</h4><p>给一个 <code>n×n</code> 的2D矩阵，要求将这个矩阵顺时针旋转<code>90°</code><br><strong>注意：</strong> 需要原地旋转，意味着要直接修改输入的2D矩阵，不允许借助其他的矩阵来完成旋转。</p>
+<h4 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h4><p>我们可以通过仔细观察 example 的示例，发现其中规律：</p>
+<ol>
+<li><code>n×n</code>的2D矩阵是一个二维数据，旋转90°，相当于逐层旋转90°，如图所示：<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g4b4t49dxvj30fd094wel.jpg" alt="旋转"><br>1层和2层分别顺时针旋转<code>90°</code>。</li>
+<li>单层旋转的时候，假设输入的2D矩阵是 a，那么顺时针旋转<code>90°</code>时，矩阵外层的四个角的元素值替换顺序为：<code>a[x][x] -&gt; a[x][y] -&gt; a[y][y] -&gt; a[x][x]</code>（x 为起点下标，y为终点下标）。<br>那么对于外层<code>□</code>来说，只需依次对上边元素进行旋转<code>90°</code>即可，所以我们可以推导出：<code>a[x][x + offset] -&gt; a[x + offset][y] -&gt; a[y][y - offset] -&gt; a[x][x + offset]</code>，其中 offset 是偏移量，要满足 offset &lt; 当前外层正方形的长度 - 1。</li>
+<li>外层向内层递进的时候，边长度都减 2。</li>
+</ol>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 核心思路：</span></span><br><span class="line"><span class="comment"> * n × n 的矩阵</span></span><br><span class="line"><span class="comment"> * 由最外层到最里层，一层层依次进行旋转。</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;</span></span><br><span class="line"><span class="comment"> * 可以观察的规律是</span></span><br><span class="line"><span class="comment"> * 1. 每层递进时，矩阵边长度都 -2</span></span><br><span class="line"><span class="comment"> * 2. a[x][x + offset] -&gt; a[x + offset][y] -&gt; a[y][y - offset] -&gt; a[x][x + offset] 其中 offset 是偏移量，要满足 offset &lt; 当前矩阵边长度 -1</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> matrix</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="keyword">int</span>[][] matrix)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> y = matrix.length - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> currLength = matrix.length;</span><br><span class="line">    <span class="keyword">while</span> (x &lt; y) &#123;</span><br><span class="line">        <span class="keyword">int</span> offset = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (offset &lt; currLength - <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> topLeft = matrix[x][x + offset];</span><br><span class="line">            matrix[x][x + offset] = matrix[y - offset][x];</span><br><span class="line">            <span class="keyword">int</span> topRight = matrix[x + offset][y];</span><br><span class="line">            matrix[x + offset][y] = topLeft;</span><br><span class="line">            <span class="keyword">int</span> bottomRight = matrix[y][y - offset];</span><br><span class="line">            matrix[y][y - offset] = topRight;</span><br><span class="line">            matrix[y - offset][x] = bottomRight;</span><br><span class="line">            ++offset;</span><br><span class="line">        &#125;</span><br><span class="line">        ++x;</span><br><span class="line">        --y;</span><br><span class="line">        currLength -= <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="运行结果与复杂度分析"><a href="#运行结果与复杂度分析" class="headerlink" title="运行结果与复杂度分析"></a>运行结果与复杂度分析</h4><p>结果：<br>Runtime: 0 ms, faster than 100.00% of Java online submissions for Rotate Image.<br>Memory Usage: 36.1 MB, less than 99.73% of Java online submissions for Rotate Image.</p>
+<p>复杂度分析：<br>时间复杂度：O(n²)<br>空间复杂度：O(n)</p>
+<h2 id="Review"><a href="#Review" class="headerlink" title="Review"></a>Review</h2><p>本周阅读：</p>
+<ol>
+<li><a href="https://www.programcreek.com/2013/09/top-10-methods-for-java-arrays/" target="_blank" rel="noopener">《Top 10 Methods for Java Arrays》</a><br>文中列举了Java Array的十大方法。它们是stackoverflow中投票最多的问题。</li>
+<li><a href="https://www.programcreek.com/2013/04/why-string-is-immutable-in-java/" target="_blank" rel="noopener">《Why String is immutable in Java?》</a><br>文中从内存，同步和数据结构的角度说明了 String 为什么设计为不可变的。<br>拓展阅读：<a href="https://www.programcreek.com/2013/04/jvm-run-time-data-areas/" target="_blank" rel="noopener">《JVM Run-Time Data Areas》</a></li>
+<li><a href="https://hackernoon.com/learn-basics-of-version-control-git-commands-in-less-than-10-minutes-9769d3147410" target="_blank" rel="noopener">Learn basics of Version Control &amp; Git Commands in less than 10 minutes.</a><br>作者在文中介绍了版本控制的概念、用途和术语以及一些基础的练习方式，并列举一些流行的版本控制系统。<br>其中作者着重介绍了最流行的版本控制系统 Git，在文中列举了 Git 的基础命令，并写下了有关 Git 的简单使用教程。</li>
+</ol>
+<p>这三篇文章都挺简单易懂的，感觉兴趣的小伙伴们，可以通过查看原文，了解更多详情。</p>
+<h2 id="Tip"><a href="#Tip" class="headerlink" title="Tip"></a>Tip</h2><p>本周分享有关 firewalld 的一些命令：</p>
+<ol>
+<li>firewalld的基本使用<br>启动： systemctl start firewalld<br>查看状态： systemctl status firewalld<br>停止： systemctl disable firewalld<br>禁用： systemctl stop firewalld</li>
+<li>systemctl是CentOS7的服务管理工具中主要的工具，它融合之前service和chkconfig的功能于一体。<br>启动一个服务：systemctl start firewalld.service<br>关闭一个服务：systemctl stop firewalld.service<br>重启一个服务：systemctl restart firewalld.service<br>显示一个服务的状态：systemctl status firewalld.service<br>在开机时启用一个服务：systemctl enable firewalld.service<br>在开机时禁用一个服务：systemctl disable firewalld.service<br>查看服务是否开机启动：systemctl is-enabled firewalld.service<br>查看已启动的服务列表：systemctl list-unit-files|grep enabled<br>查看启动失败的服务列表：systemctl –failed</li>
+<li>配置firewalld-cmd<br>查看版本： firewall-cmd –version<br>查看帮助： firewall-cmd –help<br>显示状态： firewall-cmd –state<br>查看所有打开的端口： firewall-cmd –zone=public –list-ports<br>更新防火墙规则： firewall-cmd –reload<br>查看区域信息:  firewall-cmd –get-active-zones<br>查看指定接口所属区域： firewall-cmd –get-zone-of-interface=eth0<br>拒绝所有包：firewall-cmd –panic-on<br>取消拒绝状态： firewall-cmd –panic-off<br>查看是否拒绝： firewall-cmd –query-panic </li>
+<li>开启端口<br>添加: firewall-cmd –zone=public –add-port=80/tcp –permanent    （–permanent永久生效，没有此参数重启后失效）<br>重新载入: firewall-cmd –reload<br>查看: firewall-cmd –zone=public –query-port=80/tcp<br>删除: firewall-cmd –zone=public –remove-port=80/tcp –permanent</li>
+</ol>
+<p><strong>转自：</strong><a href="https://www.cnblogs.com/moxiaoan/p/5683743.html" target="_blank" rel="noopener">CentOS7使用firewalld打开关闭防火墙与端口</a>。</p>
+<h2 id="Share"><a href="#Share" class="headerlink" title="Share"></a>Share</h2><p>本周分享耗子叔的一篇文章：<a href="https://coolshell.cn/articles/19464.html" target="_blank" rel="noopener">《如何超过大多数人》</a>。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/15/ARTS0012/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="渴望飞的哺乳类">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/author.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="哺乳类的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/15/ARTS0012/" itemprop="url">ARTS打卡：第十二周</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-15T18:30:07+08:00">
+                2019-06-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ARTS/" itemprop="url" rel="index">
+                    <span itemprop="name">ARTS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="ARTS打卡：第十二周"><a href="#ARTS打卡：第十二周" class="headerlink" title="ARTS打卡：第十二周"></a>ARTS打卡：第十二周</h1><blockquote><p>每周完成一个ARTS：</p>
+<ol>
+<li>Algorithm：每周至少做一个 leetcode 的算法题</li>
+<li>Review：阅读并点评至少一篇英文技术文章</li>
+<li>Tip：学习至少一个技术技巧</li>
+<li>Share：分享一篇有观点和思考的技术文章</li>
+</ol>
+</blockquote>
+<h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><h3 id="36-Valid-Sudoku-Medium"><a href="#36-Valid-Sudoku-Medium" class="headerlink" title="36. Valid Sudoku(Medium)"></a>36. Valid Sudoku(Medium)</h3><blockquote><p>Determine if a 9x9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules:</p>
+<ol>
+<li>Each row must contain the digits 1-9 without repetition.</li>
+<li>Each column must contain the digits 1-9 without repetition.</li>
+<li>Each of the 9 3x3 sub-boxes of the grid must contain the digits 1-9 without repetition.</li>
+</ol>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Sudoku-by-L2G-20050714.svg/250px-Sudoku-by-L2G-20050714.svg.png" alt="数独"><br>A partially filled sudoku which is valid.</p>
+<p>The Sudoku board could be partially filled, where empty cells are filled with the character <code>&#39;.&#39;</code>.</p>
+<p><strong>Example 1:</strong><br><strong>Input:</strong><br>[<br>  [“5”,”3”,”.”,”.”,”7”,”.”,”.”,”.”,”.”],<br>  [“6”,”.”,”.”,”1”,”9”,”5”,”.”,”.”,”.”],<br>  [“.”,”9”,”8”,”.”,”.”,”.”,”.”,”6”,”.”],<br>  [“8”,”.”,”.”,”.”,”6”,”.”,”.”,”.”,”3”],<br>  [“4”,”.”,”.”,”8”,”.”,”3”,”.”,”.”,”1”],<br>  [“7”,”.”,”.”,”.”,”2”,”.”,”.”,”.”,”6”],<br>  [“.”,”6”,”.”,”.”,”.”,”.”,”2”,”8”,”.”],<br>  [“.”,”.”,”.”,”4”,”1”,”9”,”.”,”.”,”5”],<br>  [“.”,”.”,”.”,”.”,”8”,”.”,”.”,”7”,”9”]<br>]<br><strong>Output:</strong> true</p>
+<p><strong>Example 2:</strong><br><strong>Input:</strong><br>[<br>  [“8”,”3”,”.”,”.”,”7”,”.”,”.”,”.”,”.”],<br>  [“6”,”.”,”.”,”1”,”9”,”5”,”.”,”.”,”.”],<br>  [“.”,”9”,”8”,”.”,”.”,”.”,”.”,”6”,”.”],<br>  [“8”,”.”,”.”,”.”,”6”,”.”,”.”,”.”,”3”],<br>  [“4”,”.”,”.”,”8”,”.”,”3”,”.”,”.”,”1”],<br>  [“7”,”.”,”.”,”.”,”2”,”.”,”.”,”.”,”6”],<br>  [“.”,”6”,”.”,”.”,”.”,”.”,”2”,”8”,”.”],<br>  [“.”,”.”,”.”,”4”,”1”,”9”,”.”,”.”,”5”],<br>  [“.”,”.”,”.”,”.”,”8”,”.”,”.”,”7”,”9”]<br>]<br><strong>Output:</strong> false<br>Explanation: Same as Example 1, except with the 5 in the top left corner being modified to 8. Since there are two 8’s in the top left 3x3 sub-box, it is invalid.</p>
+<p><strong>Note:</strong></p>
+<ul>
+<li>A Sudoku board (partially filled) could be valid but is not necessarily solvable.</li>
+<li>Only the filled cells need to be validated according to the mentioned rules.</li>
+<li>The given board contain only digits 1-9 and the character ‘.’.</li>
+<li>The given board size is always 9x9.</li>
+</ul>
+<footer><strong>@DevDocs</strong><cite><a href="https://leetcode.com/problems/valid-sudoku/" target="_blank" rel="noopener">leetcode.com/problems/valid-sudoku</a></cite></footer></blockquote>
+<p><strong>题意如下：</strong><br>判断 9×9 的数独板是否有效，只需要根据以下规则验证已填充的单元格即可：</p>
+<ol>
+<li>每行必须包含数字<code>1-9</code>而不重复。</li>
+<li>每列必须包含数字<code>1-9</code>而不重复。</li>
+<li>网格的9个<code>3x3</code>子框中的每一个必须包含数字<code>1-9</code>而不重复。</li>
+<li>数独板可以部分填充，其中空单元格填充字符<code>&#39;.&#39;</code>。</li>
+</ol>
+<p>注意：</p>
+<ul>
+<li>数独板(部分填充)可能是有效的，但不一定是可解的。</li>
+<li>只需要根据上述规则验证填充的单元格。</li>
+<li>给定的数独板只包含数字<code>1-9</code>和字符<code>&#39;.&#39;</code>。</li>
+<li>给定的数独板大小一直都是 <code>9×9</code> 的。</li>
+</ul>
+<p><strong>解题思路：</strong><br>按照题目说的规则和注意事项来看，解题的核心思路在于如何快速的判断出一个字符在当前行且当前列且当前所处的 3×3 小格内有无重复。<br>那么我们可以联想到借助哈希表的特性，来快速判断字符有无重复。</p>
+<p>代码实现如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 数独的特性：</span></span><br><span class="line"><span class="comment"> * 1. Each row must contain the digits 1-9 without repetition.</span></span><br><span class="line"><span class="comment"> * 2. Each column must contain the digits 1-9 without repetition.</span></span><br><span class="line"><span class="comment"> * 3. Each of the 9 3x3 sub-boxes of the grid must contain the digits 1-9 without repetition.</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;</span></span><br><span class="line"><span class="comment"> * 所以解决这道题的核心思路在于：如何快速的判断出一个字符在当前行且当前列且当前所处的 3×3 小格内有无重复</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;</span></span><br><span class="line"><span class="comment"> * 方法：借助哈希表（Set）的特性，快速判断字符有无重复</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> board</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValidSudoku</span><span class="params">(<span class="keyword">char</span>[][] board)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 这里采用 Set 集合，</span></span><br><span class="line">    <span class="comment">// 利用 Set 集合的特性：</span></span><br><span class="line">    <span class="comment">// 1. 集合内元素不重复</span></span><br><span class="line">    <span class="comment">// 2. Set.add(a)：如果元素 a 不存在，加入到集合中，并返回 true，反之，则返回 false 且不加入到集合中</span></span><br><span class="line">    Set&lt;String&gt; seen = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">9</span>; j++) &#123;</span><br><span class="line">            <span class="keyword">char</span> number = board[i][j];</span><br><span class="line">            <span class="comment">// 依照题意，数独的空单元格可以用 '.' 来填充，所以这里要忽略 '.'</span></span><br><span class="line">            <span class="keyword">if</span> (number != <span class="string">'.'</span>) &#123;</span><br><span class="line">                <span class="comment">// 这里为了便于阅读与理解，我们可以将 board[i][j] 的值进行处理</span></span><br><span class="line">                <span class="comment">// 假设 board[0][0] = 1，那么 "1 in row 0" 这个字符串值就可以表示 board[0][0] 在当前行的值；</span></span><br><span class="line">                <span class="comment">// "1 in column 0" 这个字符串值就可以表示 board[0][0] 在当前列的值；</span></span><br><span class="line">                <span class="comment">// "1 in block 0-0" 这个字符串值就可以表示 board[0][0] 在当前 3×3 小格内的值。</span></span><br><span class="line">                <span class="comment">// 这样就不需要借助额外的 set 集合来区分 行、列以及 3×3 的小格了。</span></span><br><span class="line">                <span class="comment">// 当然也可以使用三个 set 集合，分别进行区分，不过我觉得现在的实现方法，可读性更高，代码更简短。</span></span><br><span class="line">                <span class="keyword">if</span> (!seen.add(number + <span class="string">" in row "</span> + i)</span><br><span class="line">                        || !seen.add(number + <span class="string">" in column "</span> + j)</span><br><span class="line">                        || !seen.add(number + <span class="string">" in block "</span> + i / <span class="number">3</span> + <span class="string">"-"</span> + j / <span class="number">3</span>)) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>结果：</strong><br>Runtime: 4 ms, faster than 59.98% of Java online submissions for Valid Sudoku.<br>Memory Usage: 43.3 MB, less than 94.33% of Java online submissions for Valid Sudoku.</p>
+<p><strong>复杂度分析：</strong><br>时间复杂度：O(1)，数独的总格数固定是81格，也就是循环遍历次数是81次，是常数阶。<br>空间复杂度：O(1)，额外使用的空间也是81，是常数阶。</p>
+<h2 id="Review"><a href="#Review" class="headerlink" title="Review"></a>Review</h2><p>本周阅读的是：<a href="https://medium.com/s/story/6-science-backed-strategies-to-avoid-choking-under-pressure-4db788062371" target="_blank" rel="noopener">6 Science-Backed Strategies to Avoid Choking Under Pressure</a>（6个有科学依据的策略来避免在压力下窒息）。</p>
+<p>作者在文中说明了在压力下，会产生焦虑，这个过程既是生理上的，也是心理上的，在高风险的情况下，会引起神经反应，例如注意力分散、记忆力丧失和运动功能丧失，所有这些都会影响自身表现。</p>
+<p>为此，作者在文中列举了5个有科学依据的策略来避免在压力下窒息：</p>
+<ol>
+<li>Don’t think too hard.（别想的太难）</li>
+<li>Practice under pressure.（在压力下练习）</li>
+<li>Pretend like you’ve already won.（假装你已经赢了）</li>
+<li>Tell yourself that you’re in control.（告诉自己一切尽在掌握中）</li>
+<li>Give yourself a pep talk.（自我激励）</li>
+</ol>
+<p>感兴趣的小伙伴们，可以查看原文获取更多详情哟~（前提是要有梯子<em>(:з」∠)</em>）。</p>
+<p>ps: 虽然作者的标题写的是有6个策略，但我反复数了下，就只有5个策略<em>(:з」∠)</em>。</p>
+<h2 id="Tip"><a href="#Tip" class="headerlink" title="Tip"></a>Tip</h2><p>本周分享：<a href="https://zyszero.github.io/2019/06/10/Jenkins001/" target="_blank" rel="noopener">Jenkins 子节点构建配置</a></p>
+<h2 id="Share"><a href="#Share" class="headerlink" title="Share"></a>Share</h2><p>本周分享梁大在知识星球发的一个帖子，写的真好！<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g43e7w9z5mj30ku3rakd8.jpg" alt="服务端思维"><br>星球是付费，感兴趣的小伙伴们自行斟酌哈~</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/10/Jenkins001/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1377,802 +2123,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/03/ARTS007/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="渴望飞的哺乳类">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/author.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="哺乳类的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/03/ARTS007/" itemprop="url">ARTS打卡：第七周</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-03T15:30:53+08:00">
-                2019-05-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ARTS/" itemprop="url" rel="index">
-                    <span itemprop="name">ARTS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="ARTS打卡：第七周"><a href="#ARTS打卡：第七周" class="headerlink" title="ARTS打卡：第七周"></a>ARTS打卡：第七周</h1><blockquote><p>每周完成一个ARTS：</p>
-<ol>
-<li>Algorithm：每周至少做一个 leetcode 的算法题</li>
-<li>Review：阅读并点评至少一篇英文技术文章</li>
-<li>Tip：学习至少一个技术技巧</li>
-<li>Share：分享一篇有观点和思考的技术文章</li>
-</ol>
-</blockquote>
-<h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><h3 id="189-Rotate-Array-Easy"><a href="#189-Rotate-Array-Easy" class="headerlink" title="189. Rotate Array(Easy)"></a>189. Rotate Array(Easy)</h3><blockquote><p>Given an array, rotate the array to the right by k steps, where k is non-negative.</p>
-<p><strong>Example 1:</strong></p>
-<p>Input: [1,2,3,4,5,6,7] and k = 3<br>Output: [5,6,7,1,2,3,4]<br>Explanation:<br>rotate 1 steps to the right: [7,1,2,3,4,5,6]<br>rotate 2 steps to the right: [6,7,1,2,3,4,5]<br>rotate 3 steps to the right: [5,6,7,1,2,3,4]</p>
-<p><strong>Example 2:</strong></p>
-<p>Input: [-1,-100,3,99] and k = 2<br>Output: [3,99,-1,-100]<br>Explanation:<br>rotate 1 steps to the right: [99,-1,-100,3]<br>rotate 2 steps to the right: [3,99,-1,-100]</p>
-<p>Note:</p>
-<ul>
-<li>Try to come up as many solutions as you can, there are at least 3 different ways to solve this problem.</li>
-<li>Could you do it in-place with O(1) extra space?</li>
-</ul>
-<footer><strong>@DevDocs</strong><cite><a href="https://leetcode.com/problems/rotate-array/" target="_blank" rel="noopener">leetcode.com/problems/rotate-array</a></cite></footer></blockquote>
-<p>题意：<br>给定一个数组，将数组中的元素向右移动 k 个位置，其中 k 是非负数。<br>需要注意是只允许使用 O(1)的额外空间，效果如 Example 所示。</p>
-<p>解题思路1：使用暴力破解。<br>循环 K 次，每次遍历数组，让数组的每一位元素往前移动一位。</p>
-<p>解题代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">            <span class="keyword">int</span> temp = nums[j];</span><br><span class="line">            nums[j] = nums[<span class="number">0</span>];</span><br><span class="line">            nums[<span class="number">0</span>] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>复杂度分析：<br>时间复杂度分析：O(k * n)<br>空间复杂度分析：O(1)</p>
-<p>解题思路2：<br>仔细观察 Example ，我们可以发现一个事实，旋转数组 K 次，K 个元素从数组后端挪动到前端，其余元素从前端挪到后端。<br>在这种方法中，我们首先翻转数组，然后再次翻转数组前 k 个元素，最后翻转 n - k 个元素，即其余的元素，n 为数组长度；这样就能得出答案。<br>例子：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">原始数组                           : <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">7</span></span><br><span class="line">首先翻转整个数组                    : <span class="number">7</span> <span class="number">6</span> <span class="number">5</span> <span class="number">4</span> <span class="number">3</span> <span class="number">2</span> <span class="number">1</span></span><br><span class="line">其次翻转数组前 k 个元素             : <span class="number">5</span> <span class="number">6</span> <span class="number">7</span> <span class="number">4</span> <span class="number">3</span> <span class="number">2</span> <span class="number">1</span></span><br><span class="line">最后翻转数组后 n - k 个元素         :<span class="number">5</span> <span class="number">6</span> <span class="number">7</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> --&gt; Result</span><br></pre></td></tr></table></figure>
-<p>解题代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    k = k % nums.length;</span><br><span class="line">    <span class="comment">// 翻转整个数组</span></span><br><span class="line">    reverse(nums, <span class="number">0</span>, nums.length - <span class="number">1</span>);</span><br><span class="line">    <span class="comment">// 翻转数组前 k 个元素</span></span><br><span class="line">    reverse(nums, <span class="number">0</span>, k - <span class="number">1</span>);</span><br><span class="line">    <span class="comment">// 翻转数组后 n - k 个元素</span></span><br><span class="line">    reverse(nums, k, nums.length - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (start &lt; end) &#123;</span><br><span class="line">        <span class="keyword">int</span> temp = nums[start];</span><br><span class="line">        nums[start] = nums[end];</span><br><span class="line">        nums[end] = temp;</span><br><span class="line">        start++;</span><br><span class="line">        end--;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>复杂度分析：<br>时间复杂度：O(n)<br>空间复杂度：O(1)</p>
-<h3 id="217-Contains-Duplicate-Easy"><a href="#217-Contains-Duplicate-Easy" class="headerlink" title="217. Contains Duplicate(Easy)"></a>217. Contains Duplicate(Easy)</h3><blockquote><p>Given an array of integers, find if the array contains any duplicates.</p>
-<p>Your function should return true if any value appears at least twice in the array, and it should return false if every element is distinct.</p>
-<p><strong>Example 1:</strong></p>
-<p>Input: [1,2,3,1]<br>Output: true</p>
-<p><strong>Example 2:</strong></p>
-<p>Input: [1,2,3,4]<br>Output: false</p>
-<p><strong>Example 3:</strong></p>
-<p>Input: [1,1,1,3,3,4,3,2,4,2]<br>Output: true</p>
-<footer><strong>@DevDocs</strong><cite><a href="https://leetcode.com/problems/contains-duplicate/" target="_blank" rel="noopener">leetcode.com/problems/contains-duplicate</a></cite></footer></blockquote>
-<p>题意：<br>给一个 int 类型的数组，如果数组内有重复的元素，返回 true，无则返回 false。</p>
-<p>思路1：结合set集合进行判重。</p>
-<p>代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">containsDuplicate</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    HashSet&lt;Integer&gt; set = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> num : nums) &#123;</span><br><span class="line">        <span class="keyword">if</span> (set.contains(num))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        set.add(num);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>复杂度：<br>时间复杂度：O(n)，set的查找和插入消耗的时间都是常量。<br>空间复杂度：O(n)，额外消耗的空间就是set的大小，取决于有多少元素加入到集合中。</p>
-<p>思路2：先对数组进行排序，然后遍历进行判重。</p>
-<p>代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">containsDuplicate</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    Arrays.sort(nums);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (nums[i] == nums[i + <span class="number">1</span>]) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>复杂度：<br>时间复杂度：O(nlogn)。Array.sort() 时间复杂度是 O(nlogn)，遍历是 O(n)，不过遍历的次数是基于排序的情况来决定的，所以时间复杂度是 O(nlogn)。<br>空间复杂度：O(1)。空间复杂度取决于 Arrays.sort()的内部实现，如果是使用heapsort，通常会花费 O(1) 的辅助空间。</p>
-<p>思路3：利用 Java 8 的 distinct() 和 count() 来做。</p>
-<p>代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">containsDuplicate</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">long</span> count = Arrays.stream(nums).distinct().count();</span><br><span class="line">    <span class="keyword">return</span> nums.length == count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这种方法从 leetcode 给出结果上来看，消耗时间最长，空间消耗也最大，时间和空间的复杂度不知如何分析<em>(:з」∠)</em>，不过代码更简洁易懂。</p>
-<h2 id="Review"><a href="#Review" class="headerlink" title="Review"></a>Review</h2><p>本周阅读的是<a href="http://www.masterraghu.com/subjects/np/introduction/unix_network_programming_v1.3/ch06lev1sec2.html" target="_blank" rel="noopener">《UNIX® Network Programming Volume 1, Third Edition: The Sockets Networking 》中的 6.2 I/O Models</a>。</p>
-<p>作者 Stevens 在这节中详细说明了五种 IO Model 的特点和区别。</p>
-<p>这五种 IO Model 分别是：BIO（blocking IO）、NIO（non-blocking IO）、 IO multiplexing、signal driven IO 和 AIO（asynchronous IO）。</p>
-<h2 id="Tip"><a href="#Tip" class="headerlink" title="Tip"></a>Tip</h2><p>分享一篇我在学习《左耳听风》专栏做的笔记，有关于如何高效学习的：<a href="http://note.youdao.com/noteshare?id=e2c88611b709945c2c80fb23dd262b88&amp;sub=5C2758140DF44ED69E66909F9B9E1A1A" target="_blank" rel="noopener">97 - 高效学习：深度，归纳和坚持实践</a></p>
-<h2 id="Share"><a href="#Share" class="headerlink" title="Share"></a>Share</h2><p>本周分享梁大组织维护的一个知识仓库：<a href="https://www.yuque.com/server_mind/answer" target="_blank" rel="noopener">服务端思维</a>，里面有每周答疑周报、每月精读等内容，非常值得小伙伴们关注~</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/28/ARTS006/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="渴望飞的哺乳类">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/author.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="哺乳类的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/28/ARTS006/" itemprop="url">ARTS打卡：第六周</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-28T21:42:20+08:00">
-                2019-04-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ARTS/" itemprop="url" rel="index">
-                    <span itemprop="name">ARTS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="ARTS打卡：第六周"><a href="#ARTS打卡：第六周" class="headerlink" title="ARTS打卡：第六周"></a>ARTS打卡：第六周</h1><blockquote><p>每周完成一个ARTS：</p>
-<ol>
-<li>Algorithm：每周至少做一个 leetcode 的算法题</li>
-<li>Review：阅读并点评至少一篇英文技术文章</li>
-<li>Tip：学习至少一个技术技巧</li>
-<li>Share：分享一篇有观点和思考的技术文章</li>
-</ol>
-</blockquote>
-<h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><p>这周的 LeetCode 记录如下：</p>
-<h3 id="26-Remove-Duplicates-from-Sorted-Array（Easy）"><a href="#26-Remove-Duplicates-from-Sorted-Array（Easy）" class="headerlink" title="26. Remove Duplicates from Sorted Array（Easy）"></a>26. Remove Duplicates from Sorted Array（Easy）</h3><blockquote><p>Given a sorted array nums, remove the duplicates in-place such that each element appear only once and return the new length.</p>
-<p>Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.</p>
-<p><strong>Example 1:</strong></p>
-<p>Given nums = [1,1,2],</p>
-<p>Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively.</p>
-<p>It doesn’t matter what you leave beyond the returned length.</p>
-<p><strong>Example 2:</strong></p>
-<p>Given nums = [0,0,1,1,1,2,2,3,3,4],</p>
-<p>Your function should return length = 5, with the first five elements of nums being modified to 0, 1, 2, 3, and 4 respectively.</p>
-<p>It doesn’t matter what values are set beyond the returned length.</p>
-<p><strong>Clarification:</strong></p>
-<p>Confused why the returned value is an integer but your answer is an array?</p>
-<p>Note that the input array is passed in by reference, which means modification to the input array will be known to the caller as well.</p>
-<p>Internally you can think of this:</p>
-<p>// nums is passed in by reference. (i.e., without making a copy)<br>int len = removeDuplicates(nums);</p>
-<p>// any modification to nums in your function would be known by the caller.<br>// using the length returned by your function, it prints the first len elements.<br>for (int i = 0; i &lt; len; i++) {<br>    print(nums[i]);<br>}</p>
-<footer><strong>@DevDocs</strong><cite><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-array/" target="_blank" rel="noopener">leetcode.com/problems/remove-duplicates-from-sorted-array</a></cite></footer></blockquote>
-<p>大致题意：<br>删除排序数组中的重复项，要求给定一个排序数组，在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。<br>不要使用额外的数组空间，必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。</p>
-<p>解题思路：<br>这道题，我们可以借鉴快慢指针的思想来做，不过不是用链表，是用数组进行模拟：<br>假设 slow 为慢指针，fast 为快指针，因为 nums 数组是已经排好序的升序数组，所以当 nums[slow] = nums[fast]，我们让快指针前进一步，跳过重复的数据，即 fast++；若 nums[slow] != nums[fast]时，让慢指针前进一步，即 slow++，然后交换快指针与慢指针的值，将新数据替换掉重复数据，即 nums[slow] = nums[fast]；重复步骤直至快指针走到数组尾部，即 fast == nums.length时，输出结果 slow + 1，这就是去重后的数组长度了。</p>
-<p>代码实现：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 当是空数组时，直接返回 0，边界条件</span></span><br><span class="line">    <span class="keyword">if</span> (nums.length == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// slow 为慢指针</span></span><br><span class="line">    <span class="keyword">int</span> slow = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// fast 为 快指针</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> fast = <span class="number">1</span>; fast &lt; nums.length; fast++</span><br><span class="line">        <span class="keyword">if</span> (nums[fast] != nums[slow]) &#123;</span><br><span class="line">            slow++;</span><br><span class="line">            nums[slow] = nums[fast];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> slow + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>复杂度分析：<br>时间复杂度：O(n)<br>空间复杂度：O(1)</p>
-<p>运行结果：<br>Runtime: 1 ms, faster than 99.98% of Java online submissions for Remove Duplicates from Sorted Array.<br>Memory Usage: 40.8 MB, less than 84.56% of Java online submissions for Remove Duplicates from Sorted Array.</p>
-<h3 id="122-Best-Time-to-Buy-and-Sell-Stock-II-Easy"><a href="#122-Best-Time-to-Buy-and-Sell-Stock-II-Easy" class="headerlink" title="122. Best Time to Buy and Sell Stock II(Easy)"></a>122. Best Time to Buy and Sell Stock II(Easy)</h3><blockquote><p>Say you have an array for which the ith element is the price of a given stock on day i.</p>
-<p>Design an algorithm to find the maximum profit. You may complete as many transactions as you like (i.e., buy one and sell one share of the stock multiple times).</p>
-<p>Note: You may not engage in multiple transactions at the same time (i.e., you must sell the stock before you buy again).</p>
-<p><strong>Example 1:</strong></p>
-<p>Input: [7,1,5,3,6,4]<br>Output: 7<br>Explanation: Buy on day 2 (price = 1) and sell on day 3 (price = 5), profit = 5-1 = 4.<br>             Then buy on day 4 (price = 3) and sell on day 5 (price = 6), profit = 6-3 = 3.</p>
-<p><strong>Example 2:</strong></p>
-<p>Input: [1,2,3,4,5]<br>Output: 4<br>Explanation:<br>Buy on day 1 (price = 1) and sell on day 5 (price = 5), profit = 5-1 = 4.<br>Note that you cannot buy on day 1, buy on day 2 and sell them later, as you are<br>engaging multiple transactions at the same time. You must sell before buying again.</p>
-<p><strong>Example 3:</strong><br>Input: [7,6,4,3,1]<br>Output: 0<br>Explanation: In this case, no transaction is done, i.e. max profit = 0.</p>
-<footer><strong>@DevDocs</strong><cite><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/" target="_blank" rel="noopener">leetcode.com/problems/best-time-to-buy-and-sell-stock-ii</a></cite></footer></blockquote>
-<p>题意：<br>给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。<br>设计一个算法来计算你所能获取的最大利润。你可以尽可能地完成更多的交易（多次买卖一支股票）。<br><strong>注意：</strong> 你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。</p>
-<p>解题思路：<br>这道题是看答案才明白过来的，感觉挺有趣的，虽然挺多人认为这道题就是拿来搞笑的。<br>有三种解决方法，详情请查看：<a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/solution/" target="_blank" rel="noopener">https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/solution/</a><br>第三种解法，着实我眼前一亮。<br>先暂时忽略题目的限制，那么我们就可以得出这个结果：只要我们每次买进股票的价格比我们卖出的价格低的机会，就能实现利润最大化。</p>
-<p>代码实现：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> maxProfit = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; prices.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (prices[i - <span class="number">1</span>] &lt; prices[i]) &#123;</span><br><span class="line">                maxProfit += prices[i] - prices[i - <span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> maxProfit;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Review"><a href="#Review" class="headerlink" title="Review"></a>Review</h2><p>本周阅读的是这篇文章：<a href="https://www.usenix.org/legacy/event/usenix04/tech/general/full_papers/elmeleegy/elmeleegy_html/html.html" target="_blank" rel="noopener">Lazy Asynchronous I/O For Event-Driven Servers</a></p>
-<p>文中详细介绍了LAIO的概念，LAIO 的 API，并将其与 NIO、AIO 进行了多方面多角度的比较。</p>
-<p>部分笔记如下图所示：<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g2o6zi8io3j31qq1swasb.jpg" alt="LAIO"></p>
-<h2 id="Tip"><a href="#Tip" class="headerlink" title="Tip"></a>Tip</h2><p>这周 VS Code 用的比较多，就分享下快捷键的使用吧。</p>
-<p><code>windows</code> 版的快捷键说明文档，可以直接通过快捷键 <code>Ctrl + K，Ctrl + R</code> 获取，也可以通过这个网址获取：<a href="https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf" target="_blank" rel="noopener">https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf</a></p>
-<p>中文版的可以参看这个博客：<a href="https://blog.csdn.net/crper/article/details/54099319" target="_blank" rel="noopener">VS Code折腾记 - (2) 快捷键大全，没有更全</a></p>
-<h2 id="Share"><a href="#Share" class="headerlink" title="Share"></a>Share</h2><p>本周分享：<a href="https://mp.weixin.qq.com/s/LN8UlS5OBhl9gIIkSE2erQ" target="_blank" rel="noopener">一个NullPointerException，竟然有这么多花样！</a></p>
-<p>文章来自肥朝大佬的公众号，文风一如既往的幽默风趣，知识点讲解条理清晰。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/20/ARTS005/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="渴望飞的哺乳类">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/author.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="哺乳类的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/20/ARTS005/" itemprop="url">ARTS打卡：第五周</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-20T15:53:22+08:00">
-                2019-04-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ARTS/" itemprop="url" rel="index">
-                    <span itemprop="name">ARTS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="ARTS打卡：第五周"><a href="#ARTS打卡：第五周" class="headerlink" title="ARTS打卡：第五周"></a>ARTS打卡：第五周</h1><blockquote><p>每周完成一个ARTS：</p>
-<ol>
-<li>Algorithm：每周至少做一个 leetcode 的算法题</li>
-<li>Review：阅读并点评至少一篇英文技术文章</li>
-<li>Tip：学习至少一个技术技巧</li>
-<li>Share：分享一篇有观点和思考的技术文章</li>
-</ol>
-</blockquote>
-<h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><p>这周将 Recursion I 剩余部分完成了，记录如下：</p>
-<h3 id="96-Unique-Binary-Search-Trees-Medium"><a href="#96-Unique-Binary-Search-Trees-Medium" class="headerlink" title="96. Unique Binary Search Trees(Medium)"></a>96. Unique Binary Search Trees(Medium)</h3><blockquote><p>Given n, how many structurally unique BST’s (binary search trees) that store values 1 … n?</p>
-<p><strong>Example:</strong></p>
-<p>Input: 3<br>Output: 5<br>Explanation:<br>Given n = 3, there are a total of 5 unique BST’s:</p>
-<p>   1         3     3      2      1<br>    \       /     /      / \      \<br>     3     2     1      1   3      2<br>    /     /       \                 \<br>   2     1         2                 3</p>
-<footer><strong>@DevDocs</strong><cite><a href="https://leetcode.com/problems/unique-binary-search-trees/" target="_blank" rel="noopener">leetcode.com/problems/unique-binary-search-trees</a></cite></footer></blockquote>
-<p>题目意思：给定n值，求出有多少结构上唯一的存储值1 … n的BST（二叉搜索树）？</p>
-<p>首先我们要了解二叉搜索树（BST binary search trees）是什么?</p>
-<blockquote><p>二叉查找树（英语：Binary Search Tree），也称为二叉搜索树、有序二叉树（ordered binary tree）或排序二叉树（sorted binary tree），是指一棵空树或者具有下列性质的二叉树：</p>
-<ol>
-<li>若任意节点的左子树不空，则左子树上所有节点的值均小于它的根节点的值；</li>
-<li>若任意节点的右子树不空，则右子树上所有节点的值均大于它的根节点的值；</li>
-<li>任意节点的左、右子树也分别为二叉查找树；</li>
-<li>没有键值相等的节点。</li>
-</ol>
-<footer><strong>@DevDocs</strong><cite><a href="https://zh.wikipedia.org/wiki/%E4%BA%8C%E5%85%83%E6%90%9C%E5%B0%8B%E6%A8%B9" target="_blank" rel="noopener">zh.wikipedia.org/wiki/%E4%BA%8C%E5%85%83%E6%90%9C%E5%B0%8B%E6%A8%B9</a></cite></footer></blockquote>
-<p>思路来源：<br><a href="https://leetcode.com/problems/unique-binary-search-trees/discuss/31666/DP-Solution-in-6-lines-with-explanation.-F(i-n" target="_blank" rel="noopener">DP Solution in 6 lines with explanation. F(i, n) = G(i-1) * G(n-i)</a>-G(i-1)-*-G(n-i))</p>
-<p>这个帖子说的很详细，建议小伙伴们都看看。</p>
-<p>代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numTrees</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 为了方便理解，申请长度为 n+1 的数组，便于最后直接返回 g[n]</span></span><br><span class="line">        <span class="keyword">int</span>[] g = <span class="keyword">new</span> <span class="keyword">int</span>[n + <span class="number">1</span>];</span><br><span class="line">        <span class="comment">// base case</span></span><br><span class="line">        g[<span class="number">0</span>] = g[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="comment">// 从g(2)出发</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= i; j++) &#123;</span><br><span class="line">                <span class="comment">// g(n) = f(1, n) + ... + f(n, n)</span></span><br><span class="line">                <span class="comment">// f(i, n) = g(i -1) * g(n - i)</span></span><br><span class="line">                <span class="comment">// g(n) = g(0) * g(n - 1) + ... + g(n - 1) * g(0)</span></span><br><span class="line">                g[i] += g[j -<span class="number">1</span>] * g[i - j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> g[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="95-Unique-Binary-Search-Trees-II-Medium"><a href="#95-Unique-Binary-Search-Trees-II-Medium" class="headerlink" title="95. Unique Binary Search Trees II(Medium)"></a>95. Unique Binary Search Trees II(Medium)</h3><blockquote><p>Given an integer n, generate all structurally unique BST’s (binary search trees) that store values 1 … n.</p>
-<p><strong>Example:</strong></p>
-<p>Input: 3<br>Output:<br>[<br>  [1,null,3,2],<br>  [3,2,null,1],<br>  [3,1,null,null,2],<br>  [2,1,3],<br>  [1,null,2,null,3]<br>]<br>Explanation:<br>The above output corresponds to the 5 unique BST’s shown below:</p>
-<p>   1         3     3      2      1<br>    \       /     /      / \      \<br>     3     2     1      1   3      2<br>    /     /       \                 \<br>   2     1         2                 3</p>
-<footer><strong>@DevDocs</strong><cite><a href="https://leetcode.com/problems/unique-binary-search-trees/" target="_blank" rel="noopener">leetcode.com/problems/unique-binary-search-trees</a></cite></footer></blockquote>
-<p>题目意思：给定整数n，生成存储值1 … n的所有结构上唯一的BST（二叉搜索树）。</p>
-<p>思路：<br>其实跟上面那道题的思路很相像，这里大致说下：</p>
-<ol>
-<li>我们从 Example 可得出如果 n 是输入值的话，那么根节点可能就是 1-n 中任何一个。</li>
-<li>我们可以先假设 G(n) = G(start, end) 能获取生成存储值1 … n的所有结构上唯一的BST，start是 1-n 范围内的起点，end 是终点，即 n。</li>
-<li>因为是BST，所以当i为根节点时，左子树的所有结果集可以假设为 G(start, i - 1)，，右子树的所有结果集可以假设为 G(i+1, n)。</li>
-<li>确认 base case，能确认最底部的根节点，然后关联有可能的左子树和右子树，最后返回一个包含了所有的情况的集合，当 start &gt; end 的时候，返回一个空集合，表示没有左/右子树。</li>
-<li>确认边界条件，当 n == 0，直接返回空集合。</li>
-</ol>
-<p>代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;TreeNode&gt; <span class="title">generateTrees</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 边界条件</span></span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> genTrees(<span class="number">1</span>, n);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> List&lt;TreeNode&gt; <span class="title">genTrees</span><span class="params">(<span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</span><br><span class="line">    List&lt;TreeNode&gt; treeNodes = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="comment">//  base case</span></span><br><span class="line">    <span class="keyword">if</span> (start &gt; end) &#123;</span><br><span class="line">        treeNodes.add(<span class="keyword">null</span>);</span><br><span class="line">        <span class="keyword">return</span> treeNodes;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = start; i &lt;= end; i++) &#123;</span><br><span class="line">        List&lt;TreeNode&gt; leftTreeNodes, rightTreeNodes;</span><br><span class="line">        <span class="comment">// 获取左子树的所有可能-递归公式</span></span><br><span class="line">        leftTreeNodes = genTrees(start, i - <span class="number">1</span>);</span><br><span class="line">        <span class="comment">// 获取右子树的所有可能-递归公式</span></span><br><span class="line">        rightTreeNodes = genTrees(i + <span class="number">1</span>, end);</span><br><span class="line">        <span class="comment">// base case</span></span><br><span class="line">        <span class="keyword">for</span> (TreeNode leftTreeNode :</span><br><span class="line">                leftTreeNodes) &#123;</span><br><span class="line">            <span class="keyword">for</span> (TreeNode rightTreeNode :</span><br><span class="line">                    rightTreeNodes) &#123;</span><br><span class="line">                TreeNode root = <span class="keyword">new</span> TreeNode(i);</span><br><span class="line">                root.left = leftTreeNode;</span><br><span class="line">                root.right = rightTreeNode;</span><br><span class="line">                treeNodes.add(root);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> treeNodes;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Review"><a href="#Review" class="headerlink" title="Review"></a>Review</h2><p>本周阅读的是：<a href="https://www.codechef.com/wiki/tutorial-dynamic-programming#" target="_blank" rel="noopener">Tutorial For Dynamic Programming</a></p>
-<p>是一篇很好的动态规划的学习资料。</p>
-<h2 id="Tip"><a href="#Tip" class="headerlink" title="Tip"></a>Tip</h2><p>这周分享从梁大的知识星球中学到的 tip：<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g2992ekt12j30ku1gcdqj.jpg" alt="优雅退出服务小结"></p>
-<h2 id="Share"><a href="#Share" class="headerlink" title="Share"></a>Share</h2><p>本周分享的是小灰大大的文章：<a href="https://zhuanlan.zhihu.com/p/31628866" target="_blank" rel="noopener">漫画：什么是动态规划？</a></p>
-<p>这篇文章以漫画的形式，生动形象的介绍了动态规划，让算法学起来不再那么的枯燥无味。</p>
-<p>小灰的公众号还有其他以漫画形式介绍算法的文章，感兴趣的小伙伴们可以关注走一波。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/14/ARTS004/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="渴望飞的哺乳类">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/author.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="哺乳类的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/14/ARTS004/" itemprop="url">ARTS打卡：第四周</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-14T15:20:18+08:00">
-                2019-04-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ARTS/" itemprop="url" rel="index">
-                    <span itemprop="name">ARTS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="ARTS打卡：第四周"><a href="#ARTS打卡：第四周" class="headerlink" title="ARTS打卡：第四周"></a>ARTS打卡：第四周</h1><blockquote><p>每周完成一个ARTS：</p>
-<ol>
-<li>Algorithm：每周至少做一个 leetcode 的算法题</li>
-<li>Review：阅读并点评至少一篇英文技术文章</li>
-<li>Tip：学习至少一个技术技巧</li>
-<li>Share：分享一篇有观点和思考的技术文章</li>
-</ol>
-</blockquote>
-<h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><p>本周记录如下：</p>
-<h3 id="104-Maximum-Depth-of-Binary-Tree（Easy）"><a href="#104-Maximum-Depth-of-Binary-Tree（Easy）" class="headerlink" title="104. Maximum Depth of Binary Tree（Easy）"></a>104. Maximum Depth of Binary Tree（Easy）</h3><blockquote><p>Given a binary tree, find its maximum depth.</p>
-<p>The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.</p>
-<p>Note: A leaf is a node with no children.</p>
-<p><strong>Example:</strong></p>
-<p>Given binary tree [3,9,20,null,null,15,7],</p>
-undefined
-<p>return its depth = 3.</p>
-<footer><strong>@DevDocs</strong><cite><a href="https://leetcode.com/problems/maximum-depth-of-binary-tree/" target="_blank" rel="noopener">leetcode.com/problems/maximum-depth-of-binary-tree</a></cite></footer></blockquote>
-<p>题目大致意思：<br>给一个二叉树，找到它的最大深度，最大深度是指从根节点到最远叶节点的最长路径上的节点数。</p>
-<p>思路：使用DFS（深度优先遍历）</p>
-<p>解法一：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// root == null 时返回 0，是边界条件</span></span><br><span class="line">        <span class="comment">// root != null 时，必有一个节点</span></span><br><span class="line">        <span class="comment">// 假设 maxDepth(root.left) 能求出左子树的最大深度，maxDepth(root.right) 能求出右子树的最大深度，那么只需比较左右子树的最大深度，取max，再加上根节点的 1，就是二叉树的最大深度了</span></span><br><span class="line">        <span class="comment">// 其实就是利用深度优先遍历求最大深度</span></span><br><span class="line">        <span class="keyword">return</span> root == <span class="keyword">null</span> ? <span class="number">0</span> : <span class="number">1</span> + Math.max(maxDepth(root.left), maxDepth(root.right));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>解法2：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 记录最大深度</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> max = <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">         dsf(root, <span class="number">0</span>);</span><br><span class="line">         <span class="keyword">return</span> max;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dsf</span><span class="params">(TreeNode root, <span class="keyword">int</span> depth)</span></span>&#123;</span><br><span class="line">        <span class="comment">// 当前 root 为 null 时，要么根结点为 null，那么已经到达底部</span></span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="comment">// 每次达到底部时，比较当前深度和当前记录的最大深度，取两者最大值</span></span><br><span class="line">            max = Math.max(max, depth);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 深度 + 1</span></span><br><span class="line">        depth++;</span><br><span class="line"></span><br><span class="line">        dsf(root.left, depth);</span><br><span class="line">        dsf(root.right, depth);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="21-Merge-Two-Sorted-Lists（Easy）"><a href="#21-Merge-Two-Sorted-Lists（Easy）" class="headerlink" title="21. Merge Two Sorted Lists（Easy）"></a>21. Merge Two Sorted Lists（Easy）</h3><blockquote><p>Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.</p>
-<p><strong>Example:</strong></p>
-<p>Input: 1-&gt;2-&gt;4, 1-&gt;3-&gt;4<br>Output: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</p>
-<footer><strong>@DevDocs</strong><cite><a href="https://leetcode.com/problems/merge-two-sorted-lists/" target="_blank" rel="noopener">leetcode.com/problems/merge-two-sorted-lists</a></cite></footer></blockquote>
-<p>题目：<br>合并两个已排序的链表，并将其作为一个新列表返回。新列表应该通过将前两个列表的节点拼接在一起来创建。</p>
-<p>思路：<br>需要正确理解题意，这道题给出的例子，其实很容易误导做题者，一开始我就被误导了，直至后面才发现，这道题要的新列表是要有序。</p>
-<p>我们可以用递归来解这道题，解决递归的流程一般有四步：</p>
-<ol>
-<li>定义一个递归方法</li>
-<li>推导出递归方法和基本情况（base case）</li>
-<li>如果递归方法存在重复计算的问题，使用记忆化技术进行优化</li>
-<li>尽可能的使用尾递归</li>
-</ol>
-<p>代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ListNode</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    ListNode next;</span><br><span class="line">    ListNode(<span class="keyword">int</span> x) &#123; val = x; &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">mergeTwoLists</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 终止条件</span></span><br><span class="line">    <span class="keyword">if</span> (l1 == <span class="keyword">null</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> l2;</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span> (l2 == <span class="keyword">null</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> l1;</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span> (l1.val &gt; l2.val)&#123;</span><br><span class="line">        <span class="comment">// 当 l1 的值大于 l2 时，将 l2 当做头结点，并将头结点的下一个后继节点指向 mergeTwoLists 方法返回的节点</span></span><br><span class="line">        l2.next = mergeTwoLists(l1, l2.next);</span><br><span class="line">        <span class="comment">// 返回头结点</span></span><br><span class="line">        <span class="keyword">return</span> l2;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="comment">// 同理</span></span><br><span class="line">        l1.next = mergeTwoLists(l1.next, l2);</span><br><span class="line">        <span class="keyword">return</span> l1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行结果：<br>Runtime: 0 ms, faster than 100.00% of Java online submissions for Merge Two Sorted Lists.<br>Memory Usage: 37 MB, less than 97.90% of Java online submissions for Merge Two Sorted Lists.</p>
-<h3 id="779-K-th-Symbol-in-Grammar（Medium）"><a href="#779-K-th-Symbol-in-Grammar（Medium）" class="headerlink" title="779. K-th Symbol in Grammar（Medium）"></a>779. K-th Symbol in Grammar（Medium）</h3><blockquote><p>On the first row, we write a 0. Now in every subsequent row, we look at the previous row and replace each occurrence of 0 with 01, and each occurrence of 1 with 10.</p>
-<p>Given row N and index K, return the K-th indexed symbol in row N. (The values of K are 1-indexed.) (1 indexed).</p>
-<p><strong>Examples:</strong><br>Input: N = 1, K = 1<br>Output: 0</p>
-<p>Input: N = 2, K = 1<br>Output: 0</p>
-<p>Input: N = 2, K = 2<br>Output: 1</p>
-<p>Input: N = 4, K = 5<br>Output: 1</p>
-<p>Explanation:<br>row 1: 0<br>row 2: 01<br>row 3: 0110<br>row 4: 01101001</p>
-<p><strong>Note:</strong></p>
-<p>N will be an integer in the range [1, 30].<br>K will be an integer in the range [1, 2^(N-1)].</p>
-<footer><strong>@DevDocs</strong><cite><a href="https://leetcode.com/problems/k-th-symbol-in-grammar/" target="_blank" rel="noopener">leetcode.com/problems/k-th-symbol-in-grammar</a></cite></footer></blockquote>
-<p>题目：</p>
-<p>在第一行，我们写一个0。现在，在后面的每一行中，查看前面一行，并将每个出现的0替换为01，将每个出现的1替换为10。给定第N行和索引K，返回第N行中的第K个索引符号(K的值为1个索引)(1个索引)。</p>
-<p>解题思路：</p>
-<p>从 Example 中，我们可以得出一个规律：</p>
-<p>假设 row(N) 表示第 N 行，currLen 表示当前行的长度，preLen 表示上一行的长度，row(N)[K] 表示第 N 行，下标为 k 的值。</p>
-<p>当 K 值小于等于 currLen/2，即 row(N-1) 的长度时，row(N)[K] 等于 row(N-1)[k]，  当 K 值大于 currLen/2 时，row(N)[K] 等于 row(N-1)[K - preLen] 与 1 的异或值。</p>
-<p>代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">kthGrammar</span><span class="params">(<span class="keyword">int</span> N, <span class="keyword">int</span> K)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 以已有的条件可得</span></span><br><span class="line">    <span class="keyword">if</span> (N == <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 当前 N 行的长度</span></span><br><span class="line">    <span class="keyword">int</span> currMaxLength = (<span class="keyword">int</span>)Math.pow(<span class="number">2</span>, N-<span class="number">1</span>);</span><br><span class="line">    <span class="comment">// 当前 N 行的一半长度，即上一行的长度</span></span><br><span class="line">    <span class="keyword">int</span> midLength = currMaxLength / <span class="number">2</span>;</span><br><span class="line">    <span class="comment">// 当 K 值小于等于 currLen/2，即 row(N-1) 的长度时，row(N)[K] 等于 row(N-1)[k]</span></span><br><span class="line">    <span class="keyword">if</span> (K &lt;= midLength)&#123;</span><br><span class="line">        <span class="keyword">return</span> kthGrammar(N - <span class="number">1</span>, K);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="comment">//  当 K 值大于 currLen/2 时，row(N)[K] 等于 row(N-1)[K - preLen] 与 1 的异或值</span></span><br><span class="line">        <span class="keyword">return</span> kthGrammar(N-<span class="number">1</span>, K- midLength) ^ <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Review"><a href="#Review" class="headerlink" title="Review"></a>Review</h2><p>本周阅读的是以下三篇文章，都是与异步 I/O 模型有关的：</p>
-<ol>
-<li><a href="https://www.slideshare.net/e456/tyma-paulmultithreaded1" target="_blank" rel="noopener">Thousands of Threads and Blocking l/O:The Old Way to Write Java Servers Is New Again（and Way Better）</a></li>
-<li><a href="http://116.199.9.132:83/2Q2WEFD048125304E64CA8C982B0A997B2574B94E071_unknown_A75C52C9971B3CB616973B1E53478BF698F0BE07_6/gee.cs.oswego.edu/dl/cpjslides/nio.pdf" target="_blank" rel="noopener">Scalable IO in Java</a></li>
-<li><a href="https://developer.ibm.com/articles/l-async/" target="_blank" rel="noopener">Boost application performance using asynchronous I/O</a></li>
-</ol>
-<h2 id="Tip"><a href="#Tip" class="headerlink" title="Tip"></a>Tip</h2><p>感觉这周没学到什么小技巧Orz，就分享一个小发现吧，IDEA 自带的一个功能， View -&gt; Show ByteCode，效果如下：<br><img src="http://ww1.sinaimg.cn/large/007hWkdxgy1g226mh3ynkj313t0m076j.jpg" alt="View -&gt; Show ByteCode"></p>
-<h2 id="Share"><a href="#Share" class="headerlink" title="Share"></a>Share</h2><p>本周分享知秋大佬的有关 NIO 的系列文章：</p>
-<ul>
-<li><a href="https://juejin.im/post/5c2cc075f265da611037298e" target="_blank" rel="noopener">BIO到NIO源码的一些事儿之BIO</a></li>
-<li><a href="https://juejin.im/post/5c2e23156fb9a049ff4e4009" target="_blank" rel="noopener">BIO到NIO源码的一些事儿之NIO 上</a></li>
-<li><a href="https://juejin.im/post/5c34d1dd6fb9a049c84fa2ce" target="_blank" rel="noopener">BIO到NIO源码的一些事儿之NIO 中</a></li>
-<li><a href="https://juejin.im/post/5c3a01d851882525c55fad36" target="_blank" rel="noopener">BIO到NIO源码的一些事儿之NIO 下 之 Selector</a></li>
-<li><a href="https://juejin.im/post/5c4738c151882525c638144e" target="_blank" rel="noopener">BIO到NIO源码的一些事儿之NIO 下 Buffer解读 上</a></li>
-<li><a href="https://juejin.im/post/5c653140518825625e4abfc6" target="_blank" rel="noopener">BIO到NIO源码的一些事儿之NIO 下 Buffer解读 下</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2225,7 +2175,7 @@ undefined
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

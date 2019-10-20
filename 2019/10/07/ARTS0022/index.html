@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="ARTS,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="ARTS打卡：第二十二周 每周完成一个ARTS：  Algorithm：每周至少做一个 leetcode 的算法题 Review：阅读并点评至少一篇英文技术文章 Tip：学习至少一个技术技巧 Share：分享一篇有观点和思考的技术文章   Algorithm19. Remove Nth Node From End of List（Medium）问题描述给定一个链表，删除链表的倒数第 n 个节点，并">
+<meta name="keywords" content="ARTS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ARTS打卡：第二十二周">
+<meta property="og:url" content="http://yoursite.com/2019/10/07/ARTS0022/index.html">
+<meta property="og:site_name" content="哺乳类的博客">
+<meta property="og:description" content="ARTS打卡：第二十二周 每周完成一个ARTS：  Algorithm：每周至少做一个 leetcode 的算法题 Review：阅读并点评至少一篇英文技术文章 Tip：学习至少一个技术技巧 Share：分享一篇有观点和思考的技术文章   Algorithm19. Remove Nth Node From End of List（Medium）问题描述给定一个链表，删除链表的倒数第 n 个节点，并">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-10-20T17:13:28.025Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ARTS打卡：第二十二周">
+<meta name="twitter:description" content="ARTS打卡：第二十二周 每周完成一个ARTS：  Algorithm：每周至少做一个 leetcode 的算法题 Review：阅读并点评至少一篇英文技术文章 Tip：学习至少一个技术技巧 Share：分享一篇有观点和思考的技术文章   Algorithm19. Remove Nth Node From End of List（Medium）问题描述给定一个链表，删除链表的倒数第 n 个节点，并">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/10/07/ARTS0022/">
+
+
+
+
+
+  <title>ARTS打卡：第二十二周 | 哺乳类的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">哺乳类的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/07/ARTS0022/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="渴望飞的哺乳类">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/author.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="哺乳类的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ARTS打卡：第二十二周</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-07T12:02:38+08:00">
+                2019-10-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ARTS/" itemprop="url" rel="index">
+                    <span itemprop="name">ARTS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="ARTS打卡：第二十二周"><a href="#ARTS打卡：第二十二周" class="headerlink" title="ARTS打卡：第二十二周"></a>ARTS打卡：第二十二周</h1><blockquote>
+<p>每周完成一个ARTS：</p>
+<ol>
+<li>Algorithm：每周至少做一个 leetcode 的算法题</li>
+<li>Review：阅读并点评至少一篇英文技术文章</li>
+<li>Tip：学习至少一个技术技巧</li>
+<li>Share：分享一篇有观点和思考的技术文章</li>
+</ol>
+</blockquote>
+<h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><h3 id="19-Remove-Nth-Node-From-End-of-List（Medium）"><a href="#19-Remove-Nth-Node-From-End-of-List（Medium）" class="headerlink" title="19. Remove Nth Node From End of List（Medium）"></a>19. Remove Nth Node From End of List（Medium）</h3><h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h4><p>给定一个链表，删除链表的倒数第 n 个节点，并且返回链表的头结点。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">给定一个链表: 1-&gt;2-&gt;3-&gt;4-&gt;5, 和 n = 2.</span><br><span class="line"></span><br><span class="line">当删除了倒数第二个节点后，链表变为 1-&gt;2-&gt;3-&gt;5.</span><br></pre></td></tr></table></figure>
+<p><strong>说明：</strong></p>
+<p>给定的 n 保证是有效的。</p>
+<p><strong>进阶：</strong></p>
+<p>你能尝试使用一趟扫描实现吗？</p>
+<p>链接：<a href="https://leetcode.com/problems/remove-nth-node-from-end-of-list/" target="_blank" rel="noopener">https://leetcode.com/problems/remove-nth-node-from-end-of-list/</a></p>
+<h4 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h4><p><strong>普通思路：</strong></p>
+<ol>
+<li><p>先遍历计算出这个链表的节点数 count</p>
+</li>
+<li><p>因为 n 是指链表的倒数第 n 个节点，所以链表的第 （count - n + 1）个节点就是我们要删除的节点</p>
+</li>
+</ol>
+<p><strong>进阶思路：</strong></p>
+<p>采用快慢指针的思想，只需使用一趟扫描实现：</p>
+<ol>
+<li>为了方便理解以及写代码，我们先虚设一个节点，作为起始节点，它的后继节点指向头结点。</li>
+<li>使用两个指针，一个是慢指针 slow，指向起始节点，一个是快指针，指向慢指针 slow 前 n + 1 个节点</li>
+<li>同时移动两个指针，在移动过程中，保持两指针之间间隔 n 个节点，直至快指针 fast 移至 尾部节点的后继节点处。</li>
+<li>这时慢指针 slow 指向的是目标节点的前驱节点，紧接着只需将慢指针指向的节点的后继节点指向目前节点的后继节点即可。</li>
+</ol>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><ol>
+<li><p>普通版实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListNode</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    ListNode node;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ListNode</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.val = val;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">removeNthFromEnd</span><span class="params">(ListNode node, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 限制条件</span></span><br><span class="line">        <span class="keyword">if</span> (head == <span class="keyword">null</span> || n &lt;=<span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> head;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">1</span>;</span><br><span class="line">        ListNode tmpNode = head;</span><br><span class="line">        <span class="comment">// 遍历链表</span></span><br><span class="line">        <span class="keyword">while</span> (tmpNode.next != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">// 计算节点个数</span></span><br><span class="line">			++count;</span><br><span class="line">            tmpNode = tmpNode.next;</span><br><span class="line">        &#125;</span><br><span class="line">        tmpNode = head;</span><br><span class="line">        <span class="keyword">int</span> preTargetIndex = count - n;</span><br><span class="line">        <span class="comment">// 当 preTargetIndex == 0 时，即要删除头结点</span></span><br><span class="line">        <span class="keyword">if</span> (preTargetIndex == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> tmpNode.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 找到要删除的目标节点的上一个节点</span></span><br><span class="line">        <span class="keyword">while</span> (preTargetIndex &gt; <span class="number">1</span>) &#123;</span><br><span class="line">			--preTargetIndex;</span><br><span class="line">            tmpNode = tmpNode.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 移除目标节点</span></span><br><span class="line">        tmpNode.next = tmpNode.next.next;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>结果：</strong></p>
+<p>Runtime: 0 ms, faster than 100.00% of Java online submissions for Remove Nth Node From End of List.</p>
+<p>Memory Usage: 34.8 MB, less than 100.00% of Java online submissions for Remove Nth Node From End of List.</p>
+<p><strong>复杂度：</strong></p>
+<p>时间复杂度：O(n)</p>
+<p>空间复杂度：O(1)</p>
+</li>
+<li><p>进阶版：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListNode</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    ListNode node;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ListNode</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.val = val;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">removeNthFromEnd</span><span class="params">(ListNode head, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 边界条件</span></span><br><span class="line">        <span class="keyword">if</span> (head == <span class="keyword">null</span> || n &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> head;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 虚设一个起始节点（哨兵节点），为了方便删除头结点的情况</span></span><br><span class="line">        ListNode start = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        start.next = head;</span><br><span class="line">        <span class="comment">// 慢指针指向起始节点</span></span><br><span class="line">        ListNode slow = start;</span><br><span class="line">        ListNode fast = start;</span><br><span class="line">        <span class="comment">// 快指针指向慢指针的前 n 个节点</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n + <span class="number">1</span>; i++) &#123;</span><br><span class="line">            fast = fast.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 遍历链表直至快指针 fast 移至尾部节点的后继节点处</span></span><br><span class="line">        <span class="keyword">while</span> (fast != <span class="keyword">null</span>) &#123;</span><br><span class="line">            fast = fast.next;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 删除节点</span></span><br><span class="line">        slow.next = slow.next.next;</span><br><span class="line">        <span class="keyword">return</span> start.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>结果：</strong></p>
+<p>Runtime: 0 ms, faster than 100.00% of Java online submissions for Remove Nth Node From End of List.</p>
+<p>Memory Usage: 34.6 MB, less than 100.00% of Java online submissions for Remove Nth Node From End of List.</p>
+<p><strong>复杂度：</strong></p>
+<p>时间复杂度：O(n)</p>
+<p>空间复杂度：O(1)</p>
+</li>
+</ol>
+<h2 id="Review"><a href="#Review" class="headerlink" title="Review"></a>Review</h2><p>本周回看了之前分享的几篇有关于 I/O 模型的文章：</p>
+<ol>
+<li><p><a href="http://www.masterraghu.com/subjects/np/introduction/unix_network_programming_v1.3/ch06lev1sec2.html" target="_blank" rel="noopener">《UNIX® Network Programming Volume 1, Third Edition: The Sockets Networking 》中的 6.2 I/O Models</a>。</p>
+</li>
+<li><p><a href="https://www.slideshare.net/e456/tyma-paulmultithreaded1" target="_blank" rel="noopener">Thousands of Threads and Blocking l/O:The Old Way to Write Java Servers Is New Again（and Way Better）</a></p>
+</li>
+<li><p><a href="http://116.199.9.132:83/2Q2WEFD048125304E64CA8C982B0A997B2574B94E071_unknown_A75C52C9971B3CB616973B1E53478BF698F0BE07_6/gee.cs.oswego.edu/dl/cpjslides/nio.pdf" target="_blank" rel="noopener">Scalable IO in Java</a></p>
+</li>
+<li><p><a href="https://developer.ibm.com/articles/l-async/" target="_blank" rel="noopener">Boost application performance using asynchronous I/O</a></p>
+</li>
+</ol>
+<h2 id="Tip"><a href="#Tip" class="headerlink" title="Tip"></a>Tip</h2><p>本周分享一个学习数据结构和算法的小技巧：通过 <a href="https://visualgo.net/zh" target="_blank" rel="noopener">VisuAlgo</a> 网站，可以看到动态可视化的数据结构和算法，结合动图，我们能更容易理解数据结构和算法的实现过程。</p>
+<h2 id="Share"><a href="#Share" class="headerlink" title="Share"></a>Share</h2><p>最近的都在追 simviso 团队译制的《斯坦福编译原理》系列视频，哇哈哈哈，感兴趣的小伙伴们赶紧跟上鸭(￣▽￣)”</p>
+<p><a href="https://www.bilibili.com/video/av69104190" target="_blank" rel="noopener">【斯坦福编译原理】06 Cool语言概述 3</a></p>
+<p><a href="https://www.bilibili.com/video/av69214391" target="_blank" rel="noopener">【斯坦福编译原理】07 词法分析 1</a></p>
+<p><a href="https://www.bilibili.com/video/av69331516" target="_blank" rel="noopener">【斯坦福编译原理】08 词法分析 2</a></p>
+<p><a href="https://www.bilibili.com/video/av69709849" target="_blank" rel="noopener">【斯坦福编译原理】09 词法分析 3 正则语言</a></p>
+<p><a href="https://www.bilibili.com/video/av70112999" target="_blank" rel="noopener">【斯坦福编译原理】10 词法分析 4 Formal Language</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ARTS/" rel="tag"># ARTS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/28/ARTS0021/" rel="next" title="ARTS打卡：第二十一周">
+                <i class="fa fa-chevron-left"></i> ARTS打卡：第二十一周
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/21/ARTS0023/" rel="prev" title="ARTS打卡：第二十三周（拖更）">
+                ARTS打卡：第二十三周（拖更） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/author.jpg" alt="渴望飞的哺乳类">
+            
+              <p class="site-author-name" itemprop="name">渴望飞的哺乳类</p>
+              <p class="site-description motion-element" itemprop="description">愿你仗剑走天涯，归来仍是少年</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ARTS打卡：第二十二周"><span class="nav-number">1.</span> <span class="nav-text">ARTS打卡：第二十二周</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Algorithm"><span class="nav-number">1.1.</span> <span class="nav-text">Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#19-Remove-Nth-Node-From-End-of-List（Medium）"><span class="nav-number">1.1.1.</span> <span class="nav-text">19. Remove Nth Node From End of List（Medium）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题描述"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解题思路"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码实现"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">代码实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Review"><span class="nav-number">1.2.</span> <span class="nav-text">Review</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tip"><span class="nav-number">1.3.</span> <span class="nav-text">Tip</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Share"><span class="nav-number">1.4.</span> <span class="nav-text">Share</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">渴望飞的哺乳类</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 访问总量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

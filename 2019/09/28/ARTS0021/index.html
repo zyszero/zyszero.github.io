@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="ARTS,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="ARTS打卡：第二十一周 每周完成一个ARTS：  Algorithm：每周至少做一个 leetcode 的算法题 Review：阅读并点评至少一篇英文技术文章 Tip：学习至少一个技术技巧 Share：分享一篇有观点和思考的技术文章   Algorithm14. Longest Common Prefix（Easy）问题描述编写一个函数来查找字符串数组中的最长公共前缀。 如果不存在公共前缀，返回">
+<meta name="keywords" content="ARTS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ARTS打卡：第二十一周">
+<meta property="og:url" content="http://yoursite.com/2019/09/28/ARTS0021/index.html">
+<meta property="og:site_name" content="哺乳类的博客">
+<meta property="og:description" content="ARTS打卡：第二十一周 每周完成一个ARTS：  Algorithm：每周至少做一个 leetcode 的算法题 Review：阅读并点评至少一篇英文技术文章 Tip：学习至少一个技术技巧 Share：分享一篇有观点和思考的技术文章   Algorithm14. Longest Common Prefix（Easy）问题描述编写一个函数来查找字符串数组中的最长公共前缀。 如果不存在公共前缀，返回">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-10-20T16:19:36.101Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ARTS打卡：第二十一周">
+<meta name="twitter:description" content="ARTS打卡：第二十一周 每周完成一个ARTS：  Algorithm：每周至少做一个 leetcode 的算法题 Review：阅读并点评至少一篇英文技术文章 Tip：学习至少一个技术技巧 Share：分享一篇有观点和思考的技术文章   Algorithm14. Longest Common Prefix（Easy）问题描述编写一个函数来查找字符串数组中的最长公共前缀。 如果不存在公共前缀，返回">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/09/28/ARTS0021/">
+
+
+
+
+
+  <title>ARTS打卡：第二十一周 | 哺乳类的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">哺乳类的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/28/ARTS0021/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="渴望飞的哺乳类">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/author.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="哺乳类的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ARTS打卡：第二十一周</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-28T10:59:56+08:00">
+                2019-09-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ARTS/" itemprop="url" rel="index">
+                    <span itemprop="name">ARTS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="ARTS打卡：第二十一周"><a href="#ARTS打卡：第二十一周" class="headerlink" title="ARTS打卡：第二十一周"></a>ARTS打卡：第二十一周</h1><blockquote>
+<p>每周完成一个ARTS：</p>
+<ol>
+<li>Algorithm：每周至少做一个 leetcode 的算法题</li>
+<li>Review：阅读并点评至少一篇英文技术文章</li>
+<li>Tip：学习至少一个技术技巧</li>
+<li>Share：分享一篇有观点和思考的技术文章</li>
+</ol>
+</blockquote>
+<h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><h3 id="14-Longest-Common-Prefix（Easy）"><a href="#14-Longest-Common-Prefix（Easy）" class="headerlink" title="14. Longest Common Prefix（Easy）"></a>14. Longest Common Prefix（Easy）</h3><h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h4><p>编写一个函数来查找字符串数组中的最长公共前缀。</p>
+<p>如果不存在公共前缀，返回空字符串 <code>&quot;&quot;</code>。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [&quot;flower&quot;,&quot;flow&quot;,&quot;flight&quot;]</span><br><span class="line">输出: &quot;fl&quot;</span><br></pre></td></tr></table></figure>
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: [&quot;dog&quot;,&quot;racecar&quot;,&quot;car&quot;]</span><br><span class="line">输出: &quot;&quot;</span><br><span class="line">解释: 输入不存在公共前缀。</span><br></pre></td></tr></table></figure>
+<p><strong>说明:</strong></p>
+<p>所有输入只包含小写字母 <code>a-z</code> 。<br>链接：<a href="https://leetcode.com/problems/longest-common-prefix/" target="_blank" rel="noopener">https://leetcode.com/problems/longest-common-prefix/</a></p>
+<h4 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h4><p>这个题的目的是找出所给数据组中的最长公共前缀，那我们可以在数组内任选一个字符串，拿它的所有前缀子串分别去匹配剩余的字符串的前缀，最后找出能够匹配所有剩余字符串的最长前缀子串即可。</p>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> strs 输入的字符串数组</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">longestCommonPrefix</span><span class="params">(String[] strs)</span></span>&#123;</span><br><span class="line">        <span class="comment">// 边界条件</span></span><br><span class="line">        <span class="keyword">if</span>(strs == <span class="keyword">null</span> || strs.length == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 任选一个字符串，我们这里选择第一个字符串，从最长的前缀子串开始（即字符串本身）</span></span><br><span class="line">        String s0 = strs[<span class="number">0</span>];</span><br><span class="line">        <span class="comment">// 遍历剩余的字符串，拿所选字符串的所有前缀子串去匹配</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; strs.length; i++)&#123;</span><br><span class="line">            <span class="comment">// 当 strs[i].indexOf(s0) = 0，存在两种情况</span></span><br><span class="line">            <span class="comment">// 1. 当前的 s0 能匹配 str[i]的前缀，所以终止循环，继续匹配下一个字符串</span></span><br><span class="line">            <span class="comment">// 2. 当前的 s0 = "", String.indexOf("") = 0，证明所选字符串的所有前缀子串都不能匹配字符串 str[i] 的前缀，所以终止循环</span></span><br><span class="line">            <span class="keyword">while</span>(strs[i].indexOf(s0) != <span class="number">0</span>)&#123;</span><br><span class="line">                <span class="comment">// 当前 s0 不能匹配 strs[i]的前缀，拿次长的前缀子串去匹配</span></span><br><span class="line">                s0 = strs[<span class="number">0</span>].subString(<span class="number">0</span>, s0.length() - <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>执行结果：</strong></p>
+<p>Runtime: 0 ms, faster than 100.00% of Java online submissions for Longest Common Prefix.</p>
+<p>Memory Usage: 37.5 MB, less than 87.13% of Java online submissions for Longest Common Prefix.</p>
+<h3 id="237-Delete-Node-in-a-Linked-List（Easy）"><a href="#237-Delete-Node-in-a-Linked-List（Easy）" class="headerlink" title="237. Delete Node in a Linked List（Easy）"></a>237. Delete Node in a Linked List（Easy）</h3><h4 id="问题描述-1"><a href="#问题描述-1" class="headerlink" title="问题描述"></a>问题描述</h4><p>请编写一个函数，使其可以删除某个链表中给定的（非末尾）节点，你将只被给定要求被删除的节点。</p>
+<p>现有一个链表 – head = [4,5,1,9]，它可以表示为:</p>
+<blockquote>
+<p>4 -&gt; 5 -&gt; 1 -&gt; 9</p>
+</blockquote>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: head = [4,5,1,9], node = 5</span><br><span class="line">输出: [4,1,9]</span><br><span class="line">解释: 给定你链表中值为 5 的第二个节点，那么在调用了你的函数之后，该链表应变为 4 -&gt; 1 -&gt; 9.</span><br></pre></td></tr></table></figure>
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: head = [4,5,1,9], node = 1</span><br><span class="line">输出: [4,5,9]</span><br><span class="line">解释: 给定你链表中值为 1 的第三个节点，那么在调用了你的函数之后，该链表应变为 4 -&gt; 5 -&gt; 9.</span><br></pre></td></tr></table></figure>
+<p><strong>说明:</strong></p>
+<ul>
+<li><p>链表至少包含两个节点。</p>
+</li>
+<li><p>链表中所有节点的值都是唯一的。</p>
+</li>
+<li><p>给定的节点为非末尾节点并且一定是链表中的一个有效节点。</p>
+</li>
+<li><p>不要从你的函数中返回任何结果。</p>
+</li>
+</ul>
+<p>链接：<a href="https://leetcode-cn.com/problems/delete-node-in-a-linked-list/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/delete-node-in-a-linked-list/</a></p>
+<h4 id="解题思路-1"><a href="#解题思路-1" class="headerlink" title="解题思路"></a>解题思路</h4><p>根据题意，我们是拿不到给定节点的前驱节点，只能拿到后继节点，那么实现删除节点思路就是将后继节点值覆盖当前节点，以此类推，直至尾节点，最后将尾节点置为null即可，我们可以通过递归来做。</p>
+<h4 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ListNode</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> val;</span><br><span class="line">        ListNode next;</span><br><span class="line"></span><br><span class="line">        ListNode(<span class="keyword">int</span> x) &#123;</span><br><span class="line">            val = x;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteNode</span><span class="params">(ListNode node)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 从说明中可知：给定的节点为非末尾节点并且一定是链表中的一个有效节点。</span></span><br><span class="line">        node.val = node.next.val;</span><br><span class="line">        <span class="comment">// 终止条件</span></span><br><span class="line">        <span class="keyword">if</span>(node.next.next == <span class="keyword">null</span>) &#123;</span><br><span class="line">            node.next = <span class="keyword">null</span>;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 递归公式</span></span><br><span class="line">            node = node.next;</span><br><span class="line">            deleteNode(node);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>执行结果：</p>
+<p>Runtime: 0 ms, faster than 100.00% of Java online submissions for Delete Node in a Linked List.</p>
+<p>Memory Usage: 36.8 MB, less than 100.00% of Java online submissions for Delete Node in a Linked List.</p>
+<h2 id="Review"><a href="#Review" class="headerlink" title="Review"></a>Review</h2><p>本周阅读的是：<a href="https://dzone.com/articles/understanding-reactor-pattern-thread-based-and-eve" target="_blank" rel="noopener">《Understanding Reactor Pattern: Thread-Based and Event-Driven》</a></p>
+<p>作者开头从 thread-base（基于线程）架构和 event-driven（事件驱动）架构切入，然后具体介绍了Reactor Pattern。</p>
+<p>基于线程的架构，即一个线程对应一个连接，适用于需要兼容非线程安全的库的程序，同时也指出了 thread-base 架构存在进程过于重量级、上下文切换缓慢和高内存消耗的情况，以及线程与连接一一对应的关系，导致了一旦存在大量的长连接，就会有大量的工作线程处于空闲等待状态，浪费了大量的内存堆栈。</p>
+<p>事件驱动结构，可以将线程与连接分隔开来，仅将线程用于特定的回调或处理程序上的事件。</p>
+<p>Reactor Pattern 是事件驱动架构的一种实现技术，简单来说，就是用单线程对资源发出的事件进行循环阻塞，并将它们分发给相应的处理程序和回调。只要事件的处理程序和回调被注册了，就不需要阻塞 I/O，这种模式将模块化应用程序级别的代码与可重用的响应式实现解耦。</p>
+<p>Reactor 和 Handlers 是 Reactor Pattern 架构的两个重要参与者。</p>
+<ol>
+<li><p>reactor 运行在一个独立的线程中，主要是用于将工作分发给对应的处理程序去处理 I/O 事件。</p>
+</li>
+<li><p>handler 则是处理与 I/O事件有关的实际工作。</p>
+</li>
+<li>reactor是通过分发适当的 handler 来处理I/O事件。Handlers执行非阻塞操作。</li>
+</ol>
+<p>Reactor Pattern 的目的是允许事件驱动的应用程序，可以对来自一个或多的客户端请求进行多路复用和分发。</p>
+<h2 id="Tip"><a href="#Tip" class="headerlink" title="Tip"></a>Tip</h2><p>本周分享阿里开源的项目：<a href="https://github.com/alibaba/arthas/blob/master/site/src/site/sphinx/index.md" target="_blank" rel="noopener">Arthas</a></p>
+<p>最近用的比较多的是 <strong>trace</strong> 命令，它可以显示方法内部调用路径，并输出方法路径上的每个节点上耗时。</p>
+<p>在进行压测的时候，我们可以在后台执行 <strong>trace</strong> 命令（<code>trace -j class-pattern method-pattern -n xxx &gt; xxx/xxx.log &amp;</code>），等压测完毕后，解析输出的日志文件，可以算出指定方法的平均耗时、最小耗时和最大耗时；我们可以根据耗时情况，查看对应的代码，然后着手进行优化，这对我们在进行性能调优时，有一定的指导作用和帮助。</p>
+<p>还有很多其他实用的命令，感兴趣的朋友们可以查看：<a href="https://alibaba.github.io/arthas/index.html" target="_blank" rel="noopener">《Arthas 用户文档》</a>。</p>
+<h2 id="Share"><a href="#Share" class="headerlink" title="Share"></a>Share</h2><p>本周继续分享 simviso 团队带来的《斯坦福编译原理》译制视频：</p>
+<p><a href="https://www.bilibili.com/video/av68213206" target="_blank" rel="noopener">【斯坦福编译原理】01 编译器与解释器简介</a></p>
+<p><a href="https://www.bilibili.com/video/av68314209" target="_blank" rel="noopener">【斯坦福编译原理】02 编译器结构</a></p>
+<p><a href="https://www.bilibili.com/video/av68522107" target="_blank" rel="noopener">【斯坦福编译原理】03 编程语言的性价比</a></p>
+<p><a href="https://www.bilibili.com/video/av68696247" target="_blank" rel="noopener">【斯坦福编译原理】04 Cool语言概述</a></p>
+<p><a href="https://www.bilibili.com/video/av68897778" target="_blank" rel="noopener">【斯坦福编译原理】05 Cool语言概述 2</a></p>
+<p>ps：知秋大大带领的 simviso 还在不断的更新，感兴趣的小伙伴们赶紧跟上鸭(￣▽￣)”</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ARTS/" rel="tag"># ARTS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/09/ARTS0020/" rel="next" title="ARTS打卡：第二十周">
+                <i class="fa fa-chevron-left"></i> ARTS打卡：第二十周
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/07/ARTS0022/" rel="prev" title="ARTS打卡：第二十二周">
+                ARTS打卡：第二十二周 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/author.jpg" alt="渴望飞的哺乳类">
+            
+              <p class="site-author-name" itemprop="name">渴望飞的哺乳类</p>
+              <p class="site-description motion-element" itemprop="description">愿你仗剑走天涯，归来仍是少年</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ARTS打卡：第二十一周"><span class="nav-number">1.</span> <span class="nav-text">ARTS打卡：第二十一周</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Algorithm"><span class="nav-number">1.1.</span> <span class="nav-text">Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#14-Longest-Common-Prefix（Easy）"><span class="nav-number">1.1.1.</span> <span class="nav-text">14. Longest Common Prefix（Easy）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题描述"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解题思路"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码实现"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">代码实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#237-Delete-Node-in-a-Linked-List（Easy）"><span class="nav-number">1.1.2.</span> <span class="nav-text">237. Delete Node in a Linked List（Easy）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题描述-1"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解题思路-1"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码实现-1"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">代码实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Review"><span class="nav-number">1.2.</span> <span class="nav-text">Review</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tip"><span class="nav-number">1.3.</span> <span class="nav-text">Tip</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Share"><span class="nav-number">1.4.</span> <span class="nav-text">Share</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">渴望飞的哺乳类</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 访问总量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
