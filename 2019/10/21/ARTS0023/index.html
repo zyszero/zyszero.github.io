@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="愿你仗剑走天涯，归来仍是少年">
+<meta name="description" content="ARTS打卡：第二十三周 每周完成一个ARTS：  Algorithm：每周至少做一个 leetcode 的算法题 Review：阅读并点评至少一篇英文技术文章 Tip：学习至少一个技术技巧 Share：分享一篇有观点和思考的技术文章   Algorithm15. 3Sum（Medium）给定一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b">
 <meta name="keywords" content="ARTS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ARTS打卡：第二十三周（拖更）">
+<meta property="og:title" content="ARTS打卡：第二十三周">
 <meta property="og:url" content="http://yoursite.com/2019/10/21/ARTS0023/index.html">
 <meta property="og:site_name" content="哺乳类的博客">
-<meta property="og:description" content="愿你仗剑走天涯，归来仍是少年">
+<meta property="og:description" content="ARTS打卡：第二十三周 每周完成一个ARTS：  Algorithm：每周至少做一个 leetcode 的算法题 Review：阅读并点评至少一篇英文技术文章 Tip：学习至少一个技术技巧 Share：分享一篇有观点和思考的技术文章   Algorithm15. 3Sum（Medium）给定一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-20T16:24:01.971Z">
+<meta property="og:updated_time" content="2019-11-09T03:18:29.421Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ARTS打卡：第二十三周（拖更）">
-<meta name="twitter:description" content="愿你仗剑走天涯，归来仍是少年">
+<meta name="twitter:title" content="ARTS打卡：第二十三周">
+<meta name="twitter:description" content="ARTS打卡：第二十三周 每周完成一个ARTS：  Algorithm：每周至少做一个 leetcode 的算法题 Review：阅读并点评至少一篇英文技术文章 Tip：学习至少一个技术技巧 Share：分享一篇有观点和思考的技术文章   Algorithm15. 3Sum（Medium）给定一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b">
 
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <title>ARTS打卡：第二十三周（拖更） | 哺乳类的博客</title>
+  <title>ARTS打卡：第二十三周 | 哺乳类的博客</title>
   
 
 
@@ -260,7 +260,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">ARTS打卡：第二十三周（拖更）</h1>
+          <h1 class="post-title" itemprop="name headline">ARTS打卡：第二十三周</h1>
         
 
         <div class="post-meta">
@@ -337,7 +337,64 @@
       
 
       
-        
+        <h1 id="ARTS打卡：第二十三周"><a href="#ARTS打卡：第二十三周" class="headerlink" title="ARTS打卡：第二十三周"></a>ARTS打卡：第二十三周</h1><blockquote>
+<p>每周完成一个ARTS：</p>
+<ol>
+<li>Algorithm：每周至少做一个 leetcode 的算法题</li>
+<li>Review：阅读并点评至少一篇英文技术文章</li>
+<li>Tip：学习至少一个技术技巧</li>
+<li>Share：分享一篇有观点和思考的技术文章</li>
+</ol>
+</blockquote>
+<h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><h3 id="15-3Sum（Medium）"><a href="#15-3Sum（Medium）" class="headerlink" title="15. 3Sum（Medium）"></a>15. 3Sum（Medium）</h3><p>给定一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？找出所有满足条件且不重复的三元组。</p>
+<p><strong>注意：</strong>答案中不可以包含重复的三元组。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">例如, 给定数组 nums = [-1, 0, 1, 2, -1, -4]，</span><br><span class="line">满足要求的三元组集合为：</span><br><span class="line">[</span><br><span class="line">  [-1, 0, 1],</span><br><span class="line">  [-1, -1, 2]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>链接： <a href="https://leetcode.com/problems/3sum/" target="_blank" rel="noopener">https://leetcode.com/problems/3sum/</a> </p>
+<h4 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h4><ol>
+<li>暴力破解：使用三重遍历来做，最后需注意结果集的去重，时间复杂度为O(n³)，这种解法我就不写出来了</li>
+<li>数组排序 + 双指针<ul>
+<li>先将数组进行排序</li>
+<li>选数组最左的值作为 c，由于要符合 a+b+c=0，所以 c 值必须小于0</li>
+<li>使用首尾指针，分别指代a和b，首尾指针双向移动，找出符合公式<code>a+b=-c</code>的 a、b值</li>
+</ul>
+</li>
+</ol>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; threeSum(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">        <span class="comment">// 边界条件</span></span><br><span class="line">        <span class="keyword">if</span>(nums == <span class="keyword">null</span> || nums.length &lt; <span class="number">3</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 数组排序</span></span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length - <span class="number">2</span>; i++) &#123;</span><br><span class="line">            <span class="comment">// 因为数组是有序的，所以 nums[i] 是最小值，如果 nums[i] &gt; 0，则无解，不符合 a+b+c = 0，c = nums[i]</span></span><br><span class="line">            <span class="keyword">if</span>(nums[i] &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// i == 0 || nums[i] != nums[i -1] 目的是防重</span></span><br><span class="line">            <span class="keyword">if</span>(i == <span class="number">0</span> || nums[i] != nums[i -<span class="number">1</span>])&#123;</span><br><span class="line">                <span class="comment">// 选择数组最左的值作为 c，即 -c = sum = a + b，定义首尾指针</span></span><br><span class="line">            	<span class="keyword">int</span> sum = <span class="number">0</span> - nums[i], first = i + <span class="number">1</span>, tail = nums.length - <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">while</span>(first &lt; tail) &#123;</span><br><span class="line">                    <span class="comment">// a + b = -c</span></span><br><span class="line">                    <span class="keyword">if</span>(nums[first] + nums[tail] == sum)&#123;</span><br><span class="line">                        result.add(Arrays.asLsit(nums[i], nums[first], nums[tail]));</span><br><span class="line">                        <span class="comment">// 去重</span></span><br><span class="line">                        <span class="keyword">while</span>(first &lt; tail &amp;&amp; nums[first] == nums[first+<span class="number">1</span>])&#123;</span><br><span class="line">                            ++first;</span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="keyword">while</span>(first &lt; tail &amp;&amp; nums[tail] == nums[tail-<span class="number">1</span>])&#123;</span><br><span class="line">                            --tail;</span><br><span class="line">                        &#125;</span><br><span class="line">                        ++first;</span><br><span class="line">                    	--tail;</span><br><span class="line">                    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[tail] + nums[tail] &lt; sum)&#123;</span><br><span class="line">                        <span class="comment">// a + b &lt; -c 则需移动首指针</span></span><br><span class="line">                        ++first;</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        <span class="comment">// a + b &gt; -c 则需移动尾指针</span></span><br><span class="line">                        --tail;</span><br><span class="line">					&#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>ps：LeetCode的这道题是有问题的，题目中强调：答案中不可以包含重复的三元组，但是加入三元组的判重条件，又会导致通过不了<em>(:зゝ∠)</em>，所谓的不可以包含重复的三元组，就是不能 [0,0,0]，所以下面的答案是没有三元组的判重条件的</strong></p>
+<p><strong>结果：</strong></p>
+<p>Runtime: 25 ms, faster than 98.84% of Java online submissions for 3Sum.</p>
+<p>Memory Usage: 45.5 MB, less than 96.47% of Java online submissions for 3Sum.</p>
+<p><strong>复杂度：</strong></p>
+<p>时间复杂度：O(n²)</p>
+<p>空间复杂度：O(1)</p>
+<h2 id="Review"><a href="#Review" class="headerlink" title="Review"></a>Review</h2><p>本周阅读：</p>
+<p><a href="http://lmax-exchange.github.io/disruptor/files/Disruptor-1.0.pdf" target="_blank" rel="noopener">《 Disruptor: High performance alternative to bounded queues for exchanging data between concurrent threads  》</a>，通过阅读这篇技术论文，我们就能知道 <strong>Disruptor</strong> 它试图解决什么问题，并能了解 <strong>Disruptor</strong> 这个并发框架为什么那么快的原因。</p>
+<p>扩展阅读：</p>
+<p><a href="http://mechanitis.blogspot.com/2011/06/dissecting-disruptor-whats-so-special.html" target="_blank" rel="noopener">《Dissecting the Disruptor: What’s so special about a ring buffer?》</a></p>
+<p><a href="http://mechanitis.blogspot.com/2011/06/dissecting-disruptor-how-do-i-read-from.html" target="_blank" rel="noopener">《Dissecting the Disruptor: How do I read from the ring buffer?》</a></p>
+<h2 id="Tip"><a href="#Tip" class="headerlink" title="Tip"></a>Tip</h2><p>这次分享如何在Linux下进行抓包，在Windows下进行抓包，可以点击查看这篇文章：<a href="http://note.youdao.com/noteshare?id=9027a956b30d59a71eaa83a22b9f1134&amp;sub=2E3FC528AA74419F81663071028B3890" target="_blank" rel="noopener">《Wireshark使用详解以及HTTP抓包》</a>。</p>
+<p>在Linux下抓包，可以采用 <code>tcpdump</code></p>
+<p>安装命令：<code>yum install tcpdump</code></p>
+<p>简单分享几个命令：</p>
+<ol>
+<li><p>监控指定网卡上的所有数据</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> tcpdump -i eth0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看指定IP上的进出流量</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> tcpdump host x.x.x.x</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>根据来源和目标进行筛选，</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> tcpdump src x.x.x.x </span><br><span class="line"><span class="meta">$</span> tcpdump dst x.x.x.x</span><br><span class="line">ps: src = source, dst=destination</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="4">
+<li><p>将捕获的数据包保存至文件或读取数据包文件。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 使用 -w 保存至文件</span><br><span class="line"><span class="meta">$</span> tcpdump port 80 -w capture_file</span><br><span class="line"><span class="meta">#</span> 使用 -r 读取文件</span><br><span class="line"><span class="meta">$</span> tcpdump -r capture_file</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>想要了解更多内容，小伙伴们可以点击查看：<a href="https://danielmiessler.com/study/tcpdump/#basic-communication" target="_blank" rel="noopener">《A tcpdump Tutorial with Examples — 50 Ways to Isolate Traffic》</a>，不想看英文的小伙伴可以点击查看这篇译文：<a href="https://colobu.com/2019/07/16/a-tcpdump-tutorial-with-examples/" target="_blank" rel="noopener">[译]tcpdump 示例教程</a>。</p>
+<h2 id="Share"><a href="#Share" class="headerlink" title="Share"></a>Share</h2><p>本周继续分享 simviso 团队译制的《斯坦福编译原理》系列视频，这周已更新至25集，感兴趣的小伙伴们，赶紧追起来呀，合集地址：<a href="https://www.bilibili.com/video/av70600292?spm_id_from=333.788.b_765f64657363.1" target="_blank" rel="noopener">【国外精选视频课】斯坦福编译原理(中文翻译) 合集 更新中</a>。</p>
+
       
     </div>
     
@@ -377,8 +434,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/10/21/ARTS0024/" rel="prev" title="ARTS打卡：第二十四周（拖更）">
-                ARTS打卡：第二十四周（拖更） <i class="fa fa-chevron-right"></i>
+              <a href="/2019/10/21/ARTS0024/" rel="prev" title="ARTS打卡：第二十四周">
+                ARTS打卡：第二十四周 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -431,8 +488,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -494,6 +560,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ARTS打卡：第二十三周"><span class="nav-number">1.</span> <span class="nav-text">ARTS打卡：第二十三周</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Algorithm"><span class="nav-number">1.1.</span> <span class="nav-text">Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#15-3Sum（Medium）"><span class="nav-number">1.1.1.</span> <span class="nav-text">15. 3Sum（Medium）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解题思路"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码实现"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">代码实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Review"><span class="nav-number">1.2.</span> <span class="nav-text">Review</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tip"><span class="nav-number">1.3.</span> <span class="nav-text">Tip</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Share"><span class="nav-number">1.4.</span> <span class="nav-text">Share</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
